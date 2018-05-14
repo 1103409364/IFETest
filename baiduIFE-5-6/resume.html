@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="keywords" content="前端，简历">
   <meta name="description" content="精通HTML、css、 JavaScript 熟练使用vue jQuery">
-  <link rel="stylesheet" href="css/style_3.css" id="link">
+  <link rel="stylesheet" href="css/style_2.css" id="link">
   <style>
   </style>
 </head>
@@ -44,9 +44,11 @@
         <p><span>小度小度</span><br> 作为前端工程师角色参与了ABC组件的开发<br>
         <span>SAN Doc</span><br> 作为文档工程师参与了SAN Doc的编写</p>
       </section>
+      <button id="hobby-btn">点击查看我的爱好</button>
+      <p id="hobby"></p>
     </main>
   </div>
-  <!-- 样式切换功能从ife谢小懒那抄的，js又不会写，学是不可能学的，只能靠CTRL c CTRL v才能维持的了生活的样子 -->
+  
   <nav class="nav" style="position: fixed; bottom: 0;">
     <span>切换样式 -></span>
     <button class="style-btn" data-file="css/style_1">style_1</button>
@@ -63,6 +65,9 @@
         var fileName = this.dataset.file;
         cssLink.href = './' + fileName + '.css';
       }
+    }
+    document.getElementById("hobby-btn").onclick = function() {
+      document.getElementById("hobby").innerHTML = "吃饭 碎觉 打豆豆";
     }
   </script>
 </body>
