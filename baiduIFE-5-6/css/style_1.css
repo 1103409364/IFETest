@@ -1,0 +1,16 @@
+.info span,
+.contact span {
+  font-weight: bold;
+}
+.info p,
+.contact p {
+  word-spacing: 2em;
+}
+.ability span,
+.education span,
+.project span {
+  font-weight: 700;
+}
+body {
+  width: 1000px;
+}

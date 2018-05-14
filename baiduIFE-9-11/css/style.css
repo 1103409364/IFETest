@@ -1,0 +1,594 @@
+@font-face {
+    font-family: 'montserratextralight';
+    src: url('../fonts/montserrat-extralight-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-extralight-webfont.woff') format('woff'),
+         url('../fonts/montserrat-extralight-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'montserratlight';
+    src: url('../fonts/montserrat-light-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-light-webfont.woff') format('woff'),
+         url('../fonts/montserrat-light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'montserratregular';
+    src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-regular-webfont.woff') format('woff'),
+         url('../fonts/montserrat-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: rgb(242, 242, 242)
+}
+.container {
+    margin: 0 auto;
+    width: 1600px;
+}
+header {
+    width: 100%;
+    height: 990px;
+    /* 文字距离上边209减去文字行高与实际文字大小的差值：209-(62-48)/2 */
+    padding-top: 202px; 
+    background: url("../images/header-background.png") no-repeat 0 0;
+}
+header h1{
+    margin: 0;
+    color: rgb(255, 255, 255);
+    font-family: "montserratextralight";
+    font-size: 62px;
+    font-weight: normal;
+    line-height: 62px;
+    text-align: center;
+}
+header p{
+
+    margin-top: 75px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "montserratextralight";
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+}
+
+header form {
+    color: rgb(255, 255, 255);
+    font-family: "montserratlight";
+    /* 表单元素居中 */
+    text-align: center;
+}
+header fieldset{
+    margin: 100px auto;
+    padding-top: 56px;
+    width: 970px;
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+header span:nth-of-type(1) {
+    /* font-weight: bold; */
+    letter-spacing: 2px;
+    word-spacing: 1.5px;
+    font-size: 16px;
+    line-height: 28px;
+}
+header span:nth-of-type(2) {
+    font-size: 12px;
+    letter-spacing: 2px;
+    word-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.3)
+}
+header input {
+    color: rgb(255, 255, 255);
+    margin-top: 46px;
+    margin-right: 30px;
+    padding: 1.5em;
+    width: 292px;
+    height: 50px;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    background-color: transparent;
+}
+header button {
+    width: 125px;
+    height: 50px;
+    background-color:white;
+    border: 1px white solid;
+    border-radius: 2px;
+    font-family: "montserratlight";
+    font-weight: bold;
+}
+header input[value="denis@getcraftwork.com"],
+header input[placeholder="Create you password"] {
+    font-family: "montserratlight";
+    /* font-weight: bold; */
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.feature {
+    width: 100%;
+    height: 710px;
+    /* ps文字中线到顶端的长度减去半行高 1084.5-990-28/2 */
+    padding-top: 80.5px;
+    background-color:rgb(255, 255, 255);
+}
+.feature h6 {
+    font-family: "montserratlight";
+    font-size: 14px;
+    line-height: 28px;
+    margin: 0;
+    text-align: center;
+}
+.feature h2 {
+    font-family: "montserratextralight";
+    font-size: 42px;
+    line-height: 52px;
+    /* 1175.5-1084.5-28/2-52 */
+    margin-top:25px;
+    text-align: center;
+}
+.feature .wrap {
+    width: 1046px;
+    /* 1307-1175.5-52 */
+    margin: 79.5px auto;
+}
+.feature .wrap div {
+    margin-bottom: 50px;
+    width: 523px;
+    box-sizing: border-box;
+    float: left;
+}
+.feature .wrap div:nth-of-type(2),
+.feature .wrap div:nth-of-type(4){
+    padding-left: 6em;
+    
+}
+.feature .mobile {
+    padding-left: 76px;
+    margin: 0;
+    background: url("../images/iphone-icon.png") no-repeat 15px 1.5em;
+}
+.feature .check {
+    padding-left: 76px;
+    margin: 0;
+    background: url("../images/check-icon.png") no-repeat 0 1.5em;
+}
+.feature .pencil {
+    padding-left: 76px;
+    margin: 0;
+    background: url("../images/pencil-icon.png") no-repeat 0 1.5em;
+}
+.feature .settings {
+    padding-left: 76px;
+    margin: 0;
+    background: url("../images/settings-icon.png") no-repeat 0 1.5em;
+}
+/*改用背景弃用img
+ .feature img {
+    float: left;
+    margin-top: 1.5em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+} */
+.feature h4{
+    font-family: "montserratlight";
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 18px;
+    vertical-align: top;
+        
+}
+.feature p {
+    font-family: "montserratextralight";
+    font-size: 16px;
+    line-height: 26px;
+    overflow: hidden;
+}
+.feature::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.calltoaction {
+    width: 100%;
+    height: 800px;
+    padding-top: 172.5px;
+    padding-bottom: 185px;
+    background: url("../images/calltoaction.png") no-repeat 0 0;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+.calltoaction .left {
+    margin-left: 315px;
+}
+.calltoaction h1 {
+    margin-top: 0; 
+    font-family: "montserratextralight";
+    font-size: 42px;
+    line-height: 52px;
+    font-weight: normal;
+}
+.calltoaction p {
+    font-family: "montserratextralight";
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.74);
+}
+.calltoaction a {
+    display: inline-block;
+    font-family: "montserratlight";
+    font-size: 12px;
+    width: 240px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    background-color: transparent;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+    margin-top: 50px;
+}
+.calltoaction a:nth-of-type(1) {
+    color:rgb(2, 2, 2);
+    background-color: rgb(255, 255, 255);
+    margin-right: 30px;
+}
+.calltoaction a:nth-of-type(2) {
+    color: rgb(255, 255, 255);
+}
+.calltoaction .right {
+    position: absolute;
+    top: 104px;
+    left: 955px;
+    width: 645px;
+    height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 0;
+    border-top-left-radius: 44px;
+    border-bottom-left-radius: 44px;
+}
+.calltoaction .camera {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    margin-left: 32px;
+    margin-top: 295px;
+}
+.calltoaction .screen {
+    width: 585px;
+    height: 542px;
+    background: url("../images/Screen.png");
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+
+.feature2 {
+    width: 100%;
+    height: 580px;
+    background-color: rgb(255, 255, 255);
+    padding-top: 93.5px;
+    font-family: "montserratextralight";
+}
+.feature2 h2 {
+    display: block;
+    margin: 0;
+    text-align: center;
+    font-size: 42px;
+    line-height: 52px;
+    text-transform: capitalize;
+}
+.feature2 p {
+    display: inline-block;
+    margin: 85px 38px;
+    text-align: center;
+    line-height: 26px;
+    vertical-align: top;
+}
+.feature2 p:nth-of-type(1) {
+    margin-left: 322px;
+}
+
+.feature3 {
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgb(231, 231, 231);
+}
+
+.feature3 [src="images/photo1.png"] {
+    height: 349px;
+    width: 570px;
+    float: left;
+    margin-left: 315px;
+    margin-top: 114px;
+}
+.feature3 h2 {
+    font-family: "montserratlight";
+    font-size: 20px;
+    line-height: 32px;
+}
+.feature3 p {
+    font-family: "montserratextralight";
+    font-size: 16px;
+    line-height: 28px;
+}
+.feature3 p:nth-of-type(1),
+.feature3 h2:nth-of-type(1) {
+    margin-left: 985px;
+}
+.feature3 h2:nth-of-type(1){
+    margin-top: 191px;
+}
+.feature3 .img {
+    height: 349px;
+    width: 570px;
+    float: right;
+    margin-right: 310px;
+    margin-top: 80px;
+    overflow: hidden;
+}
+.feature3 .img img {
+    margin-top: -100px;
+}
+.feature3 h2:nth-of-type(2){
+    margin-top: 153px;
+    margin-left: 315px;
+}
+.feature3 p:nth-of-type(2) {
+    margin-left: 315px;
+}
+
+.team {
+    width:100%;
+    height: 1084px;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgb(231, 231, 231);
+    font-family: "montserratextralight";
+    text-align: center;
+    padding-top: 88px;
+}
+.team h2 {
+    font-size: 42px;
+    line-height: 52px;
+    margin: 0;
+}
+.team p {
+    font-size: 18px;
+    line-height: 28px;
+}
+.team .photo {
+    width: 1000px;
+    height: 740px;
+    margin: 38px auto;
+    display: flex;
+    flex-direction: column;
+}
+.team .col {
+    flex: 1;
+    display: flex;
+}
+.team .tutor-photo {
+    width: 470px;
+    height: 340px;
+    overflow: hidden;
+    margin: 15px;
+    margin-bottom: 30px;
+    flex: 1;
+    flex-wrap: wrap;
+    /* background-color: rgb(20, 20, 20); */
+    position: relative;
+    border-radius: 2px;
+}
+/* 图片上移 */
+.tutor-photo img {
+    margin-top: -22px;
+}
+
+.hoverc {
+    width: 470px;
+    height: 340px;
+    font-family: "montserratlight";
+    padding-top: 110px;
+    position: absolute;
+    color: rgb(255, 255, 255);
+}
+/* 将div藏在上下左右边之外 */
+.left-to-right {
+    left: -470px;
+}
+.top-to-bottom {
+    top: -340px;
+}
+.right-to-left {
+    left: 470px;
+}
+.bottom-to-top {
+    top: 340px;
+}
+ .hoverc h4 {
+     font-size: 20px;
+     line-height: 32px;
+     margin: 0;
+ }
+ .hoverc p {
+     font-size: 12px;
+     line-height: 28px;
+     margin-bottom: 39px;
+ }
+ .hoverc a {
+     margin: 15px;
+ }
+/* 给每张照片添加一个div 用来显示Facebook等，通过:hover改变left top值来显示，同时加上半透明效果
+添加延迟时间做出动画效果transition:1s */
+.tutor-photo:hover .hoverc {
+    top: 0;
+    left: 0;
+    transition: .3s;
+    background-color: rgba(31, 30, 30, 0.479);
+    cursor: pointer;
+}
+
+/* .tutor-photo img:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 2s;
+} */
+
+.contact {
+    width: 100%;
+    height: 700px;
+    background-color: rgb(255, 255, 255);
+    border-top: 1px solid rgb(231, 231, 231);
+    padding-top: 70px;
+    padding-left: 315px;
+}
+.contact form{
+    width: 470px;
+    height: 560px;
+    border: 1px solid rgb(231, 231, 231);
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 41px;
+    font-family: "montserratlight";
+}
+.contact h2 {
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 32px;
+    word-spacing: 2.4px;
+    letter-spacing: 1px;
+}
+.contact input,
+.contact button {
+    width: 292px;
+    height: 50px;
+    border: 1px solid rgb(212, 211, 211);
+    border-radius: 2px;
+    margin-bottom: 30px;
+    padding-left: 22px;
+    font-family: "montserratlight";
+    font-size: 14px;
+    line-height: 26px;
+}
+.contact textarea {
+    font-family: "montserratlight";
+    font-size: 14px;
+    line-height: 26px;
+    border: 1px solid rgb(212, 211, 211);
+    width: 292px;
+    height: 144px;
+    resize: none;
+    margin-bottom: 30px;
+    padding-left: 22px;
+}
+.contact button {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding-left: 0;
+}
+.contact form,
+.contacts {
+    display: inline-block;
+}
+.contacts {
+    width: 470px;
+    height: 560px;
+    /* border: 1px solid rgb(231, 231, 231); */
+    font-family: "montserratextralight";
+    margin-left: 132px;
+    vertical-align: top;
+    padding-top: 77px;
+}
+.contacts h2 {
+    font-size: 42px;
+    line-height: 52px;
+    margin: 0;
+}
+.contacts p:nth-of-type(1) {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 22.5px;
+}
+.contacts address {
+    font-family: "montserratlight";
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: bold;
+}
+.contacts address p:nth-of-type(1) {
+    margin-top: 60px;
+    /* margin-bottom: 0; */
+}
+.contacts address p:nth-of-type(2) {
+    margin-top: 25.5px;
+    margin-bottom: 25.5px;
+}
+.contacts img {
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+}
+.contacts a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    width: 100%;
+    height: 400px;
+    background-color: rgb(20, 20, 20);
+    color: rgb(255, 255, 255);
+    font-family: "montserratlight";
+    padding-left: 215px;
+    padding-top: 74px;
+}
+footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+footer ul a {
+    color: rgb(83, 83, 83);
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 46px;
+}
+footer .p4 p{
+    color: rgb(83, 83, 83);
+    font-size: 18px;
+    line-height: 28px;
+}
+footer h4 {
+    font-size: 14px;
+    line-height: 28px;
+    word-spacing: 2.4px;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+footer div {
+    width: 300px;
+    display: inline-block;
+    overflow: visible;
+    vertical-align: top;
+}
+footer img {
+    margin-right: 24px;
+}

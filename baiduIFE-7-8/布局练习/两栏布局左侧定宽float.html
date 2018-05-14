@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个两栏布局，左侧固定宽度，右侧根据浏览器宽度进行自适应变化</title>
+    <style>
+        footer,header {
+            height: 60px;
+            background-color:purple;
+        }
+        .container::after {
+            clear: both;
+            display: table;
+            content: "";
+        }
+        .left,.right {
+            height: 200px;
+            /* float: left; */
+        }
+        .left {
+            background-color: rgb(187, 133, 236);
+            width: 200px;
+            float: left;
+        }
+        .right {
+            background-color:blueviolet;
+            /* 运算符前后都需要保留一个空格 */
+            /* width: calc(100% - 200px); */
+            /* overflow: hidden; */
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <div class="container">
+        <div class="left">Left</div>
+        <div class="right">Rightdafasfdasfdsdf</div>
+    </div>
+    <footer>footer</footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.info span,
+.contact span {
+  font-weight: bold;
+}
+.info p,
+.contact p {
+  word-spacing: 2em;
+}
+.ability span,
+.education span,
+.project span {
+  font-weight: 700;
+}
+
+header {
+  background-color: rgb(101, 165, 250);
+  float: left;
+  height: 800px;
+  width: 150px;
+  padding-top: 2em;
+  color: white;
+  text-align: center;
+}
+
+main {
+  box-sizing: border-box;
+  margin-left: 150px;
+  padding-left: 1.5em;
+  height: 800px;
+  vertical-align: bottom;
+  display:table-cell;
+  vertical-align:middle
+}
+
+main p {
+  line-height: 1.5em;
+}
+
+.clear-fix:after {
+  content:"."; 
+  display:block; 
+  height:0; 
+  visibility:hidden; 
+  clear:both; 
+}

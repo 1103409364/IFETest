@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个两栏布局，右侧固定宽度，左侧根据浏览器宽度进行自适应变化</title>
+    <style>
+        footer,
+        header {
+            height: 60px;
+            background-color: purple;
+        }
+
+        .left,
+        .right {
+            height: 200px;
+        }
+
+        .left {
+            background-color: rgb(187, 133, 236);
+            margin-right: 200px;
+        }
+
+        .right {
+            background-color: blueviolet;
+            width: 200px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <header>header</header>
+    <div class="container">
+        <div class="left">left在div布局中内容溢出了容器，超出了容器所限定的宽度应该怎么办呢？很是疑惑，于是搜集整理一番，发现可以让内容超出容器时超出部分显示省略号，这种做法不仅解决了问题，而且很美观，好了，不多说了，有兴趣的朋友可以参考下</div>
+        <div class="right">right在div布局中内容溢出了容器，超出了容器所限定的宽度应该怎么办呢？很是疑惑，于是搜集整理一番，发现可以让内容超出容器时超出部分显示省略号，这种做法不仅解决了问题，而且很美观，好了，不多说了，有兴趣的朋友可以参考下</div>
+    </div>
+    <footer>footer</footer>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="text"  placeholder="第一个数字">
+    <input id="second-number" type="number"  placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>
+        document.getElementById("add-btn").onclick = function() {
+            var first =  document.getElementById("first-number").value;
+            var second = document.getElementById("second-number").value;
+            document.getElementById("result").innerHTML = "运算结果" + (parseInt(first ) + parseInt(second));
+        }
+        document.getElementById("minus-btn").onclick = function() {
+            var first =  document.getElementById("first-number").value;
+            var second = document.getElementById("second-number").value;
+            document.getElementById("result").innerHTML = "运算结果" + (parseInt(first ) - parseInt(second));
+        }
+        document.getElementById("times-btn").onclick = function() {
+            var first =  document.getElementById("first-number").value;
+            var second = document.getElementById("second-number").value;
+            document.getElementById("result").innerHTML = "运算结果" + (parseInt(first ) * parseInt(second));
+        }
+        document.getElementById("divide-btn").onclick = function() {
+            var first =  document.getElementById("first-number").value;
+            var second = document.getElementById("second-number").value;
+            document.getElementById("result").innerHTML = "运算结果" + (parseInt(first ) / parseInt(second));
+        }
+        var i = i = 1;
+        console.log(i)
+
+        
+    </script>
+</body>
+</html>

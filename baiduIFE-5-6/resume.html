@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>简历</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="前端，简历">
+  <meta name="description" content="精通HTML、css、 JavaScript 熟练使用vue jQuery">
+  <link rel="stylesheet" href="css/style_3.css" id="link">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="clear-fix">
+    <header>
+      <h1>简历</h1>
+    </header>
+    <main>
+      <section class="info">
+        <h2>基本信息</h2>
+        <p><span>姓名：</span>张三 <span>性别：</span>男 <span>应聘职位：</span>Web前端工程师</p>
+      </section>
+
+      <section class="contact">
+        <h2>联系方式</h2>
+        <p><span>手机：</span>12345678901 <span>Email：</span><a href="mailto:222222@baidu.com">222222@baidu.com</a> <span>个人主页：</span><a href="#">Github</a></p>
+      </section>
+
+      <section class="ability">
+        <h2>能力描述</h2>
+        <p><span>技术能力</span><br> 熟悉掌握HTML，CSS，JavaScript<br>
+        <span>综合能力</span><br> 良好的沟通，主动积极，努力勤奋</p>
+      </section>
+
+      <section class="education">
+        <h2>教育经历</h2>
+        <p><span>本科</span><br> 百度前端技术学院小薇学院<br>
+        <span>硕士</span><br> 百度前端技术学院大斌学院</p>
+      </section>
+
+      <section class="project">
+        <h2>项目经历</h2>
+        <p><span>小度小度</span><br> 作为前端工程师角色参与了ABC组件的开发<br>
+        <span>SAN Doc</span><br> 作为文档工程师参与了SAN Doc的编写</p>
+      </section>
+    </main>
+  </div>
+  <!-- 样式切换功能从ife谢小懒那抄的，js又不会写，学是不可能学的，只能靠CTRL c CTRL v才能维持的了生活的样子 -->
+  <nav class="nav" style="position: fixed; bottom: 0;">
+    <span>切换样式 -></span>
+    <button class="style-btn" data-file="css/style_1">style_1</button>
+    <button class="style-btn" data-file="css/style_2">style_2</button>
+    <button class="style-btn" data-file="css/style_3">style_3</button>
+  </nav>
+ 
+  <script>
+    var cssLink = document.getElementById("link");
+    var btn = document.querySelectorAll('.style-btn');
+    var length = btn.length;
+    for (var i = 0; i < length; i += 1) {
+      btn[i].onclick = function() {
+        var fileName = this.dataset.file;
+        cssLink.href = './' + fileName + '.css';
+      }
+    }
+  </script>
+</body>
+</html>

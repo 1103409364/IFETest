@@ -1,0 +1,627 @@
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2'),
+         url('../fonts/proximanova-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'proxima_novasemibold';
+    src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2'),
+         url('//fonts/proximanova-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+* {
+    box-sizing: border-box;
+}
+/* 滚动条隐藏 */
+*::-webkit-scrollbar {
+    display: none;
+}
+/* 高度自适应窗口 */
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+.wrap {
+    display: flex;
+    font-family: 'proxima_novasemibold';
+    width: 100%;
+    height: 100%;
+}
+.menu {
+    display: flex;
+    height: 100%;
+    width: 350px;
+}
+.primary {
+    width: 100px;
+    background-color: rgb(29, 37, 49);
+    overflow: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.app {
+    font-size: 0;
+    height: 100%;
+}
+.app div{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+/* bottom-actions占用56px 固定在左下角*/
+.primary .bottom-actions {
+    height: 56px;
+    padding: 20px;
+}
+.bottom-actions img:nth-of-type(1) {
+    padding-right: 16px;
+}
+.menu-list {
+    height: 100%;
+    width: 250px;
+    overflow: auto;
+}
+
+.secondary {
+    width: 250px;
+    height: 100%;
+    padding-top: 15px;
+    background-color: rgb(34, 44, 60);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 左侧第一栏active提示的蓝色点 */
+.primary::after {
+    content: "";
+    background: url("../images/Active-Highlight.png") no-repeat;
+    position: absolute;
+    top: 39px;
+    width: 23px;
+    height: 23px;
+}
+.secondary h4 {
+    color: rgb(91, 103, 121);
+    font-size: 12px;
+    line-height: 40px;
+    margin: 0;
+}
+.secondary li {
+    color: rgb(183, 192, 205);
+    font-size: 14px;
+    line-height: 36px;    
+}
+
+.secondary ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1.5px;
+    margin-bottom: 14.5px;
+}
+.secondary .part1,
+.secondary .part2,
+.secondary .part3 {
+    width: 190px;
+    margin-left: 29px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgb(42, 53, 71);
+    position: relative;
+}
+.secondary .part3 {
+    border: none;
+    position: relative;
+}
+.secondary .part2 ul li:nth-of-type(1){
+    background: url("../images/Book-of-Wisdom.png") no-repeat 0;
+    padding-left: 28px;
+}
+.secondary .part2 ul li:nth-of-type(2) {
+    background: url("../images/Video-Camera.png") no-repeat 0;
+    padding-left: 28px;
+}
+.secondary .part2 ul li:nth-of-type(3) {
+    background: url("../images/Painting.png") no-repeat 0;
+    padding-left: 28px;
+}
+.secondary .part2 ul li:nth-of-type(4) {
+    background: url("../images/Chart.png") no-repeat 0;
+    padding-left: 28px;
+}
+.secondary .setting {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+/* 左侧第二栏active提示的蓝色点 */
+.secondary .part3::after {
+    content: "";
+    background: url("../images/Active-Highlight.png") no-repeat;
+    position: absolute;
+    left: -30px;
+    top: 48px;
+    width: 23px;
+    height: 23px;
+}
+.part3 li:nth-of-type(1) {
+    color: rgb(255, 255, 255);
+}
+/* 消息提示图标 */
+.part1 .notification,
+.part3 .notification {
+    width: 32px;
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    right: 0;
+    top: 48px;
+}
+.part1 .notification {
+    top: 82px;
+}
+
+.part3 .alert {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient( -90deg, rgb(244,84,56) 0%, rgb(203,39,10) 100%);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    right: 0;
+    bottom: 41px;
+}
+.part4 {
+    height: 50px;
+}
+
+.server-capacity {
+    height: 60px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    padding-left: 30px;
+    padding-top: 5px;
+    background: rgb(34, 44, 60);
+}
+.server-capacity span:nth-of-type(1) {
+    padding-right: 1.5em;
+}
+.server-capacity meter {
+    height: 4px;
+}
+/* 改变仪表样式需要伪元素 */
+meter::-webkit-meter-bar {
+    width:190px;
+    background: rgb(45, 56, 72);
+    border-radius: 2px;
+}
+meter::-webkit-meter-optimum-value {
+    background: linear-gradient( 0deg, rgb(127,91,230) 1%, rgb(157,143,227) 100%);
+    border-radius: 2px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 导航栏 */
+.topbar {
+    font-family: 'proxima_nova_rgregular';
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px rgb(230, 233, 236) solid;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+}
+.chat {
+    height: 100%;
+    display: flex;
+}
+.topbar h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 80px;
+    padding-left: 31px;
+}
+.topbar .profile {
+    width: 204px;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+.profile .head img{
+    float: left;
+    margin-right: 0.5em;
+    border-radius: 50%;
+}
+
+.profile .head .status {
+    position: absolute;
+    right: 154px;
+    bottom: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+}
+.profile .head .statu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -7px;
+    margin-top: -7px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px rgb(56, 167, 106) solid;
+}
+
+.profile p img {
+    float: right;
+}
+/* 默认行高18px，（58-18*2）/2=11px */
+.topbar .profile p{
+    margin: 0;
+    height: 58px;
+    padding: 11px 0 11px 0;
+}
+.topbar .profile span:nth-of-type(1) {
+    color: rgb(35, 153, 241);
+    font-weight: bold;
+}
+.topbar .profile span:nth-of-type(2) {
+    font-size: 14px;
+    color: rgb(181, 181, 181);
+}
+
+.chats {
+    border-right: 1px rgb(230, 233, 236) solid;
+    width: 399px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    height: 71px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 17px;
+    border-bottom: 1px rgb(230, 233, 236) solid;
+    /* border-right: 1px rgb(230, 233, 236) solid; */
+    background: rgb(255, 255, 255);
+}
+.search input {
+    width: 340px;
+    height: 36px;
+    border: 1px rgb(230, 233, 236) solid;
+    border-radius: 4px;
+    font-size: 14px;
+    padding-left: 1em;
+    background: url("../images/Search-icon.png") no-repeat 97%;
+    position: relative;
+}
+/* .chats .chat8 {
+    height: 150px;
+} */
+.chat-list {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.chats #chat {
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px rgb(230, 233, 236) solid;
+    padding: 16px 24px 16px 29px;
+    position: relative;
+}
+.chats .chat1 {
+    border-left: 3px rgb(35, 153, 241) solid;
+    height: 46px;
+    position: relative;
+}
+.head {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    /* 图片多余部分隐藏 */
+    overflow: hidden;
+    float: left;
+    margin-right: 0.5em;
+    margin-right: 20px;
+    
+}
+#chat p:nth-of-type(1) {
+    width: 100%;
+    height: 46px;
+    margin: 0;
+    padding: 5px 0 5px 0;
+}
+/* 调整chat1 Bessie Berry的头像位置 */
+ img[alt="Bessie Berry"] {
+    margin-left: -20px;
+    margin-top: -8px;
+}
+/* 调整chat4 Victor Weber的头像位置 */
+.chat4 .head img {
+    margin-left: -15px;
+    margin-top: -8px;
+}
+.chat1 span:nth-of-type(1) {
+/* 给蓝色状态图标让位 */
+    padding-left: 15px;
+}
+#chat span:nth-of-type(1) {
+    font-family: 'proxima_novasemibold';
+    color: rgb(35, 153, 241);
+    font-weight: bold;
+}
+
+#chat span:nth-of-type(2) {
+    font-size: 14px;
+    color: rgb(124, 124, 124);
+    /* 头像右边的地理位置信息右移 */
+    position: absolute;
+    right: 20px;
+}
+#chat span:nth-of-type(3) {
+    font-size: 14px;
+    color: rgb(181, 181, 181);
+}
+/* 文本超过两行的时候显示省略号 */
+#chat p:nth-last-of-type(1) {
+    overflow:hidden;
+    text-overflow:ellipsis; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+            box-orient: vertical;
+    -webkit-line-clamp: 2;
+            line-clamp: 2;
+    padding-right: 20px;
+    position: relative;
+}
+/* 消息提示4 ?????*/
+.chat1::after {
+    content: "4";
+    width: 24px;
+    height: 24px;
+    background-image:linear-gradient( 90deg, rgb(25,145,235) 0%, rgb(46,161,248) 100%);
+    border-radius: 50%;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    line-height: 24px;
+    position: absolute;
+    right: 20px;
+    top: 86px;
+}
+.chat1 .head::after {
+    width: 8px;
+    height: 8px;
+    content: "";
+    border-radius: 50%;
+    background-color: rgb(0, 170, 255);
+    position: absolute;
+    left: 99px;
+    top: 25px;
+}
+.openchat {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+/* 白色面板右侧部分 */
+.profile-name {
+    width: 100%;
+    height: 71px;
+    border-bottom: 1px rgb(230, 233, 236) solid;
+    background-color: #fff;
+    position: relative;
+}
+
+
+.profile-name h4 {
+    margin: 0;
+    height: 71px;
+    line-height: 69px;
+    padding-left: 30px;
+    font-size: 18px;
+    display: inline-block;
+}
+.profile-name h4::after {
+    content: "";
+    border-radius: 50%;
+    background-color: rgb(27, 185, 52);
+    position: absolute;
+    left: 148px;
+    top: 31px;
+    width: 8px;
+    height: 8px;
+}
+.profile-name .tools,
+.profile-name .chats-one-of {
+    height: 32px;
+    width: 109px;
+    border: 1px rgb(206, 208, 218) solid;
+    border-radius: 4px;
+    background: linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    position: absolute;
+    right: 195px;
+    top: 17px;
+}
+.profile-name .chats-one-of {
+    width: 73px;
+    position: absolute;
+    right: 20px;
+    top: 17px;
+}
+.profile-name table {
+    border-collapse: collapse;
+}   
+.profile-name table td {
+    text-align: center;
+    vertical-align: middle;
+    width: 35px;
+    height: 31px;
+}
+.tools table td:nth-of-type(2) {
+    border-left: 1px rgb(206, 208, 218) solid;
+    border-right: 1px rgb(206, 208, 218) solid;
+}
+.chats-one-of table td:nth-of-type(1) {
+    border-right: 1px rgb(206, 208, 218) solid;
+}
+.profile-name p {
+    font-size: 14px;
+    line-height: 32px;
+    width: 62px;
+    height: 32px;
+    margin: 0;
+    position: absolute;
+    right: 109px;
+    top: 17px;
+    text-align: right;
+    border-left: 1px solid rgba(206, 208, 218, 0.315);
+}
+.message-list {
+    display: flex;
+    flex-direction: column;
+    /* height: 70%; */
+    overflow: auto;
+}
+.messages {
+    padding: 26px 56px 0 26px;
+    border-bottom: 1px rgb(206, 208, 218) solid;
+}
+.new-messages {
+    border-bottom: none;
+}
+.openchat .messages p {
+    overflow: auto;
+    font-size: 14px;
+    line-height: 19px;
+    margin: 0 0 1rem 0;
+}
+.openchat p span:nth-of-type(1) {
+    font-weight: bold;
+    padding-right: 1em;
+}
+.openchat p span:nth-of-type(2) {
+    font-size: 14px;
+    color: rgb(127, 143, 164)
+}
+
+.openchat .msg-time {
+    /* week，用负边距下移挡住一部分线条 */
+    margin: 0 auto -9.5px auto;
+    padding: 0 10px 0 10px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 19px;
+    height: 19px;
+    width: 90px;
+    background-color: #fff;
+}
+.openchat .newmsg {
+    width: 130px;
+    color: rgb(35, 153, 241)
+}
+.messages .photo img {
+    border-radius: 4px;
+}
+.messages .photo:nth-of-type(1) {
+    margin-right: 13px;
+}
+.message2 .photos {
+    margin-left: 65px;
+    margin-bottom: 1rem;
+    position: relative;
+    /* 隐藏悬停阴影 */
+    overflow: hidden;
+}
+/* 鼠标悬停阴影 */
+.photos .open-pic {
+    width: 156px;
+    height: 100px;
+    border-radius: 4px;
+    padding-top: 25px;
+    text-align: center;
+    background: rgba(128, 128, 128, 0.61);
+    position: absolute;
+    top: -100px;
+}
+.photos .photo2 {
+    left: -156px;
+    overflow: hidden;
+}
+.photos .photo,
+.photos .photo2{
+    display: inline-block;
+    /* 去除图片之间的空格 */
+    font-size: 0;
+}
+.photos .photo:hover .open-pic{
+    cursor: pointer;
+    top: 0;
+}
+
+/* 限制消息输入框长度 */
+.write-message {
+    min-width: 520px;
+    width: 100%;
+    height: 95px;
+    padding: 20px 30px 20px 30px;
+    position: relative;
+}
+/* 消息输入框 */
+.write-message input {
+    width: 100%;
+    height: 54px;
+    border: 1px rgb(206, 208, 218) solid;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 19px;
+    padding-left: 70px;
+}
+/* .write-message input {
+    background: url(../images/Add-file-icon.png) no-repeat 0;
+} */
+/* 输入框加号按钮 */
+.write-message::after {
+    box-sizing: border-box;
+    width: 54px;
+    height: 54px;
+    position: absolute;
+    top: 20px;
+    content: "+";
+    font-size: 35px;
+    text-align: center;
+    line-height: 54px;
+    color: rgb(138, 144, 158);
+    border: 1px rgb(206, 208, 218) solid;
+    background: linear-gradient( 0deg, rgb(241,243,247) 0%, rgb(255,255,255) 100%);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+

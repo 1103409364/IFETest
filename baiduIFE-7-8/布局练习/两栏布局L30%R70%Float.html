@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个两栏布局，左侧占30%宽度，右侧占70%宽度</title>
+    <style>
+        /* 双float或者float+margin-left */
+        footer,header {
+            height: 60px;
+            background-color:purple;
+        }
+        .left,.right {
+            height: 200px;
+            /* float: left; */
+        }
+        .left {
+            background-color: rgb(187, 133, 236);
+            width: 30%;
+            float: left;
+        }
+        .right {
+            background-color:blueviolet;
+            /* width: 70%; */
+            margin-left: 30%;
+        }
+        /* 清除浮动 */
+        .clear-fix::after {
+            clear: both;
+            display: table;
+            content: "";
+        }
+        /* 清除浮动方法2
+        .clear-fix::after {
+            clear: both;
+            display: block;
+            content: ".";
+            height: 0;
+            visibility: hidden;
+        } */
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <div class="clear-fix">
+        <div class="left">Left</div>
+        <div class="right">Right</div>
+    </div>
+    <footer>footer</footer>
+</body>
+</html>
