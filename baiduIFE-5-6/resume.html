@@ -19,6 +19,7 @@
     <main>
       <section class="info">
         <h2>基本信息</h2>
+        <button id="say-hello-btn">和我打招呼:吃了吗？</button>
         <p><span>姓名：</span>张三 <span>性别：</span>男 <span>应聘职位：</span>Web前端工程师</p>
       </section>
 
@@ -68,6 +69,9 @@
     }
     document.getElementById("hobby-btn").onclick = function() {
       document.getElementById("hobby").innerHTML = "吃饭 碎觉 打豆豆";
+    }
+    document.getElementById("say-hello-btn").onclick = function() {
+      alert("吃过了");
     }
   </script>
 </body>
