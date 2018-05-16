@@ -7,10 +7,16 @@
     <style>
         table td {
             /* border: 1px solid black; */
-            width: 60px;
+            width: 80px;
+            height: 30px;
             text-align: center;
             vertical-align: middle;
+            color: white;
             background-color: rgb(19, 143, 50);
+        }
+        table caption {
+            color: rgb(19, 143, 50);
+            font-size: 20px;
         }
     </style>
 </head>
@@ -38,6 +44,18 @@
                 table.appendChild(tr);
                 console.log(i + "*" + j + "=" + i * j);
             }
+        }
+
+        var isDate = new Date;
+        var hoursNow = isDate.getHours();
+        if (hoursNow<7) {
+            alert("Morning!you ger up so early.");
+        }else if(hoursNow<11) {
+            alert("noontime");
+        }else if(hoursNow<18) {
+            alert("good afternoon!  ;)");
+        }else {
+            alert("good evening!")
         }
     </script>
 </body>
