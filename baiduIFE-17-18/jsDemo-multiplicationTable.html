@@ -11,18 +11,19 @@
             height: 30px;
             text-align: center;
             vertical-align: middle;
-            color: white;
-            background-color: rgb(19, 143, 50);
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
         }
 
         table caption {
-            color: rgb(19, 143, 50);
+            color: rgb(0, 0, 0);
             font-size: 20px;
         }
     </style>
 </head>
 
 <body>
+    <button id="btn">点我变绿</button>
     <table>
         <caption>九九乘法表</caption>
         <tbody id="table99">
@@ -46,7 +47,7 @@
                 console.log(i + "*" + j + "=" + i * j);
             }
         }
-
+        // 打招呼
         var isDate = new Date;
         var hoursNow = isDate.getHours();
         if (hoursNow < 7) {
@@ -54,10 +55,25 @@
         } else if (hoursNow < 11) {
             alert("noontime");
         } else if (hoursNow < 18) {
-            alert("绿了绿了，乘法表绿了;)");
+            alert("下午好;)");
         } else {
             alert("晚上一起来玩贪玩蓝月")
         }
+        // 变绿
+        var tds = document.querySelectorAll("td"); //返回一个nodelist
+        var btn = document.getElementById("btn");
+        var caption = document.querySelector("caption");
+        btn.addEventListener("click", function () {
+            // 遍历td
+            for (var i = 0; i < tds.length; i++) {
+                tds[i].style.backgroundColor = "rgb(19, 143, 50)";
+            }
+            caption.style.color = "rgb(19, 143, 50)";
+            btn.style.backgroundColor = "rgb(19, 143, 50)";
+            // document.body.style.backgroundColor = "blue";
+            alert("乘法表要绿了;)");
+
+        })
     </script>
 </body>
 
