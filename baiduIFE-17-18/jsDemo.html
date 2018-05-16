@@ -15,27 +15,38 @@
         var transBtn = document.getElementById("trans-btn");
         var result = document.getElementById("result");
         var decNumber = document.getElementById("dec-number");
-        var binBit = document.getElementById("bin-bit")
-        
+        var binBit = document.getElementById("bin-bit");
         function dec2bin(decNumber) {
             var numArr = new Array();
-            var binNum = 0;
-            var i = 0;
+            var binNum = " ";
             // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
             if (decNumber >= 0 && (Math.floor(decNumber) == decNumber)) {
                 do {
-                    binNum += (decNumber%2)*Math.pow(10,i);
+                    numArr.unshift(decNumber % 2);
                     // 向下取整
-                    decNumber = Math.floor(decNumber/2);
-                    i++;
-                } while(decNumber > 0);
-               return binNum;
+                    decNumber = Math.floor(decNumber / 2);
+                } while (decNumber > 0);
+                // 判断位数是否太小，通过相减计算不用数值转换
+                if ((binBit.value - numArr.length) >= 0) {
+                    for (var m = 1; m <= binBit.value - numArr.length; i++) {
+                        // 位数不足添加0
+                        numArr.unshift(0);
+                    }
+                } else {
+                    console.log("error:输入的二进制位数太小了")
+                }
+
+                for (var i = 0; i < numArr.length; i++) {
+                    binNum += numArr[i];
+                }
+                return binNum;
+                // return numArr.toString();
             } else {
-                return "请输入一个正整数";
+                return "error:请输入一个正整数";
             }
         }
-// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
-        transBtn.onclick = function() {
+        // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+        transBtn.onclick = function () {
             result.innerHTML = "运算结果 " + dec2bin(decNumber.value);
         }
     </script>
