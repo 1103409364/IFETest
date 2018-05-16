@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+    <style>
+        table td {
+            /* border: 1px solid black; */
+            width: 60px;
+            text-align: center;
+            vertical-align: middle;
+            background-color: rgb(19, 143, 50);
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>九九乘法表</caption>
+        <tbody id="table99">
+        </tbody>
+    </table>
+
+    <script>
+        var table = document.getElementById("table99");
+        for (var j = 1; j <= 9; j++) {
+            var tr = document.createElement("tr");
+            for (var i = 1; i <= 9; i++) {
+                // 如果前面一个数比后面一个数大，跳过
+                if(i>j) {
+                    continue;
+                }
+                var td = document.createElement("td");
+                var textNode = document.createTextNode(i + "*" + j + "=" + i * j);
+                td.appendChild(textNode);
+                tr.appendChild(td);
+                table.appendChild(tr);
+                console.log(i + "*" + j + "=" + i * j);
+            }
+        }
+    </script>
+</body>
+
+</html>
