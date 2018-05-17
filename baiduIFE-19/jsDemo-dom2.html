@@ -68,39 +68,38 @@
 
         function findAllHtmlSpanInOneSection(sectionId) {
             // 返回某个section下所有span中内容为HTML的span标签
-            var section = document.querySelector(sectionId);
-            var spans = section.querySelectorAll("span");
+            var spans = document.querySelectorAll("#" + sectionId + " span");  //参数用字符串拼接
+            // var spans = section.querySelectorAll("span");
             var arrSpan = new Array();
             for (var i = 0; i < spans.length; i++) {
                 if (spans[i].innerHTML == "HTML") {
                     return arrSpan.unshift(spans[i]);
-                    console.log(arrSpan);
                 }
             }
         }
 
         function findListItem(sectionId, spanCont) {
             // 返回某个section下，所有所包含span内容为spanCont的LI标签
-            var section = document.querySelector(sectionId);
-            var spans = section.querySelectorAll("span");
+            var spans = document.querySelectorAll("#" + sectionId + " span");  //参数用字符串拼接
+            // var spans = section.querySelectorAll("span");
             var arrSpan = new Array();
             for (var i = 0; i < spans.length; i++) {
                 if (spans[i].innerHTML == spanCont) {
                     return arrSpan.unshift(spans[i].parentNode);
-                    console.log(arrSpan);
                 }
             }
         }
 
         function getActiveLinkContent(sectionId) {
             // 返回某个section下，class为active的链接中包含的文字内容
-            var section = document.querySelector(sectionId);
-            console.log(section.querySelector(".active").innerHTML)
+            //id参数用字符串拼接
+            return document.querySelector("#" + sectionId + " .active").innerHTML;
+            // console.log(document.querySelector("#" + sectionId + " .active").innerHTML)
         }
 
-        // findAllHtmlSpanInOneSection("#news-normal");
-        // findListItem("#news-normal","CSS");
-        // getActiveLinkContent("#news-top");
+        findAllHtmlSpanInOneSection("news-normal");
+        // findListItem("news-normal", "CSS");
+        // getActiveLinkContent("news-top");
     </script>
 </body>
 
