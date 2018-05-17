@@ -73,9 +73,10 @@
             var arrSpan = new Array();
             for (var i = 0; i < spans.length; i++) {
                 if (spans[i].innerHTML == "HTML") {
-                    return arrSpan.unshift(spans[i]);
+                    arrSpan.unshift(spans[i]);
                 }
             }
+            console.log(arrSpan);
         }
 
         function findListItem(sectionId, spanCont) {
@@ -85,16 +86,15 @@
             var arrSpan = new Array();
             for (var i = 0; i < spans.length; i++) {
                 if (spans[i].innerHTML == spanCont) {
-                    return arrSpan.unshift(spans[i].parentNode);
+                    arrSpan.unshift(spans[i].parentNode);
                 }
             }
+            return arrSpan;
         }
 
         function getActiveLinkContent(sectionId) {
             // 返回某个section下，class为active的链接中包含的文字内容
-            //id参数用字符串拼接
             return document.querySelector("#" + sectionId + " .active").innerHTML;
-            // console.log(document.querySelector("#" + sectionId + " .active").innerHTML)
         }
 
         findAllHtmlSpanInOneSection("news-normal");
