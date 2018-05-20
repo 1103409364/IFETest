@@ -13,20 +13,20 @@
     <script>
         var fadeBtn = document.getElementById("fade-btn");
         var fadeObj = document.getElementById("fade-obj");
-        var speed;
+        var speed; //渐变速度
         var opacity = 1000;
-
+        // 淡出
         function fadeOut() {
             speed = -1;
             opacity += speed;
-            fadeObj.style.opacity = opacity / 1000;
+            fadeObj.style.opacity = opacity / 1000; //改变opacity的值
             if (opacity == 0) {
                 fadeBtn.innerHTML = "淡入";
                 fadeBtn.disabled = false;
                 clearInterval(fadeOutId);
             }
         }
-
+        // 淡入
         function fadeIn() {
             speed = 1;
             opacity += speed;
@@ -40,7 +40,7 @@
 
         fadeBtn.onclick = function () {
             if (fadeBtn.innerHTML == "淡出") {
-                fadeBtn.disabled = true;
+                fadeBtn.disabled = true; //停用按钮
                 fadeOutId = setInterval(fadeOut, 1);
             } else if (fadeBtn.innerHTML == "淡入") {
                 fadeBtn.disabled = true;
