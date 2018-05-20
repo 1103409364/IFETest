@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>events</title>
+</head>
+
+<body>
+    <input id="name" accesskey="esc" type="text">
+    <button id="submit-btn">Submit</button>
+    <script>
+        var submitBtn = document.getElementById("submit-btn");
+        var input = document.getElementById("name");
+        submitBtn.onclick = function () {
+            console.log(input.id);
+        }
+        // input.onchange = function () {
+        //     console.log(input.id);
+        // }
+
+        document.onkeydown = doIt;
+
+        function doIt() {
+            if (window.event.keyCode == 27) { //按下esc
+                input.value = "";
+            }
+            if (window.event.keyCode == 13) { //按下enter?
+                console.log(input.id);
+            }
+        }
+    </script>
+</body>
+
+</html>
