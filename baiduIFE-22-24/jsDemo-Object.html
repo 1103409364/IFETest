@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var tree = {
+            "id": 0,
+            "name": "root",
+            "left": {
+                "id": 1,
+                "name": "Simon",
+                "left": {
+                    "id": 3,
+                    "name": "Carl",
+                    "left": {
+                        "id": 7,
+                        "name": "Lee",
+                        "left": {
+                            "id": 11,
+                            "name": "Fate"
+                        }
+                    },
+                    "right": {
+                        "id": 8,
+                        "name": "Annie",
+                        "left": {
+                            "id": 12,
+                            "name": "Saber"
+                        }
+                    }
+                },
+                "right": {
+                    "id": 4,
+                    "name": "Tony",
+                    "left": {
+                        "id": 9,
+                        "name": "Candy"
+                    }
+                }
+            },
+            "right": {
+                "id": 2,
+                "name": "right",
+                "left": {
+                    "id": 5,
+                    "name": "Carl",
+                },
+                "right": {
+                    "id": 6,
+                    "name": "Carl",
+                    "right": {
+                        "id": 10,
+                        "name": "Kai"
+                    }
+                }
+            }
+        }
+        // 假设id和name均不会重复，根据输入name找到对应的id
+        function findIdByName(name) {
+            function ergodic(obj) {  //遍历对象
+                for (x in obj) {
+                    if (typeof (obj[x]) == "object") {
+                        ergodic(obj[x]);  //如果属性是对象，进行遍历
+                    } else if (obj[x] == name) {
+                        console.log("name: " + name + " id: " + obj.id);
+                    }
+                }
+            }
+            ergodic(tree);
+        }
+
+        findIdByName("Candy");
+        // 假设id和name均不会重复，根据输入id找到对应的name
+        function findNameById(id) {
+            function ergodic(obj) {  //遍历对象
+                for (x in obj) {
+                    if (typeof (obj[x]) == "object") {
+                        ergodic(obj[x]);  //如果属性是对象，进行遍历
+                    } else if (obj[x] == id) {
+                        console.log("id: " + id + " name: " + obj.name);
+                    }
+                }
+            }
+            ergodic(tree);
+        }
+        findNameById(10);
+        // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+        function getListWithDLR() {
+            function ergodic(obj) {  //遍历对象
+                for (x in obj) {
+                    if (typeof (obj[x]) == "object") {
+                        ergodic(obj[x]);  //如果属性是对象，进行遍历
+                    } else {
+                        console.log("name: " + obj.name);
+                    }
+                }
+            }
+            ergodic(tree);
+        }
+        getListWithDLR();
+        // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+        function getListWithLDR() {
+            console.log("-------LDR---------");
+            console.log(tree.left.left.left.left.name);
+            console.log(tree.left.left.left.name);
+            console.log(tree.left.left.name);
+            console.log(tree.left.left.right.left.name);
+            console.log(tree.left.left.right.name);
+            console.log(tree.left.name);
+            console.log(tree.left.right.left.name);
+            console.log(tree.left.right.name);
+            console.log(tree.name);
+            console.log(tree.right.left.name);
+            console.log(tree.right.name);
+            console.log(tree.right.right.name);
+            console.log(tree.right.right.right.name);
+        }
+        getListWithLDR()
+        // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+        function getListWithLRD() {
+            console.log("----------LRD------");
+            console.log(tree.left.left.left.left.name);
+            console.log(tree.left.left.left.name);
+            console.log(tree.left.left.right.left.name);
+            console.log(tree.left.left.right.name);
+            console.log(tree.left.left.name);
+            console.log(tree.left.right.left.name);
+            console.log(tree.left.right.name);
+            console.log(tree.left.name);
+            console.log(tree.right.left.name);
+            console.log(tree.right.right.right.name);
+            console.log(tree.right.right.name);
+            console.log(tree.right.name);
+            console.log(tree.name);
+        }
+        getListWithLRD();
+    </script>
+</body>
+
+</html>
