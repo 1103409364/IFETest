@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+</head>
+
+<body>
+    <script>
+        var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+
+        console.log(arr.sort(function (a, b) { // 函数表达式
+            return b - a; //从大到小
+        }));
+        console.log(arr.sort(compareNumber));
+        function compareNumber(a, b) {
+            return a - b; //从小到大
+        }
+        var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+        console.log(arr.sort(function (a, b) {
+            var a = a.toUpperCase();
+            var b = b.toUpperCase();
+            if (a < b) {
+                return -1;
+            }
+            if (a > b) {
+                return 1;
+            }
+            return 0;
+        })); //a-z排序
+        console.log(arr.sort(function (a, b) {
+            var a = a.toUpperCase();
+            var b = b.toUpperCase();
+            if (a < b) {
+                return 1;
+            }
+            if (a > b) {
+                return -1;
+            }
+            return 0;
+        }))//z-a排序
+
+        var arr = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+        console.log(arr.sort(function (a, b) {
+            return b[1] - a[1];
+        })) //按照每个元素中第二个数从大到小的顺序进行排序输出
+
+        var arr = [
+            {
+                id: 1,
+                name: 'candy',
+                value: 40
+            }, {
+                id: 2,
+                name: 'Simon',
+                value: 50
+            }, {
+                id: 3,
+                name: 'Tony',
+                value: 45
+            }, {
+                id: 4,
+                name: 'Annie',
+                value: 60
+            }
+        ];
+
+        console.log(arr.sort(function (a, b) {
+            return a.value - b.value;
+        })) //将上面数组分别按元素对象的value值从小到大进行排序后输出
+        console.log("-----------------------------------")
+        //学习通用的数据用不同的数据结构进行存储，以及相互的转换
+        var scoreObject = {
+            "Tony": {
+                "Math": 95,
+                "English": 79,
+                "Music": 68
+            },
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            },
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+
+        function objectToArray(obj) {
+            var arr = [][1];
+            for (x in obj) {
+                arr.push(x);
+            }
+            return arr;
+        }
+        console.log(objectToArray(scoreObject)[0]);
+    </script>
+</body>
+
+</html>
