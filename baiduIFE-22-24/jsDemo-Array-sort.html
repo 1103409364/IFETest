@@ -69,7 +69,7 @@
         console.log(arr.sort(function (a, b) {
             return a.value - b.value;
         })) //将上面数组分别按元素对象的value值从小到大进行排序后输出
-        console.log("-----------------------------------")
+        console.log("-----------对象转数组------------------------")
         //学习通用的数据用不同的数据结构进行存储，以及相互的转换
         var scoreObject = {
             "Tony": {
@@ -90,13 +90,60 @@
         }
 
         function objectToArray(obj) {
-            var arr = [][1];
+            var a = [];
             for (x in obj) {
-                arr.push(x);
+                var b = [];
+                b.push(x);
+                for (y in obj[x]) {
+                    b.push(obj[x][y]);
+                }
+                // console.log(b);
+                a.push(b);
             }
-            return arr;
+            console.log(a);
         }
-        console.log(objectToArray(scoreObject)[0]);
+        objectToArray(scoreObject)
+
+        console.log("-----------数组转对象------------------------")
+        var menuArr = [
+            [1, "Area1", -1],
+            [2, "Area2", -1],
+            [3, "Area1-1", 1],
+            [4, "Area1-2", 1],
+            [5, "Area2-1", 2],
+            [6, "Area2-2", 2],
+            [7, "Area1-2-3", 4],
+            [8, "Area2-2-1", 6],
+        ];
+
+        function arrayToObject(arr) {
+
+            var obj = new Object();
+            for(var x in menuArr){
+                obj[x] = menuArr[x];
+            }
+            console.log(obj);
+        }    
+        arrayToObject(menuArr);
+
+        var menuObject = {
+            "1": {
+                name: "Area1",
+                subMenu: {
+                    "3": {
+                        name: "Area1-1"
+                    },
+                    "4": {
+                        name: "Area1-2",
+                        subMenu: {
+                            "7": {
+                                name: "Area1-2-3"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     </script>
 </body>
 
