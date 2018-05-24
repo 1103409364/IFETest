@@ -61,7 +61,7 @@
             }
         }
         // 假设id和name均不会重复，根据输入name找到对应的id
-        function findIdByName(obj,name) {
+        function findIdByName(obj, name) {
             function ergodic(obj) {  //遍历对象
                 for (x in obj) {
                     if (typeof (obj[x]) == "object") {
@@ -74,9 +74,9 @@
             ergodic(obj);
         }
 
-        findIdByName(tree,"Candy");
+        findIdByName(tree, "Candy");
         // 假设id和name均不会重复，根据输入id找到对应的name
-        function findNameById(obj,id) {
+        function findNameById(obj, id) {
             function ergodic(obj) {  //遍历对象
                 for (x in obj) {
                     if (typeof (obj[x]) == "object") {
@@ -88,7 +88,7 @@
             }
             ergodic(obj);
         }
-        findNameById(tree,10);
+        findNameById(tree, 10);
 
         // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
         console.log("-------DLR---------");
@@ -107,7 +107,13 @@
         console.log("-------LDR---------");
 
         function getListWithLDR(obj) {
-           
+            if (obj.left) {
+                getListWithLDR(obj.left);
+            }
+            console.log(obj.name);
+            if (obj.right) {
+                getListWithLDR(obj.right);
+            }
         }
         getListWithLDR(tree);
 
@@ -115,9 +121,15 @@
         console.log("----------LRD------");
 
         function getListWithLRD(obj) {
-            
+            if (obj.left){
+                getListWithLRD(obj.left);
+            }
+            if(obj.right) {
+                getListWithLRD(obj.right);
+            }
+            console.log(obj.name);
         }
-        getListWithLRD(obj);
+        getListWithLRD(tree);
     </script>
 </body>
 
