@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+
+<body>
+    <p id="time"></p>
+
+    <script>
+        function checkTime(t) { //传值 不会改变原变量的值
+            if (t < 10) {
+                t = "0" + t; //把月、日、小时等出现个位数的情况前面补充0，补充为两位，比如1变为01
+            }
+            return t;
+        }
+        function getWeekday(d) { //根据某个日期返回这一天是星期几
+            // var weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            return weekday[d];
+        }
+        function fatTime(year, month, date, day, hour, min, sec) { //把最后的日期时间，按照要求的格式进行包装
+            // return year + "年" + (Number(month) + 1) + "月" + date + "日 " + getWeekday(day) + hour + ":" + min + ":" + sec;
+            if (hour > 12) {
+                return year + "-" + (Number(month) + 1) + "-" + date + " " + getWeekday(day) + " " + (hour%12) + ":" + min + ":" + sec + " " + "PM";
+            } else{
+                return year + "-" + (Number(month) + 1) + "-" + date + " " + getWeekday(day) + " " + hour + ":" + min + ":" + sec + " ";
+            }
+        }
+        function settime() {
+            var time = document.getElementById("time");
+            var myDate = new Date();
+            var year = myDate.getFullYear();
+            var month = myDate.getMonth();
+            var date = myDate.getDate();
+            var day = myDate.getDay();
+            var hour = myDate.getHours();
+            var min = myDate.getMinutes();
+            var sec = myDate.getSeconds();
+
+            month = checkTime(month);
+            date = checkTime(date);
+            hour = checkTime(hour);
+            min = checkTime(min);
+            sec = checkTime(sec);
+
+            time.innerHTML = fatTime(year, month, date, day, hour, min, sec);
+        }
+
+        setInterval(settime, 500);
+    </script>
+</body>
+
+</html>
