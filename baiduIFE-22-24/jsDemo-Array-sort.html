@@ -104,7 +104,7 @@
         }
         objectToArray(scoreObject)
 
-        console.log("-----------数组转对象------------------------")
+        console.log("-----------数组转对象-这题不会----------------")
         function fun6() {
             var menuArr = [
                 [1, "Area1", -1],
@@ -119,11 +119,12 @@
             var subArrToSubObj = menuArr.map(function (arr, i) {
                 return { key: arr[0], obj: { name: arr[1] }, parentKey: arr[2] };
             })
+            console.log(subArrToSubObj);
             var menuObject = {};
             var tempObjArr = subArrToSubObj;
             var len = tempObjArr.length;
             for (var i = len - 2; i >= 0; i--) {
-                for (j = len - 1; j >= i; j--) {
+                for (var j = len - 1; j >= i; j--) {
                     if (tempObjArr[i].key == tempObjArr[j].parentKey) {
                         if (tempObjArr[i].obj["subMenu"]) {
                             tempObjArr[i].obj["subMenu"][tempObjArr[j].key] = tempObjArr[j].obj;
