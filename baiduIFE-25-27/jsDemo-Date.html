@@ -33,7 +33,7 @@
             var time = document.getElementById("time");
             var myDate = new Date();
             var year = myDate.getFullYear();
-            var month = myDate.getMonth();
+            var month = myDate.getMonth();  //月从0开始
             var date = myDate.getDate();
             var day = myDate.getDay();
             var hour = myDate.getHours();
@@ -49,7 +49,7 @@
             time.innerHTML = fatTime(year, month, date, day, hour, min, sec);
         }
 
-        setInterval(settime, 500);
+        setInterval(settime, 500);  //参数不带（）
     </script>
 </body>
 
