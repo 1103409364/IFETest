@@ -8,45 +8,21 @@
 
 <body>
     <select id="year-select">
-        <option value="2000">2000</option>
-        <option value="2001">2001</option>
-        <option value="2002">2002</option>
-        <option value="2032">2032</option>
     </select>
 
     <select id="month-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ……
-        <option value="12">12</option>
     </select>
 
     <select id="day-select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        ……
-        <option value="31">31</option>
     </select>
 
     <select id="hour-select">
-        <option value="0">00</option>
-        <option value="1">01</option>
-        ……
-        <option value="23">23</option>
     </select>
 
     <select id="minite-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        ……
-        <option>59</option>
     </select>
 
     <select id="second-select">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        ……
-        <option>59</option>
     </select>
 
     <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
@@ -56,16 +32,51 @@
         var monthSelect = document.getElementById("month-select");
         var daySelect = document.getElementById("day-select");
         var hourSelect = document.getElementById("hour-select");
-        var miniteSelect  = document.getElementById("minite-select");
+        var miniteSelect = document.getElementById("minite-select");
         var secondSelect = document.getElementById("second-select");
-        var option = document.createElement("option");
-        var text = document.createTextNode("2022");
-        option.appendChild(text);
-        var year = 2025;
-        option.setAttribute("value",year);
 
-        yearSelect.appendChild(option);
-        console.log(yearSelect.value);
+        function setDate(element, value, end) { //添加（年月日时分秒）到下拉列表，value：开始参数end：结束参数
+            for (; value <= end; value++) {
+                value = checkTime(value);
+                var option = document.createElement("option");
+                var text = document.createTextNode(value);
+                option.appendChild(text);
+                option.setAttribute("value", value);
+                element.appendChild(option);
+            }
+        }
+
+        function checkTime(t) { //传值 不会改变原变量的值
+            if (t < 10) {
+                t = "0" + t; //把月、日、小时等出现个位数的情况前面补充0，补充为两位，比如1变为01
+            }
+            return t;
+        }
+
+        function isLeapYear(year) {
+            return (year % 100 != 0 && year % 4 == 0) || (year % 400 == 0);
+        }
+
+        setDate(yearSelect, 2000, 2032); //年
+        setDate(monthSelect, 1, 12); //月
+        setDate(daySelect, 1, 31); //日
+        setDate(hourSelect, 0, 24); //时
+        setDate(miniteSelect, 0, 59); //分
+        setDate(secondSelect, 0, 59); //秒
+
+        // daySelect.addEventListener("onmouseover", function () {
+        //     switch (monthSelect.value) {
+        //         case "01":
+        //         case "03":
+        //         case "05":
+        //         case "07":
+        //         case "08":
+        //         case "10":
+        //         case "12":
+                    
+        //     }
+        //     console.log("hello");
+        // })
     </script>
 </body>
 
