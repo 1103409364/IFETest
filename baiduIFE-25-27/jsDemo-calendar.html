@@ -11,8 +11,7 @@
         <option value="2000">2000</option>
         <option value="2001">2001</option>
         <option value="2002">2002</option>
-        ……
-        <option value="2032">2002</option>
+        <option value="2032">2032</option>
     </select>
 
     <select id="month-select">
@@ -51,6 +50,23 @@
     </select>
 
     <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+        var yearSelect = document.getElementById("year-select");
+        var monthSelect = document.getElementById("month-select");
+        var daySelect = document.getElementById("day-select");
+        var hourSelect = document.getElementById("hour-select");
+        var miniteSelect  = document.getElementById("minite-select");
+        var secondSelect = document.getElementById("second-select");
+        var option = document.createElement("option");
+        var text = document.createTextNode("2022");
+        option.appendChild(text);
+        var year = 2025;
+        option.setAttribute("value",year);
+
+        yearSelect.appendChild(option);
+        console.log(yearSelect.value);
+    </script>
 </body>
 
 </html>
