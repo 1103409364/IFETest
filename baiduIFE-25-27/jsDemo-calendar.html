@@ -57,26 +57,46 @@
             return (year % 100 != 0 && year % 4 == 0) || (year % 400 == 0);
         }
 
+        function setDay() {  //设置day
+            switch (monthSelect.value) {
+                case "01":
+                case "03":
+                case "05":
+                case "07":
+                case "08":
+                case "10":
+                case "12":
+                    daySelect.innerHTML = ""; //清除day
+                    setDate(daySelect, 1, 31);
+                    break;
+                case "02":
+                    daySelect.innerHTML = ""; //清除day
+                    if (isLeapYear(yearSelect.value)) {
+                        setDate(daySelect, 1, 28);
+                    } else {
+                        setDate(daySelect, 1, 29);
+                    }
+                    break;
+                case "04":
+                case "06":
+                case "09":
+                case "11":
+                    daySelect.innerHTML = ""; //清除day
+                    setDate(daySelect, 1, 30); //4，6，9，11月为30天
+                    break;
+            }
+        }
+
         setDate(yearSelect, 2000, 2032); //年
         setDate(monthSelect, 1, 12); //月
-        setDate(daySelect, 1, 31); //日
+        setDate(daySelect, 1, 31); //日 默认31天
         setDate(hourSelect, 0, 24); //时
         setDate(miniteSelect, 0, 59); //分
         setDate(secondSelect, 0, 59); //秒
 
-        // daySelect.addEventListener("onmouseover", function () {
-        //     switch (monthSelect.value) {
-        //         case "01":
-        //         case "03":
-        //         case "05":
-        //         case "07":
-        //         case "08":
-        //         case "10":
-        //         case "12":
-                    
-        //     }
-        //     console.log("hello");
-        // })
+        //年月添加监听事件，当发生改变是day跟着改变
+        yearSelect.addEventListener("change", setDay)
+        monthSelect.addEventListener("change", setDay);
     </script>
 </body>
 
