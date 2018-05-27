@@ -8,26 +8,19 @@
 
 <body>
 
-    <select id="year-select">
-    </select>
+    <select id="year-select"></select>
 
-    <select id="month-select">
-    </select>
+    <select id="month-select"></select>
 
-    <select id="date-select">
-    </select>
+    <select id="date-select"></select>
 
-    <select id="hour-select">
-    </select>
+    <select id="hour-select"></select>
 
-    <select id="minite-select">
-    </select>
+    <select id="minite-select"></select>
 
-    <select id="second-select">
-    </select>
+    <select id="second-select"></select>
 
     <p id="result-wrapper"></p>
-    </form>
 
     <script>
         var yearSelect = document.getElementById("year-select");
@@ -115,8 +108,7 @@
         yearSelect.addEventListener("change", setDate);
         monthSelect.addEventListener("change", setDate);
 
-        //上面是日历列表显示部分，下面是显示结果计算部分
-
+        //上面是日历列表初始化部分，下面是计算显示结果部分
         function countDate() {
             var result = "";
 
