@@ -7,26 +7,26 @@
 </head>
 
 <body>
-    <form id="calendar">
-        <select id="year-select">
-        </select>
 
-        <select id="month-select">
-        </select>
+    <select id="year-select">
+    </select>
 
-        <select id="date-select">
-        </select>
+    <select id="month-select">
+    </select>
 
-        <select id="hour-select">
-        </select>
+    <select id="date-select">
+    </select>
 
-        <select id="minite-select">
-        </select>
+    <select id="hour-select">
+    </select>
 
-        <select id="second-select">
-        </select>
+    <select id="minite-select">
+    </select>
 
-        <p id="result-wrapper"></p>
+    <select id="second-select">
+    </select>
+
+    <p id="result-wrapper"></p>
     </form>
 
     <script>
@@ -37,11 +37,9 @@
         var miniteSelect = document.getElementById("minite-select");
         var secondSelect = document.getElementById("second-select");
         var resultWrapper = document.getElementById("result-wrapper");
-        var calendar = document.getElementById("calendar");
 
-
-
-        function setCalendar(element, value, end) { //添加（年月日时分秒）到下拉列表，value：开始参数end：结束参数
+        //添加（年月日时分秒）到下拉列表，value开始，end结束
+        function setCalendar(element, value, end) {
             for (; value <= end; value++) {
                 value = checkTime(value);
                 var option = document.createElement("option");
@@ -51,19 +49,20 @@
                 element.appendChild(option);
             }
         }
-
+        //小于10前面补上0
         function checkTime(t) { //传值 不会改变原变量的值
             if (t < 10) {
                 t = "0" + t; //把月、日、小时等出现个位数的情况前面补充0，补充为两位，比如1变为01
             }
             return t;
         }
-
+        //判断是不是闰年
         function isLeapYear(year) {
             return (year % 100 != 0 && year % 4 == 0) || (year % 400 == 0);
         }
 
-        function setDate() {  //设置一个月几天
+        // 每个月的天数受年份和月份的影响
+        function setDate() {
             switch (monthSelect.value) {
                 case "01":
                 case "03":
@@ -75,7 +74,7 @@
                     dateSelect.innerHTML = ""; //清除date
                     setCalendar(dateSelect, 1, 31);
                     break;
-                case "02":
+                case "02": //2月判断是否是闰年
                     dateSelect.innerHTML = ""; //清除date
                     if (isLeapYear(yearSelect.value)) {
                         setCalendar(dateSelect, 1, 29);
@@ -101,10 +100,13 @@
         setCalendar(miniteSelect, 0, 59); //分
         setCalendar(secondSelect, 0, 59); //秒
 
-        function fatYouDate(year, month, date, day, hour, min, sec) { //把最后的日期时间，按照要求的格式进行包装
+        //页面日期时间，按照格式进行包装
+        function fatYouDate(year, month, date, day, hour, min, sec) {
             return year + "年" + (Number(month) + 1) + "月" + date + "日 " + getWeekday(day) + hour + ":" + min + ":" + sec;
         }
-        function getWeekday(d) { //根据某个日期返回这一天是星期几
+
+        //根据某个日期返回这一天是星期几
+        function getWeekday(d) {
             var weekday = ["星期日 ", "星期一 ", "星期二 ", "星期三 ", "星期四 ", "星期五 ", "星期六 "];
             return weekday[d];
         }
@@ -113,11 +115,7 @@
         yearSelect.addEventListener("change", setDate);
         monthSelect.addEventListener("change", setDate);
 
-
-        //上面是日历列表部分，下面是显示结果处理部分
-
-        // console.log(youDate.getTime());
-
+        //上面是日历列表显示部分，下面是显示结果计算部分
 
         function countDate() {
             var result = "";
@@ -129,9 +127,8 @@
             var hour = hourSelect.value;
             var min = miniteSelect.value;
             var sec = secondSelect.value;
-            var youDate = new Date(year, month, date);
-            var day = youDate.getDay(); //使用年月日创建一个Date对象，然后getDay()就是当前日期在一周中的哪一天
-            var toysec = hour * 3600 + min * 60 + sec; //时间换算成秒，用来比较同一天的情况
+            var youDate = new Date(year, month, date, hour, min, sec); //以页面时间新建对象new Date(yyyy,mth,dd,hh,mm,ss);
+            var day = youDate.getDay(); //getDay()是当前日期在一周中的哪一天，0到6
 
             // 获取此刻系统的年月日时分秒
             var nowDate = new Date();
@@ -141,7 +138,7 @@
             var nHour = nowDate.getHours();
             var nMin = nowDate.getMinutes();
             var nSec = nowDate.getSeconds();
-            var tonces = nHour * 3600 + nMin * 60 + nSec;
+
             // 计算出相差的时间
             var timeMinus = Math.abs(nowDate.getTime() - youDate.getTime()); //日期之间相差的毫秒数,取绝对值
             var numDays = Math.floor(timeMinus / 86400000); // 计算天数，一天86400000毫秒
@@ -152,34 +149,20 @@
             var numSec = Math.floor(remTimes % 60000 / 1000); //计算秒数
 
             // 判断是在系统时间之前还是之后，显示不同的结果
-            if ((nowDate.getTime() - youDate.getTime()) > 0) {
+            if ((nowDate.getTime() - youDate.getTime()) >= 0) {
                 result = "现在距离 " + fatYouDate(year, month, date, day, hour, min, sec) + " 已经过去" + numDays + "天" + numHours + "小时" + numMin + "分" + numSec + "秒";
-                // console.log(result);
                 return result;
             } else if ((nowDate.getTime() - youDate.getTime()) < 0) {
                 result = "现在距离 " + fatYouDate(year, month, date, day, hour, min, sec) + " 还有" + numDays + "天" + numHours + "小时" + numMin + "分" + numSec + "秒";
-                // console.log(result);
-                return result;
-            }
-
-            if (tonces >= toysec) {
-                result = "现在距离 " + fatYouDate(year, month, date, day, hour, min, sec) + " 1已经过去" + numDays + "天" + numHours + "小时" + numMin + "分" + numSec + "秒";
-                return result;
-            } else {
-                result = "现在距离 " + fatYouDate(year, month, date, day, hour, min, sec) + " 还有" + numDays + "天" + numHours + "小时" + numMin + "分" + numSec + "秒";
-                // console.log(result);
                 return result;
             }
         }
-
-        function setResultWrapper() { //设置最终结果
+        //显示结果在p标签
+        function setResultWrapper() {
             resultWrapper.innerHTML = countDate();
         }
-        // setInterval(setResultWrapper, 500);
-        // 每个时间列表添加change事件
-        calendar.addEventListener("click", function () { //
-            setInterval(setResultWrapper, 500);
-        }, false);
+
+        setInterval(setResultWrapper, 500);
     </script>
 </body>
 
