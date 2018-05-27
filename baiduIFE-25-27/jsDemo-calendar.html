@@ -94,7 +94,8 @@
 
         //页面日期时间，按照格式进行包装
         function fatYouDate(year, month, date, day, hour, min, sec) {
-            return year + "年" + (Number(month) + 1) + "月" + date + "日 " + getWeekday(day) + hour + ":" + min + ":" + sec;
+            month = checkTime(month + 1); //month从0开始
+            return year + "年" + month + "月" + date + "日 " + getWeekday(day) + hour + ":" + min + ":" + sec;
         }
 
         //根据某个日期返回这一天是星期几
@@ -103,7 +104,7 @@
             return weekday[d];
         }
 
-        //年月添加监听事件，当发生改变是date跟着改变
+        //年月添加监听事件，当发生改变时date跟着改变
         yearSelect.addEventListener("change", setDate);
         monthSelect.addEventListener("change", setDate);
 
