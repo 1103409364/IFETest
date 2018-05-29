@@ -6,7 +6,7 @@
     <title>email</title>
     <style>
         .wrapper {
-            font-family: sans-serif;
+            font-family: 微软雅黑;
             font-size: 13px;
         }
 
@@ -58,8 +58,9 @@
     <script>
         var inputDom = document.getElementById("email-input");
         var emailSugWrapper = document.getElementById("email-sug-wrapper");
+        var li = document.getElementsByTagName("li");
 
-        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', 'foxmail.com'];
         inputDom.focus();
 
         inputDom.oninput = function () {
@@ -73,11 +74,24 @@
 
         function getLi() { //生成提示框中的提示内容
             var input = getInput(); // 获取用户输入
+            var org;
+            if (input.indexOf("@") >= 0) {
+                var index = input.indexOf("@");
+                org = input.slice(index + 1);
+                input = input.slice(0, index);
+            }
             var li = [];
-            for (var i = 0; i < postfixList.length; i++) { // 遍历postfixList {
-                li.push(input + "@" + postfixList[i]);     //     把用户输入和每一个postfix进行结合成为每一个Li
-            }                                              // }
-            return li;                                     // 返回生成的提示内容
+            var liorg = [];
+            for (var i = 0; i < postfixList.length; i++) { // 遍历postfixList 把用户输入和每一个postfix进行结合成为每一个Li
+                li.push(input + "@" + postfixList[i]);
+                if (postfixList[i].indexOf(org) >= 0) {  //匹配到后缀时添加到另一个数组
+                    liorg.push(input + "@" + postfixList[i]);
+                }
+            }
+            if (liorg.length > 0) {  //有满足条件的后缀则返回数组
+                return liorg;
+            }
+            return li;
         }
 
         function addToEmailSugWapper() {
@@ -92,7 +106,7 @@
         }
 
         function setSugWapper() { //控制email-sug - wrapper的显示 / 隐藏状态
-            if (inputDom.value.trim()) {
+            if (getInput() && getInput().indexOf("@") != 0) { //第一位不能是@
                 sugDisplay();
             } else {
                 sugHidden();
@@ -105,6 +119,31 @@
 
         function sugDisplay() {  //显示提示框
             emailSugWrapper.style.display = "block";
+        }
+        //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
+        emailSugWrapper.onclick = function(e) { //事件委托
+            switch(e.target) {
+                case li[0]:
+                    inputDom.value = li[0].innerHTML;
+                    sugHidden();
+                    break
+                case li[2]:
+                    inputDom.value = li[2].innerHTML;
+                    sugHidden();
+                    break
+                case li[3]:
+                    inputDom.value = li[3].innerHTML;
+                    sugHidden();
+                    break
+                case li[4]:
+                    inputDom.value = li[4].innerHTML;
+                    sugHidden();
+                    break
+                case li[5]:
+                    inputDom.value = li[5].innerHTML;
+                    sugHidden();
+                    break
+            }
         }
     </script>
 </body>
