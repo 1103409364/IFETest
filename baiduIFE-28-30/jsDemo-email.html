@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>email</title>
+    <style>
+        .wrapper {
+            font-family: sans-serif;
+            font-size: 13px;
+        }
+
+        #email-input {
+            box-sizing: border-box;
+            width: 200px;
+            height: 2.5em;
+            border: rgb(131, 131, 131) 1px solid;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        #email-sug-wrapper {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 5px;
+            width: 200px;
+            border: rgb(131, 131, 131) 1px solid;
+            border-top: none;
+            padding: 0;
+            color: rgb(131, 131, 131);
+            display: none;
+        }
+
+        #email-sug-wrapper li {
+            list-style: none;
+            line-height: 1.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        li:nth-of-type(1) {
+            background-color: rgb(245, 169, 169);
+        }
+
+        li:hover {
+            background-color: rgb(126, 197, 116);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug">
+        </ul>
+    </div>
+
+    <script>
+        var inputDom = document.getElementById("email-input");
+        var emailSugWrapper = document.getElementById("email-sug-wrapper");
+
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        inputDom.focus();
+
+        inputDom.oninput = function () {
+            addToEmailSugWapper(); // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
+            setSugWapper();  // 控制email - sug - wrapper的显示 / 隐藏状态
+        }
+
+        function getInput() {
+            return inputDom.value.trim(); //拿到input输入框的输入内容trim后返回
+        }
+
+        function getLi() { //生成提示框中的提示内容
+            var input = getInput(); // 获取用户输入
+            var li = [];
+            for (var i = 0; i < postfixList.length; i++) { // 遍历postfixList {
+                li.push(input + "@" + postfixList[i]);     //     把用户输入和每一个postfix进行结合成为每一个Li
+            }                                              // }
+            return li;                                     // 返回生成的提示内容
+        }
+
+        function addToEmailSugWapper() {
+            emailSugWrapper.innerHTML = "";
+            var list = getLi();                            //获取生成提示框中的提示内容
+            for (var i = 0; i < list.length; i++) {        //将内容添加到email - sug - wrapper中
+                var li = document.createElement("li");
+                var text = document.createTextNode(list[i]);
+                li.appendChild(text);
+                emailSugWrapper.appendChild(li);
+            }
+        }
+
+        function setSugWapper() { //控制email-sug - wrapper的显示 / 隐藏状态
+            if (inputDom.value.trim()) {
+                sugDisplay();
+            } else {
+                sugHidden();
+            }
+        }
+
+        function sugHidden() {  //隐藏提示框
+            emailSugWrapper.style.display = "none";
+        }
+
+        function sugDisplay() {  //显示提示框
+            emailSugWrapper.style.display = "block";
+        }
+    </script>
+</body>
+
+</html>

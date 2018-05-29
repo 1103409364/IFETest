@@ -160,6 +160,9 @@
                 // 尾部发现一个空格切掉一个
                 str = str.slice(0, str.length - 2);
             }
+            if (str[0] == " " || str[0] == "　") {
+                str = "";
+            }
             result = str;
             return result;
         }
