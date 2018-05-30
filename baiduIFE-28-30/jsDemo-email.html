@@ -99,8 +99,9 @@
             var list = getLi();                            //获取生成提示框中的提示内容
             for (var i = 0; i < list.length; i++) {        //将内容添加到email - sug - wrapper中
                 var li = document.createElement("li");
-                var text = document.createTextNode(list[i]);
-                li.appendChild(text);
+                // var text = document.createTextNode(list[i]);
+                // li.appendChild(text);
+                li.innerHTML = HTMLEncode(list[i]); //转义 编码
                 emailSugWrapper.appendChild(li);
             }
         }
@@ -120,7 +121,7 @@
         function sugDisplay() {  //显示提示框
             emailSugWrapper.style.display = "block";
         }
-        //转义
+        //转义 编码
         function HTMLEncode(html) {
             var temp = document.createElement("div");
             (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
@@ -128,7 +129,7 @@
             temp = null;
             return output;
         }
-        //反转
+        //反转 解码
         function HTMLDecode(text) {
             var temp = document.createElement("div");
             temp.innerHTML = text;
@@ -137,8 +138,6 @@
             return output;
         }
         
-
-
         //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
         emailSugWrapper.onclick = function (e) { //事件委托
             switch (e.target) {
@@ -147,23 +146,23 @@
                     sugHidden();
                     break;
                 case li[1]:
-                    inputDom.value = li[1].innerHTML;
+                    inputDom.value = HTMLDecode(li[1].innerHTML);
                     sugHidden();
                     break;
                 case li[2]:
-                    inputDom.value = li[2].innerHTML;
+                    inputDom.value = HTMLDecode(li[2].innerHTML);
                     sugHidden();
                     break;
                 case li[3]:
-                    inputDom.value = li[3].innerHTML;
+                    inputDom.value = HTMLDecode(li[3].innerHTML);
                     sugHidden();
                     break;
                 case li[4]:
-                    inputDom.value = li[4].innerHTML;
+                    inputDom.value = HTMLDecode(li[4].innerHTML);
                     sugHidden();
                     break;
                 case li[5]:
-                    inputDom.value = li[5].innerHTML;
+                    inputDom.value = HTMLDecode(li[5].innerHTML);
                     sugHidden();
                     break;
             }
