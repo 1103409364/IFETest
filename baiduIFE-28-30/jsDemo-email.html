@@ -59,8 +59,7 @@
         var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', 'foxmail.com'];
         inputDom.focus();
 
-        inputDom.oninput = function (e) { //oninput无法获得键值
-
+        inputDom.oninput = function (e) { //oninput无法获得键值keyCode
             addToEmailSugWapper(); // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
             setSugWapper();  // 控制email - sug - wrapper的显示 / 隐藏状态
         }
@@ -77,7 +76,7 @@
             li[0].style.backgroundColor = "#fdaeae";
         }
 
-        inputDom.onkeydown = function (e) {
+        inputDom.onkeydown = function (e) {  //监听特殊3个键的键盘事件
             var liSelected = findLi();  //保存选中的li的index
             if (e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 13) {
                 if (emailSugWrapper.style.display == "block") {  //判断提示框是否存在
@@ -90,7 +89,7 @@
                         }
                     }
                     if (e.keyCode == 40) { //按的是下键
-                        if (liSelected != 4) {
+                        if (liSelected != (li.length - 1)) {  //找到的Li不是最后一个
                             li[liSelected + 1].style.backgroundColor = "#fdaeae";
                         } else {
                             li[0].style.backgroundColor = "#fdaeae";
