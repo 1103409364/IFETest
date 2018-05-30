@@ -60,7 +60,7 @@
         inputDom.focus();
 
         inputDom.oninput = function (e) { //oninput无法获得键值
-    
+
             addToEmailSugWapper(); // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
             setSugWapper();  // 控制email - sug - wrapper的显示 / 隐藏状态
         }
@@ -82,7 +82,6 @@
             if (e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 13) {
                 if (emailSugWrapper.style.display == "block") {  //判断提示框是否存在
                     li[liSelected].style.backgroundColor = null;
-                    // inputDom.blur();
                     if (e.keyCode == 38) { //按的是上键
                         if (liSelected != 0) {
                             li[liSelected - 1].style.backgroundColor = "#fdaeae";
