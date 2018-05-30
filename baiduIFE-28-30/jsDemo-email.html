@@ -120,29 +120,52 @@
         function sugDisplay() {  //显示提示框
             emailSugWrapper.style.display = "block";
         }
+        //转义
+        function HTMLEncode(html) {
+            var temp = document.createElement("div");
+            (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
+        //反转
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        
+
+
         //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
-        emailSugWrapper.onclick = function(e) { //事件委托
-            switch(e.target) {
+        emailSugWrapper.onclick = function (e) { //事件委托
+            switch (e.target) {
                 case li[0]:
-                    inputDom.value = li[0].innerHTML;
+                    inputDom.value = HTMLDecode(li[0].innerHTML);
                     sugHidden();
-                    break
+                    break;
+                case li[1]:
+                    inputDom.value = li[1].innerHTML;
+                    sugHidden();
+                    break;
                 case li[2]:
                     inputDom.value = li[2].innerHTML;
                     sugHidden();
-                    break
+                    break;
                 case li[3]:
                     inputDom.value = li[3].innerHTML;
                     sugHidden();
-                    break
+                    break;
                 case li[4]:
                     inputDom.value = li[4].innerHTML;
                     sugHidden();
-                    break
+                    break;
                 case li[5]:
                     inputDom.value = li[5].innerHTML;
                     sugHidden();
-                    break
+                    break;
             }
         }
     </script>
