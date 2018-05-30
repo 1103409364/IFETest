@@ -14,7 +14,7 @@
             box-sizing: border-box;
             width: 200px;
             height: 2.5em;
-            border: rgb(131, 131, 131) 1px solid;
+            border: #838383 1px solid;
             padding-left: 1rem;
             padding-right: 1rem;
         }
@@ -24,10 +24,10 @@
             margin: 0;
             padding: 5px;
             width: 200px;
-            border: rgb(131, 131, 131) 1px solid;
+            border: #838383 1px solid;
             border-top: none;
             padding: 0;
-            color: rgb(131, 131, 131);
+            color: #838383;
             display: none;
         }
 
@@ -38,12 +38,8 @@
             padding-right: 1rem;
         }
 
-        li:nth-of-type(1) {
-            background-color: rgb(245, 169, 169);
-        }
-
         li:hover {
-            background-color: rgb(126, 197, 116);
+            background-color: #7ec574;
         }
     </style>
 </head>
@@ -63,9 +59,50 @@
         var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', 'foxmail.com'];
         inputDom.focus();
 
-        inputDom.oninput = function () {
+        inputDom.oninput = function (e) { //oninput无法获得键值
+    
             addToEmailSugWapper(); // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
             setSugWapper();  // 控制email - sug - wrapper的显示 / 隐藏状态
+        }
+
+        function findLi() { //找到选中的li
+            for (var i = 0; i < li.length; i++) {
+                if (li[i].style.backgroundColor != "") {
+                    return i;
+                }
+            }
+        }
+        function reSet() { //重置选中状态
+            li[findLi()].style.backgroundColor = "";
+            li[0].style.backgroundColor = "#fdaeae";
+        }
+
+        inputDom.onkeydown = function (e) {
+            var liSelected = findLi();  //保存选中的li的index
+            if (e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 13) {
+                if (emailSugWrapper.style.display == "block") {  //判断提示框是否存在
+                    li[liSelected].style.backgroundColor = null;
+                    // inputDom.blur();
+                    if (e.keyCode == 38) { //按的是上键
+                        if (liSelected != 0) {
+                            li[liSelected - 1].style.backgroundColor = "#fdaeae";
+                        } else {
+                            li[li.length - 1].style.backgroundColor = "#fdaeae";
+                        }
+                    }
+                    if (e.keyCode == 40) { //按的是下键
+                        if (liSelected != 4) {
+                            li[liSelected + 1].style.backgroundColor = "#fdaeae";
+                        } else {
+                            li[0].style.backgroundColor = "#fdaeae";
+                        }
+                    }
+                    if (e.keyCode == 13) { //按的是enter
+                        inputDom.value = HTMLDecode(li[liSelected].innerHTML);
+                        sugHidden();
+                    }
+                }
+            }
         }
 
         function getInput() {
@@ -109,8 +146,10 @@
         function setSugWapper() { //控制email-sug - wrapper的显示 / 隐藏状态
             if (getInput() && getInput().indexOf("@") != 0) { //第一位不能是@
                 sugDisplay();
+                return true;
             } else {
                 sugHidden();
+                return false;
             }
         }
 
@@ -120,6 +159,7 @@
 
         function sugDisplay() {  //显示提示框
             emailSugWrapper.style.display = "block";
+            li[0].style.backgroundColor = "#fdaeae";  //默认第一个提示为被选择状态
         }
         //转义 编码
         function HTMLEncode(html) {
@@ -137,7 +177,7 @@
             temp = null;
             return output;
         }
-        
+
         //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
         emailSugWrapper.onclick = function (e) { //事件委托
             switch (e.target) {
