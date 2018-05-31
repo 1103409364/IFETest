@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>email</title>
+    <style>
+        .wrapper {
+            font-family: 微软雅黑;
+            font-size: 13px;
+        }
+
+        #email-input {
+            box-sizing: border-box;
+            width: 200px;
+            height: 2.5em;
+            border: #838383 1px solid;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        #email-sug-wrapper {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 5px;
+            width: 200px;
+            border: #838383 1px solid;
+            border-top: none;
+            padding: 0;
+            color: #838383;
+            overflow: hidden;
+            display: none;
+        }
+
+        #email-sug-wrapper li {
+            list-style: none;
+            line-height: 1.5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        li:hover {
+            background-color: #7ec574;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <label for="email-input">邮箱</label><br>
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug">
+        </ul>
+    </div>
+
+    <script>
+        var label = document.getElementsByTagName("label");
+        var inputDom = document.getElementById("email-input");
+        var emailSugWrapper = document.getElementById("email-sug-wrapper");
+        var li = document.getElementsByTagName("li");
+
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', 'foxmail.com'];
+        inputDom.focus();
+        // 增加一个变量，用于存储当前选中的提示Li的序号
+        var nowSelectTipIndex = 0;
+        inputDom.oninput = function (e) { //oninput无法获得键值
+            reSet();  //当输入改变时重置选中项为第0个
+            addToEmailSugWapper(); // 获取用户输入，生成提示框中的提示内容，将提示内容添加到email-sug-wrapper中
+            setSugWapper();  // 控制email - sug - wrapper的显示 / 隐藏状态
+        }
+
+        inputDom.onkeydown = function (e) { //通过改变nowSelectTipIndex的值来改变当前选中的li
+            if (e.keyCode == 38 || e.keyCode == 40 || e.keyCode == 13) {
+                if (emailSugWrapper.style.display == "block") {  //判断提示框是否存在
+                    li[nowSelectTipIndex].style.backgroundColor = null;
+                    if (e.keyCode == 38) { //按的是上键
+                        if (nowSelectTipIndex != 0) {
+                            nowSelectTipIndex--;
+                        } else {
+                            nowSelectTipIndex = getLi().length - 1;
+                        }
+                        inputDom.focus();
+                    }
+                    if (e.keyCode == 40) { //按的是下键
+                        if (nowSelectTipIndex != (getLi().length - 1)) {
+                            nowSelectTipIndex++;
+                        } else {
+                            nowSelectTipIndex = 0;
+                        }
+                    }
+                    if (getLi().length > 0) {
+                        li[nowSelectTipIndex].style.backgroundColor = "#fdaeae";
+                    }
+
+                    if (e.keyCode == 13) { //按的是enter
+                        inputDom.value = HTMLDecode(li[nowSelectTipIndex].innerHTML);
+                        sugHidden();
+                    }
+                }
+            }
+            // console.log(e.keyCode);
+            if (e.keyCode == 27) {
+                inputDom.select();
+            }
+        }
+        function reSet(){  //重置nowSelectTipIndex
+            nowSelectTipIndex = 0;
+        }
+        function getInput() {
+            var input = inputDom.value.trim();
+            if (input.length < 18) {
+                label[0].innerHTML="邮箱";
+                return input; //拿到input输入框的输入内容trim后返回
+            } else {
+                label[0].innerHTML="您的输入超过最大长度,请重新输入";
+                return input.slice(0,18);
+            }
+            
+        }
+
+        function getLi() { //生成提示框中的提示内容
+            var input = getInput(); // 获取用户输入
+            var org;
+            if (input.indexOf("@") >= 0) {
+                var index = input.indexOf("@");
+                org = input.slice(index + 1);
+                input = input.slice(0, index);
+            }
+            var list = [];
+            var liorg = [];
+            for (var i = 0; i < postfixList.length; i++) { // 遍历postfixList 把用户输入和每一个postfix进行结合成为每一个Li
+                var li = document.createElement("li");
+                li.innerHTML = HTMLEncode(input + "@" + postfixList[i]); //转义 编码
+                list.push(li);
+                if (postfixList[i].indexOf(org) >= 0) {  //匹配到后缀时添加到另一个数组
+                    liorg.push(li);
+                }
+            }
+            if (liorg.length > 0) {  //有满足条件的后缀则返回数组
+                return liorg;
+            }
+
+            return list;
+        }
+
+        function addToEmailSugWapper() {
+            emailSugWrapper.innerHTML = "";
+            var list = getLi();                            //获取生成提示框中的提示内容
+            for (var i = 0; i < list.length; i++) {        //将内容添加到email - sug - wrapper中
+                emailSugWrapper.appendChild(list[i]);
+            }
+            if (list.length) {  //判断提示内容是否为空
+             // li[nowSelectTipIndex].setAttribute("style", "background-color:#fdaeae"); //通过设置属性，将第nowSelectTipIndex个Li的样式设置为被选样式
+                li[nowSelectTipIndex].style.backgroundColor = "#fdaeae"; //第二种方式，将第nowSelectTipIndex个Li的样式设置为被选样式
+            }
+        }
+
+        function setSugWapper() { //控制email-sug - wrapper的显示 / 隐藏状态
+            if (getInput() && getInput().indexOf("@") != 0) { //第一位不能是@
+                sugDisplay();
+                return true;
+            } else {
+                sugHidden();
+                return false;
+            }
+        }
+
+        function sugHidden() {  //隐藏提示框
+            emailSugWrapper.style.display = "none";
+        }
+
+        function sugDisplay() {  //显示提示框
+            emailSugWrapper.style.display = "block";
+        }
+        //转义 编码
+        function HTMLEncode(html) {
+            var temp = document.createElement("div");
+            (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
+        //反转 解码
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+
+        //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
+        emailSugWrapper.onclick = function (e) { //事件委托
+            switch (e.target) {
+                case li[0]:
+                    inputDom.value = HTMLDecode(li[0].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+                case li[1]:
+                    inputDom.value = HTMLDecode(li[1].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+                case li[2]:
+                    inputDom.value = HTMLDecode(li[2].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+                case li[3]:
+                    inputDom.value = HTMLDecode(li[3].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+                case li[4]:
+                    inputDom.value = HTMLDecode(li[4].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+                case li[5]:
+                    inputDom.value = HTMLDecode(li[5].innerHTML);
+                    inputDom.focus();
+                    sugHidden();
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
