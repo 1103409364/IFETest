@@ -48,7 +48,8 @@
 
 <body>
     <div class="wrapper">
-        <label for="email-input">邮箱</label><br>
+        <label for="email-input">邮箱</label>
+        <br>
         <input id="email-input" type="text">
         <ul id="email-sug-wrapper" class="email-sug">
         </ul>
@@ -104,19 +105,19 @@
                 inputDom.select();
             }
         }
-        function reSet(){  //重置nowSelectTipIndex
+        function reSet() {  //重置nowSelectTipIndex
             nowSelectTipIndex = 0;
         }
         function getInput() {
             var input = inputDom.value.trim();
             if (input.length < 18) {
-                label[0].innerHTML="邮箱";
+                label[0].innerHTML = "邮箱";
                 return input; //拿到input输入框的输入内容trim后返回
             } else {
-                label[0].innerHTML="您的输入超过最大长度,请重新输入";
-                return input.slice(0,18);
+                label[0].innerHTML = "您的输入超过最大长度,请重新输入";
+                return input.slice(0, 18);
             }
-            
+
         }
 
         function getLi() { //生成提示框中的提示内容
@@ -151,7 +152,7 @@
                 emailSugWrapper.appendChild(list[i]);
             }
             if (list.length) {  //判断提示内容是否为空
-             // li[nowSelectTipIndex].setAttribute("style", "background-color:#fdaeae"); //通过设置属性，将第nowSelectTipIndex个Li的样式设置为被选样式
+                // li[nowSelectTipIndex].setAttribute("style", "background-color:#fdaeae"); //通过设置属性，将第nowSelectTipIndex个Li的样式设置为被选样式
                 li[nowSelectTipIndex].style.backgroundColor = "#fdaeae"; //第二种方式，将第nowSelectTipIndex个Li的样式设置为被选样式
             }
         }
@@ -192,38 +193,9 @@
 
         //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
         emailSugWrapper.onclick = function (e) { //事件委托
-            switch (e.target) {
-                case li[0]:
-                    inputDom.value = HTMLDecode(li[0].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-                case li[1]:
-                    inputDom.value = HTMLDecode(li[1].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-                case li[2]:
-                    inputDom.value = HTMLDecode(li[2].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-                case li[3]:
-                    inputDom.value = HTMLDecode(li[3].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-                case li[4]:
-                    inputDom.value = HTMLDecode(li[4].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-                case li[5]:
-                    inputDom.value = HTMLDecode(li[5].innerHTML);
-                    inputDom.focus();
-                    sugHidden();
-                    break;
-            }
+            inputDom.value = HTMLDecode(e.target.innerHTML);
+            inputDom.focus();
+            sugHidden();
         }
     </script>
 </body>
