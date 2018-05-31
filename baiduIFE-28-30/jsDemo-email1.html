@@ -117,7 +117,6 @@
                 label[0].innerHTML = "您的输入超过最大长度,请重新输入";
                 return input.slice(0, 18);
             }
-
         }
 
         function getLi() { //生成提示框中的提示内容
@@ -129,7 +128,7 @@
                 input = input.slice(0, index);
             }
             var list = [];
-            var liorg = [];
+            var liorg = []; //数组用于存放匹配到后缀的li
             for (var i = 0; i < postfixList.length; i++) { // 遍历postfixList 把用户输入和每一个postfix进行结合成为每一个Li
                 var li = document.createElement("li");
                 li.innerHTML = HTMLEncode(input + "@" + postfixList[i]); //转义 编码
@@ -138,20 +137,20 @@
                     liorg.push(li);
                 }
             }
-            if (liorg.length > 0) {  //有满足条件的后缀则返回数组
+            if (liorg.length > 0) {  //判断是否存在后缀匹配的li
                 return liorg;
             }
 
             return list;
         }
 
-        function addToEmailSugWapper() {
+        function addToEmailSugWapper() { //将提示内容添加到email-sug-wrapper中
             emailSugWrapper.innerHTML = "";
             var list = getLi();                            //获取生成提示框中的提示内容
             for (var i = 0; i < list.length; i++) {        //将内容添加到email - sug - wrapper中
                 emailSugWrapper.appendChild(list[i]);
             }
-            if (list.length) {  //判断提示内容是否为空
+            if (list.length) {  //判断提示框内容是否为空
                 // li[nowSelectTipIndex].setAttribute("style", "background-color:#fdaeae"); //通过设置属性，将第nowSelectTipIndex个Li的样式设置为被选样式
                 li[nowSelectTipIndex].style.backgroundColor = "#fdaeae"; //第二种方式，将第nowSelectTipIndex个Li的样式设置为被选样式
             }
@@ -160,10 +159,8 @@
         function setSugWapper() { //控制email-sug - wrapper的显示 / 隐藏状态
             if (getInput() && getInput().indexOf("@") != 0) { //第一位不能是@
                 sugDisplay();
-                return true;
             } else {
                 sugHidden();
-                return false;
             }
         }
 
@@ -190,7 +187,6 @@
             temp = null;
             return output;
         }
-
         //当监听到用户点击某一个提示的Li后，把Li对应的提示内容，放在输入框中，同时隐藏提示框
         emailSugWrapper.onclick = function (e) { //事件委托
             inputDom.value = HTMLDecode(e.target.innerHTML);
