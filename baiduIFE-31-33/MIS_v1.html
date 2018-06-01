@@ -14,24 +14,32 @@
             <option value="华南">华南</option>
             <option value="华北">华北</option>
         </select>
+        <select name="sales-product" id="product">
+            <option value="手机">手机</option>
+            <option value="笔记本">笔记本</option>
+            <option value="智能音箱">智能音箱</option>
+        </select>
     </form>
+
     <div id="table-wrapper"></div>
 
     <script type="text/javascript" src="JavaScript/ife31data.js"></script>
     <script>
         var regionSelect = document.getElementById("region");
+        var productSelect = document.getElementById("product");
+        var form = document.getElementsByTagName("form")[0];
         var tableWrapper = document.getElementById("table-wrapper");
         var tableHead = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
 
         renderTable(getDataBySelect()); //默认值渲染一次
-        regionSelect.onchange = function () {
+        form.onchange = function () {
             renderTable(getDataBySelect());
         }
 
-        function getDataBySelect() {
+        function getDataBySelect() {  //获取数据
             var myData = [];
             for (let i = 0; i < sourceData.length; i++) {
-                if (regionSelect.value == sourceData[i].region) {
+                if (regionSelect.value == sourceData[i].region && product.value == sourceData[i].product) { //同时满足两个表单选项
                     myData.push(sourceData[i]);
                 }
             }
