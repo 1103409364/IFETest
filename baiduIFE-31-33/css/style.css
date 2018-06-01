@@ -29,5 +29,6 @@ ul li {
     width: 100px;
     text-align: right;
 }
-ul label {
+ul li:nth-last-of-type(1) {
+    color: #848486;
 }
