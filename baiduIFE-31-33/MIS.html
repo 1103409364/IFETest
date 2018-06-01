@@ -8,22 +8,37 @@
 
 <body>
     <form>
-        <select name="sales-region" id="region"></select>
+        <select name="sales-region" id="region">
+            <option value="华东">华东</option>
+            <option value="华南">华南</option>
+            <option value="华北">华北</option>
+        </select>
     </form>
     <div id="table-wrapper"></div>
+    <script type="text/javascript" src="JavaScript/ife31data.js"></script>
+    <script>
+        var regionSelect = document.getElementById("region");
+
+
+        regionSelect.onchange = function () {
+            renderTable(getDataBySelect());
+        }
+
+        function getDataBySelect() {
+            var myData = [];
+            for (let i = 0; i < sourceData.length; i++) {
+                if (regionSelect.value == sourceData[i].region) {
+                    console.log(sourceData[i]);
+                    myData.push(sourceData[i]);
+                }
+            }
+            return myData;
+        }
+        function renderTable(data) {
+
+        }
+    </script>
 </body>
-<script>
-    var regionSelect = document.getElementById("rsgion");
 
-    regionSelect.onchange = function () {
-        renderTable(getDataBySelect());
-    }
-    function getDataBySelect() {
 
-    }
-    function renderTable(data) {
-
-    }
-</script>
-    
 </html>
