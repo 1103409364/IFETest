@@ -9,29 +9,38 @@
 
 <body>
     <form>
-        <select name="sales-region" id="region">
-            <option value="华东">华东</option>
-            <option value="华南">华南</option>
-            <option value="华北">华北</option>
-        </select>
-        <select name="sales-product" id="product">
-            <option value="手机">手机</option>
-            <option value="笔记本">笔记本</option>
-            <option value="智能音箱">智能音箱</option>
-        </select>
-        <label for="华东">华东</label>
-        <input type="checkbox" id="华东" value="华东">
-        <label for="华东">华南</label>
-        <input type="checkbox" id="华南" value="华南">
-        <label for="华东">华北</label>
-        <input type="checkbox" id="华北" value="华北">
+        <ul id="region">
+            <h2>地区</h2>
+            <li>
+                <label for="华东">华东</label>
+                <input type="checkbox" id="华东" value="华东">
+            </li>
+            <li>
+                <label for="华东">华南</label>
+                <input type="checkbox" id="华南" value="华南">
+            </li>
+            <li>
+                <label for="华东">华北</label>
+                <input type="checkbox" id="华北" value="华北">
+            </li>
+        </ul>
 
-        <label for="手机">手机</label>
-        <input type="checkbox" id="手机" value="手机">
-        <label for="笔记本">笔记本</label>
-        <input type="checkbox" id="笔记本" value="笔记本">
-        <label for="智能音箱">智能音箱</label>
-        <input type="checkbox" id="智能音箱" value="智能音箱">
+        <ul id="product">
+            <h2>商品</h2>
+            <li>
+                <label for="手机">手机</label>
+                <input type="checkbox" id="手机" value="手机">
+            </li>
+            <li>
+                <label for="笔记本">笔记本</label>
+                <input type="checkbox" id="笔记本" value="笔记本">
+            </li>
+            <li>
+                <label for="智能音箱">智能音箱</label>
+                <input type="checkbox" id="智能音箱" value="智能音箱">
+            </li>
+        </ul>
+
     </form>
     <div id="table-wrapper"></div>
 

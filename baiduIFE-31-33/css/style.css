@@ -10,5 +10,24 @@ table tr th, table tr td {
 }
 
 table {
-    margin-top: 50px;
+    margin-top: 10px;
+}
+
+form ul {
+    display: inline-block;
+    padding: 0;
+}
+
+ul h2{
+    font-size: 16px;
+    text-align: right;
+    margin: 0 0 5px 0;
+    padding-right: 25px;
+}
+ul li {
+    list-style: none;
+    width: 100px;
+    text-align: right;
+}
+ul label {
 }
