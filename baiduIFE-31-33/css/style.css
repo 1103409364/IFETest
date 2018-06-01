@@ -1,0 +1,14 @@
+table, table tr th, table tr td {
+    border: 1px #000000 solid;
+    color: #0812a8;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tr th, table tr td {
+    width: 80px;
+}
+
+table {
+    margin-top: 10px;
+}
