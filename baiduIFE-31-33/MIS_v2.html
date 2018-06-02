@@ -4,109 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <title>MIS</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 
 <body>
-    <form>
-        <ul id="region">
-            <h2>地区</h2>
-            <li>
-                <label for="华东">华东</label>
-                <input type="checkbox" id="华东" value="华东">
-            </li>
-            <li>
-                <label for="华东">华南</label>
-                <input type="checkbox" id="华南" value="华南">
-            </li>
-            <li>
-                <label for="华东">华北</label>
-                <input type="checkbox" id="华北" value="华北">
-            </li>
-            <li>
-                <label for="全选">全选</label>
-                <input type="checkbox" id="地区全选" value="地区全选">
-            </li>
-        </ul>
+    <div id="region-wrapper"></div>
+    <div id="product-wrapper"></div>
 
-        <ul id="product">
-            <h2>商品</h2>
-            <li>
-                <label for="手机">手机</label>
-                <input type="checkbox" id="手机" value="手机">
-            </li>
-            <li>
-                <label for="笔记本">笔记本</label>
-                <input type="checkbox" id="笔记本" value="笔记本">
-            </li>
-            <li>
-                <label for="智能音箱">智能音箱</label>
-                <input type="checkbox" id="智能音箱" value="智能音箱">
-            </li>
-            <li>
-                <label for="全选">全选</label>
-                <input type="checkbox" id="商品全选" value="商品全选">
-            </li>
-        </ul>
-
-    </form>
     <div id="table-wrapper"></div>
 
     <script type="text/javascript" src="JavaScript/ife31data.js"></script>
+    <script type="text/javascript" src="JavaScript/HtmlUtil.js"></script>
     <script>
-        var regionSelect = document.getElementById("region");
-        var productSelect = document.getElementById("product");
-        var form = document.getElementsByTagName("form")[0];
-        var tableWrapper = document.getElementById("table-wrapper");
-        var tableHead = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var regionWrapper = document.getElementById("region-wrapper");
+        var productWrapper = document.getElementById("product-wrapper");
 
-        var huadong = document.getElementById("华东");
-        renderTable(getDataBySelect()); //默认值渲染一次
-        form.onchange = function () {
-            renderTable(getDataBySelect());
-        }
+        function creatCheckBox(checkBoxWrapper, objData) {
+            //生成全选
+            var id = checkBoxWrapper.id + "all";
+            var checkAllLabel = document.createElement("label");
+            checkAllLabel.setAttribute("for", id);
+            checkAllLabel.innerHTML = "全选";
+            checkBoxWrapper.appendChild(checkAllLabel);
+            var checkAll = document.createElement("input");
+            checkAll.setAttribute("type", "checkbox");
+            checkAll.setAttribute("checkbox-type", "checkAll");
+            checkAll.setAttribute("checkbox-type", "all");
+            checkAll.setAttribute("id", id);
+            checkBoxWrapper.appendChild(checkAll);
+            //生成子选项
 
-        function getDataBySelect() {  //获取数据
-            var myData = [];
-            for (let i = 0; i < sourceData.length; i++) {
-                if (regionSelect.value == sourceData[i].region && product.value == sourceData[i].product) { //同时满足两个表单选项
-                    myData.push(sourceData[i]);
-                }
+            var checks = []; //子选项容器
+
+            for (let i = 0; i < objData.length; i++) {
+                var dataId = objData[i].text;
+                var checkLabel = document.createElement("label");
+                checkLabel.setAttribute("for", dataId);
+                checkLabel.innerHTML = dataId;
+                checkBoxWrapper.appendChild(checkLabel);
+                var childCkbox = document.createElement("input");
+                childCkbox.setAttribute("type", "checkbox");
+                childCkbox.setAttribute("value", objData[i].value);
+                childCkbox.setAttribute("checkbox-type", "child");
+                childCkbox.setAttribute("id", objData[i].text);
+                checkBoxWrapper.appendChild(childCkbox);
+                checks.push(childCkbox);
             }
 
-            return myData; //返回一个对象数组
-        }
-        function renderTable(data) { //渲染新的表格
-            tableWrapper.innerHTML = "";  //清除上次的数据
-            var table = document.createElement("table");
-            tableWrapper.appendChild(table);
-            var tr = document.createElement("tr");
-            table.appendChild(tr);
-            for (let i = 0; i < tableHead.length; i++) {  //添加表头
-                var th = document.createElement("th");
-                th.innerHTML = tableHead[i];
-                tr.appendChild(th);
-            }
+            checkBoxWrapper.onclick = function (e) {
+                var numChecked = 0; //选中计数
+                var target = e.target;
 
-
-            for (let i = 0; i < data.length; i++) {
-                var tr = document.createElement("tr");
-                table.appendChild(tr);
-                for (x in data[i]) {  //遍历对象的属性x
-                    if (x == "product" || x == "region") {
-                        var td = document.createElement("td");
-                        td.innerHTML = data[i][x] || data[i][x];
-                        tr.appendChild(td);
-                    } else {
-                        for (let j = 0; j < data[i][x].length; j++) { //data[i]对象的的第三个属性是数组，对齐进行遍历填充
-                            var td = document.createElement("td");
-                            td.innerHTML = data[i][x][j];
-                            tr.appendChild(td);
+                if (target.type == "checkbox") {
+                    var attribute = target.getAttribute("checkbox-type"); //读取自定义属性
+                    if (attribute == "all") {
+                        for (let j = 0; j < checks.length; j++) {
+                            checks[j].checked = true; //true用boolean值而不是字符串
+                        }
+                    }
+                    for (let j = 0; j < checks.length; j++) {
+                        if (checks[j].checked == true) {
+                            numChecked++;
+                            console.log(checks[j].checked);
+                        }
+                    }
+                    console.log(numChecked);
+                    if (attribute == "child") {
+                        if (numChecked == 3) {
+                            checkAll.checked = true;
+                        }
+                        if (numChecked < 3) {
+                            checkAll.checked = false;
+                        }
+                        if (numChecked == 1 && target.checked == true) {
+                            target.checked == true; //设置默认选中一项，剩余一项阻止
                         }
                     }
                 }
             }
         }
+
+        creatCheckBox(regionWrapper, [{
+            value: 1,
+            text: "华东"
+        }, {
+            value: 2,
+            text: "华南"
+        }, {
+            value: 3,
+            text: "华北"
+        }]);
+
+        creatCheckBox(productWrapper, [{
+            value: "phone",
+            text: "手机"
+        }, {
+            value: "notebook",
+            text: "笔记本"
+        }, {
+            value: "Google Home",
+            text: "智能音箱"
+        }]);
     </script>
 </body>
 
