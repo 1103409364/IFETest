@@ -4,21 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <title>MIS</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div id="region-wrapper"></div>
-    <div id="product-wrapper"></div>
+    <form id="checkbox-wrapper">
+        <div id="region-wrapper"></div>
+        <div id="product-wrapper"></div>
+    </form>
 
     <div id="table-wrapper"></div>
 
     <script type="text/javascript" src="JavaScript/ife31data.js"></script>
     <script type="text/javascript" src="JavaScript/HtmlUtil.js"></script>
     <script type="text/javascript" src="JavaScript/checkbox.js"></script>
-    
+
     <script>
-        
+        var tableHead = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        var tableWrapper = document.getElementById("table-wrapper");
+
+        var checkboxWrapper = document.getElementById("checkbox-wrapper");
+        var eCN = document.getElementById(regionCheckboxObj[0].value);
+        var sCN = document.getElementById(regionCheckboxObj[1].value);
+        var nCN = document.getElementById(regionCheckboxObj[2].value);
+
+        var phone = document.getElementById(productCheckboxObj[0].value);
+        var notebook = document.getElementById(productCheckboxObj[1].value);
+        var googleHome = document.getElementById(productCheckboxObj[2].value);
+
+        var regionArr = [eCN, sCN, nCN];
+        var productArr = [phone, notebook, googleHome];
+
+
+        function getCheckedItem(data) { //获取复选框被选中的个数
+            var checkedArr = [];
+            for (let j = 0; j < data.length; j++) {
+                if (data[j].checked == true) {
+                    checkedArr.push(data[j]);
+                }
+            }
+            return checkedArr;
+        }
+
+        function getData(sourceData) {
+            var newData = [];
+            var regoinChecked = getCheckedItem(regionArr);
+            var productChecked = getCheckedItem(productArr);
+            for (let i = 0; i < sourceData.length; i++) {
+                for (let j = 0; j < regoinChecked.length; j++) {
+                    for (let k = 0; k < productChecked.length; k++) {
+                        if (sourceData[i].region == regoinChecked[j].value && sourceData[i].product == productChecked[k].value) {
+                            newData.push(sourceData[i]);
+                        }
+                    }
+                }
+            }
+            console.log(newData);
+            return newData;
+        }
+
+        function renderTable(data) {
+            tableWrapper.innerHTML = "";  //清除上次的数据
+            var table = document.createElement("table");
+            tableWrapper.appendChild(table);
+            var tr = document.createElement("tr");
+            table.appendChild(tr);
+            for (let i = 0; i < tableHead.length; i++) {  //添加表头
+                var th = document.createElement("th");
+                th.innerHTML = tableHead[i];
+                tr.appendChild(th);
+            }
+
+            var regoinCheckedNum = getCheckedItem(regionArr).length;
+            var productCheckedNum = getCheckedItem(productArr).length;
+            if (regoinCheckedNum == 1 && productCheckedNum > 1) {
+
+            }
+            if (regoinCheckedNum > 1 && productCheckedNum == 1) {
+
+            }
+            if (regoinCheckedNum > 1 && productCheckedNum > 1) {
+
+            }
+            if (regoinCheckedNum == 1 && productCheckedNum == 1) {
+                for (let i = 0; i < data.length; i++) {
+                    var tr = document.createElement("tr");
+                    table.appendChild(tr);
+                    for (x in data[i]) {  //遍历对象的属性x
+                        if (x == "product" || x == "region") {
+                            var td = document.createElement("td");
+                            td.innerHTML = data[i][x] || data[i][x];
+                            tr.appendChild(td);
+                        } else {
+                            for (let j = 0; j < data[i][x].length; j++) { //data[i]对象的的第三个属性是数组，对齐进行遍历填充
+                                var td = document.createElement("td");
+                                td.innerHTML = data[i][x][j];
+                                tr.appendChild(td);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        renderTable(getData(sourceData));
+        getData(sourceData);
+        checkboxWrapper.onclick = function (e) {
+            var target = e.target;
+            getData(sourceData);
+        }
     </script>
 </body>
+
 </html>
