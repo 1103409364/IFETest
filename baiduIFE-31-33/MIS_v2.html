@@ -51,8 +51,9 @@
                 checks.push(childCkbox);
             }
 
+            checks[0].checked = true; //默认选中第一项
             checkBoxWrapper.onclick = function (e) {
-                var numChecked = 0; //选中计数
+                var numChecked = 0; //选中计数,默认选中一项
                 var target = e.target;
 
                 if (target.type == "checkbox") {
@@ -65,7 +66,6 @@
                     for (let j = 0; j < checks.length; j++) {
                         if (checks[j].checked == true) {
                             numChecked++;
-                            console.log(checks[j].checked);
                         }
                     }
                     console.log(numChecked);
@@ -76,8 +76,8 @@
                         if (numChecked < 3) {
                             checkAll.checked = false;
                         }
-                        if (numChecked == 1 && target.checked == true) {
-                            target.checked == true; //设置默认选中一项，剩余一项阻止
+                        if (numChecked == 0) {
+                            target.checked = true; //设置默认选中一项，剩余一项阻止，此时计数0
                         }
                     }
                 }
@@ -107,6 +107,4 @@
         }]);
     </script>
 </body>
-
-
 </html>
