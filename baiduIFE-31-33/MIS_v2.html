@@ -129,7 +129,7 @@
                     // for ()
                     for (x in data[i]) {  //遍历对象的属性x
                         //该合并的单元格行数等于商品数
-                        //由于交换了数据，应该在语义为商品的区域合并单元格
+                        //由于交换了数据，应该在商品的区域合并单元格
                         if (x == "product" && i == 0) {
                             var tdProduct = document.createElement("td");
                             tdProduct.setAttribute("rowspan", productCheckedNum)
@@ -153,7 +153,7 @@
                             }
                         }
                     }
-                    //交换地区和商品的数据
+                    //交换地区单元格和商品单元格的数据
                     tdProduct.innerHTML = data2;
                     tdRegion.innerHTML = data1;
                 }
