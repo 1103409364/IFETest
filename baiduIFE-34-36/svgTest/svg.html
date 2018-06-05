@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>svg</title>
+</head>
+
+<body>
+    <p>This is an HTML paragraph</p>
+    <!-- <iframe src="test.svg" frameborder="0"></iframe>
+    <object data="test.svg" type="image/svg+xml"></object>
+    <embed src="test.svg" type="image/svg+xml">
+    <a href="test.svg">view</a> -->
+
+    <svg width="2000" height="1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect x="100" y="700" width="300" height="100" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)" />
+        <circle cx="600" cy="600" r="100" stroke="red" stroke-width="3" fill="green" />
+        <ellipse cx="200" cy="500" rx="100" ry="50" stroke="blue" fill="yellow" />
+        <line x1="110" y1="110" x2="500" y2="500" style="stroke:rgb(255,0,0);stroke-width:2" />
+        <polygon points="800,400 900,500 1000,550" style="fill:blueviolet;stroke: aqua;stroke-width: 1" />
+        <polyline points="11,22 33,414 55,66 77,88" style="fill: none;stroke: cornflowerblue" />
+        <path d="M100 20 L850 500 M100 20 H900 M100 20 V600" style="stroke: blue" />
+        <path d="M200 300 A200 50 0 0 0 600 100" style="fill:none ;stroke:blueviolet;stroke-width: 2px" />
+        <defs>
+            <path id="path1" d="M200 300 A200 50 0 0 0 600 400" />
+        </defs>
+        <!-- SVG 允许我们定义以后需要重复使用的图形元素。 建议把所有需要再次使用的引用元素定义在defs元素里面。 -->
+        <text x="30" y="11" fill="red">
+            <textPath xlink:href="#path1">Svg interesting 066666666666666666666666666666666666666660000000000000000000000000000000000000000000</textPath>
+        </text>
+        <text x="30" y="11" fill="red" transform="rotate(90 10 100)">Svg interesting</text>
+        <text x="400" y="60" style="fill: chocolate;"> Several lines:
+            <tspan x="400" y="85">Svg interesting</tspan>
+            <tspan x="400" y="105">Svg interesting</tspan>
+        </text>
+        <a xlink:href="http://www.baidu.com" target="_blank">
+            <text x="600" y="50" fill="red">baidu</text>
+        </a>
+        <rect x="0" y="0" width="10" height="10" transform="translate(30,40)" />
+    </svg>
+    <svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+        <rect width="100%" height="100%" fill="red" />
+
+        <circle cx="150" cy="100" r="80" fill="green" />
+
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+
+    </svg>
+</body>
+
+</html>

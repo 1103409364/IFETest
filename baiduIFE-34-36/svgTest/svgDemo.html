@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svgStyle" width="800"
+        height="800">
+        <path id="path" d="M 10 30 L 300 200 L 10 200" fill="none" stroke="red" />
+        <rect x="100" y="100" style="width: 100;height: 100; stroke: #0000ff;stroke-width: 5;stroke-opacity: 0.5; fill:transparent"
+        />
+        <circle cx="50" cy="50" r="50" style="stroke: #008080; fill: transparent" />
+        <text style="font-family: 'Courier New', Courier, monospace; stroke: #ff6347;font-size: 80;fill:transparent ">
+            <textPath xlink:href="#path">
+                some text
+            </textpath>
+        </text>
+
+        <circle cx="400" cy="100" r="20" style="stroke: #ff6347;fill:#ff7231 " />
+        <line x1="400" y1="120" x2="400" y2="300" style="stroke: #008000;stroke-width: 3;" />
+        <!-- rotate(30, 400 100) 旋转角度，旋转中心,画花瓣-->
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(0, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(30, 400 100)" style="fill: #ff6b6b;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(60, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(90, 400 100)" style="fill: #ff6b6b;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(120, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(150, 400 100)" style="fill: #ff6b6b;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(180, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(210, 400 100)" style="fill: #ff6b6b;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(240, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(270, 400 100)" style="fill: #ff6b6b;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(300, 400 100)" style="fill: #d9b30e;" />
+        <ellipse cx="350" cy="100" rx="30" ry="10" transform="rotate(330, 400 100)" style="fill: #ff6b6b;" />
+        <!-- 画叶子 -->
+        <ellipse cx="350" cy="250" rx="40" ry="10" transform="rotate(30,400 250)" style="fill: #067527;" />
+        <ellipse cx="340" cy="270" rx="50" ry="10" transform="rotate(150,400 270)" style="fill: #067527;" />
+        <!-- 画树干 -->
+        <path d="M600 140 h20 v160 h-20" style="fill: brown" />
+        <!-- 开始点，控制点，结束点 -->
+        <path d="M540 100 q 60 -200 140 0" style="fill: rgb(15, 133, 11)" />
+        <path d="M530 180 q 80 -300 160 0" style="fill: rgb(15, 133, 11)" />
+        <path d="M530 240 q 80 -300 160 0" style="fill: rgb(15, 133, 11)" />
+    </svg>
+</body>
+
+</html>
