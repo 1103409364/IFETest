@@ -1,3 +1,4 @@
+var checkboxWrapper = document.getElementById("checkbox-wrapper");
 var regionWrapper = document.getElementById("region-wrapper");
 var productWrapper = document.getElementById("product-wrapper");
 var regionCheckboxObj = [{
@@ -44,7 +45,7 @@ function creatCheckBox(checkBoxWrapper, objData) {
     var checks = []; //子选项容器
 
     for (let i = 0; i < objData.length; i++) {
-        var dataId = objData[i].value;  //value值作为id
+        var dataId = objData[i].value; //value值作为id
         var checkLabel = document.createElement("label");
         checkLabel.setAttribute("for", dataId);
         checkLabel.innerHTML = objData[i].text;

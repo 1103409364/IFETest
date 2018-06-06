@@ -1,4 +1,5 @@
 function drawBarGraph(data) {
+    var barWrapper = document.getElementById("bar-wrapper");
     // 画布上的坐标并未对应网页里的像素，在绘制这个1px的横线，它会把这个1px劈成两半，然后显示器根据你传来的东西会显示成模糊结果。
     // 解决办法：如果横线，那就在y值上加个0.5。如果竖线，那就在x值上加个0.5。
     var maxY = 210,

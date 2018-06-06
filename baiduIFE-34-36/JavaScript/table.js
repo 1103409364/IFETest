@@ -1,3 +1,18 @@
+var tableHead = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+var tableWrapper = document.getElementById("table-wrapper");
+
+
+var eCN = document.getElementById(regionCheckboxObj[0].value);
+var sCN = document.getElementById(regionCheckboxObj[1].value);
+var nCN = document.getElementById(regionCheckboxObj[2].value);
+
+var phone = document.getElementById(productCheckboxObj[0].value);
+var notebook = document.getElementById(productCheckboxObj[1].value);
+var googleHome = document.getElementById(productCheckboxObj[2].value);
+
+var regionArr = [eCN, sCN, nCN];
+var productArr = [phone, notebook, googleHome];
+
 function getCheckedItem(data) { //获取复选框被选中的个数
     var checkedArr = [];
     for (let j = 0; j < data.length; j++) {
@@ -27,14 +42,14 @@ function getData(sourceData) {
 }
 //渲染数据
 function renderTable(data) {
-    tableWrapper.innerHTML = "";  //清除上次的数据
+    tableWrapper.innerHTML = ""; //清除上次的数据
     var table = document.createElement("table");
     tableWrapper.appendChild(table);
     var tr = document.createElement("tr");
     table.appendChild(tr);
 
     function setTableHead() {
-        for (let i = 0; i < tableHead.length; i++) {  //添加表头
+        for (let i = 0; i < tableHead.length; i++) { //添加表头
             var th = document.createElement("th");
             th.innerHTML = tableHead[i];
             tr.appendChild(th);
@@ -44,12 +59,13 @@ function renderTable(data) {
     var regoinCheckedNum = getCheckedItem(regionArr).length;
     var productCheckedNum = getCheckedItem(productArr).length;
     //当商品选择了一个，地区选择了多个的时候，商品作为第一列，地区作为第二列，把商品列合并，留一个商品名称
+    //代码复用问题，待优化，
     if (regoinCheckedNum > 1 && productCheckedNum == 1) {
         setTableHead();
         for (let i = 0; i < data.length; i++) {
             var tr = document.createElement("tr");
             table.appendChild(tr);
-            for (x in data[i]) {  //遍历对象的属性x
+            for (x in data[i]) { //遍历对象的属性x
                 //该合并的单元格行数等于地区数
                 if (x == "product" && i == 0) {
                     var td = document.createElement("td");
@@ -80,7 +96,7 @@ function renderTable(data) {
         var th = document.createElement("th");
         th.innerHTML = tableHead[0];
         tr.appendChild(th);
-        for (let i = 2; i < tableHead.length; i++) {  //单独添加表头
+        for (let i = 2; i < tableHead.length; i++) { //单独添加表头
             var th = document.createElement("th");
             th.innerHTML = tableHead[i];
             tr.appendChild(th);
@@ -90,7 +106,7 @@ function renderTable(data) {
             var tr = document.createElement("tr");
             table.appendChild(tr);
             // for ()
-            for (x in data[i]) {  //遍历对象的属性x
+            for (x in data[i]) { //遍历对象的属性x
                 //该合并的单元格行数等于商品数
                 //由于交换了数据，应该在商品的区域合并单元格
                 if (x == "product" && i == 0) {
@@ -127,7 +143,7 @@ function renderTable(data) {
         for (let i = 0; i < data.length; i++) {
             var tr = document.createElement("tr");
             table.appendChild(tr);
-            for (x in data[i]) {  //遍历对象的属性x
+            for (x in data[i]) { //遍历对象的属性x
                 //地区个数等于该合并的单元格数，根据数据排列的规律，i不能被行数整除时，跳过该产品名称单元格
                 if (x == "product" && i % regoinCheckedNum == 0) {
                     var td = document.createElement("td");
@@ -155,7 +171,7 @@ function renderTable(data) {
         for (let i = 0; i < data.length; i++) {
             var tr = document.createElement("tr");
             table.appendChild(tr);
-            for (x in data[i]) {  //遍历对象的属性x
+            for (x in data[i]) { //遍历对象的属性x
                 if (x == "product" || x == "region") {
                     var td = document.createElement("td");
                     td.innerHTML = data[i][x];

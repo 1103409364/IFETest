@@ -17,19 +17,12 @@
     <div id="bar-wrapper"></div>
 
     <script type="text/javascript" src="JavaScript/ife31data.js"></script>
-    <script type="text/javascript" src="JavaScript/HtmlUtil.js"></script>
     <script type="text/javascript" src="JavaScript/checkbox.js"></script>
     <script type="text/javascript" src="JavaScript/table.js"></script>
     <script type="text/javascript" src="JavaScript/app.js"></script>
     <script type="text/javascript" src="JavaScript/bar.js"></script>
 
     <script>
-        //事件委托
-        checkboxWrapper.onclick = function (e) {
-            var target = e.target;
-            getData(sourceData);
-            renderTable(getData(sourceData));
-        }
         // 传入华东手机的数据
         drawBarGraph(sourceData[0]["sale"]); //取对象属性要加引号
     </script>
