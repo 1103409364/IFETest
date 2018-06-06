@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="1000" height="900"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            ctx.strokeRect(10.5, 10.5, 100, 100);
+            ctx.fillRect(10.5, 120.5, 100, 100);
+            ctx.clearRect(30.5, 140.5, 60, 60);
+            ctx.beginPath();
+            ctx.moveTo(10.5, 250);
+            ctx.lineTo(150.5, 250);
+            ctx.lineTo(10.5, 350);
+            // ctx.closePath();
+            ctx.fillStyle = "blue";
+            ctx.fill();
+            ctx.moveTo(250.5, 450);
+            ctx.lineTo(10.5, 450);
+            ctx.lineTo(200.5, 300);
+            //路径
+            ctx.closePath();
+            ctx.moveTo(240, 50);
+            ctx.arc(200, 50, 40, 0, Math.PI * 2 / 3);
+            ctx.arc(200, 50, 40, 0, Math.PI * 2 / 3, true);
+            ctx.arcTo(100, 100, 50, 50, 100);
+            ctx.moveTo(200, 200);
+            ctx.quadraticCurveTo(325, 25, 425, 200);
+            ctx.moveTo(500, 200);
+            ctx.bezierCurveTo(600, 100, 800, 100, 800, 200);
+            ctx.rect(400, 20, 100, 100);
+            ctx.strokeStyle = "red";
+            ctx.stroke();
+
+            var rectangle = new Path2D();
+            rectangle.rect(400, 400, 500, 500);
+            ctx.stroke(rectangle);
+        }
+    </script>
+</body>
+
+</html>
