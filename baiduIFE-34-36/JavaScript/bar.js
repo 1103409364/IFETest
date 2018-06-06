@@ -7,14 +7,14 @@ function drawBarGraph(data) {
     // 创建svg元素需要传入命名空间，其他与创建HTML元素类似
     var xmlns = "http://www.w3.org/2000/svg";
     var svgDom = document.createElementNS(xmlns, "svg");
-    svgDom.setAttribute("height", "500");
-    svgDom.setAttribute("width", "800");
+    svgDom.setAttribute("height", "330");
+    svgDom.setAttribute("width", "650");
     barWrapper.appendChild(svgDom);
     // y轴最大高度210,最大值为300
     var lineY = document.createElementNS(xmlns, "line")
-    lineY.setAttribute("x1", "10.5");
+    lineY.setAttribute("x1", "30.5");
     lineY.setAttribute("y1", "60");
-    lineY.setAttribute("x2", "10");
+    lineY.setAttribute("x2", "30.5");
     lineY.setAttribute("y2", "270");
     lineY.setAttribute("style", "stroke:black");
     svgDom.appendChild(lineY);
@@ -22,24 +22,31 @@ function drawBarGraph(data) {
     for (let i = 0; i < 6; i++) {
         let y = 60.5 + 35 * i;
         var scaleY = document.createElementNS(xmlns, "line")
-        scaleY.setAttribute("x1", "10");
+        scaleY.setAttribute("x1", "30");
         scaleY.setAttribute("y1", y);
-        scaleY.setAttribute("x2", "610");
+        scaleY.setAttribute("x2", "630");
         scaleY.setAttribute("y2", y);
         scaleY.setAttribute("style", "stroke:#dbdbdb;");
+        svgDom.appendChild(scaleY);
+        var scaleY = document.createElementNS(xmlns, "line")
+        scaleY.setAttribute("x1", "30");
+        scaleY.setAttribute("y1", y);
+        scaleY.setAttribute("x2", "25");
+        scaleY.setAttribute("y2", y);
+        scaleY.setAttribute("style", "stroke:#000;");
         svgDom.appendChild(scaleY);
     }
 
     var lineX = document.createElementNS(xmlns, "line")
-    lineX.setAttribute("x1", "10");
+    lineX.setAttribute("x1", "30");
     lineX.setAttribute("y1", "270.5");
-    lineX.setAttribute("x2", "610");
+    lineX.setAttribute("x2", "630");
     lineX.setAttribute("y2", "270.5");
     lineX.setAttribute("style", "stroke:black;");
     svgDom.appendChild(lineX);
     // x轴刻度，分度值50
     for (let i = 1; i < 13; i++) {
-        let x = 10.5 + 50 * i;
+        let x = 30.5 + 50 * i;
         var scaleY = document.createElementNS(xmlns, "line")
         scaleY.setAttribute("x1", x);
         scaleY.setAttribute("y1", "270");
@@ -52,7 +59,7 @@ function drawBarGraph(data) {
     for (let i = 0; i < 12; i++) {
         let heightData = data[i] / 300 * 210;
         let y = 270 - heightData;
-        let x = 20 + 50 * i;
+        let x = 40 + 50 * i;
         var rect = document.createElementNS(xmlns, "rect");
         rect.setAttribute("x", x);
         rect.setAttribute("y", y);
