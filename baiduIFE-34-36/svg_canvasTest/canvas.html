@@ -12,6 +12,8 @@
         var canvas = document.getElementById("canvas");
         if (canvas.getContext) {
             var ctx = canvas.getContext("2d");
+            ctx.strokeStyle = "green";
+            ctx.fillStyle = "green";
             ctx.strokeRect(10.5, 10.5, 100, 100);
             ctx.fillRect(10.5, 120.5, 100, 100);
             ctx.clearRect(30.5, 140.5, 60, 60);
