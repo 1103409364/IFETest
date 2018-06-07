@@ -21,6 +21,7 @@ function drawBarGraph(data) {
     // y轴刻度，间距35px,分度值50,
     for (let i = 0; i < 6; i++) {
         let y = 60.5 + 35 * i;
+        let valueY = maxValue * (6 - i + 1) / 6;
         var scaleY = document.createElementNS(xmlns, "line")
         scaleY.setAttribute("x1", "30");
         scaleY.setAttribute("y1", y);
@@ -35,6 +36,12 @@ function drawBarGraph(data) {
         scaleY.setAttribute("y2", y);
         scaleY.setAttribute("style", "stroke:#000;");
         svgDom.appendChild(scaleY);
+        var textY = document.createElementNS(xmlns, "text");
+        textY.setAttribute("x", 0);
+        textY.setAttribute("y", y + 5);
+        textY.setAttribute("style", "font-size:13;font-family:微软雅黑")
+        textY.innerHTML = valueY;
+        svgDom.appendChild(textY);
     }
 
     var lineX = document.createElementNS(xmlns, "line")
@@ -47,13 +54,20 @@ function drawBarGraph(data) {
     // x轴刻度，分度值50
     for (let i = 1; i < 13; i++) {
         let x = 30.5 + 50 * i;
-        var scaleY = document.createElementNS(xmlns, "line")
+        let month = (i) + "月";
+        var scaleY = document.createElementNS(xmlns, "line");
         scaleY.setAttribute("x1", x);
         scaleY.setAttribute("y1", "270");
         scaleY.setAttribute("x2", x);
         scaleY.setAttribute("y2", "275");
         scaleY.setAttribute("style", "stroke:black");
         svgDom.appendChild(scaleY);
+        var textY = document.createElementNS(xmlns, "text");
+        textY.setAttribute("x", x - 38);
+        textY.setAttribute("y", "290");
+        textY.setAttribute("style", "font-size:13;font-family:微软雅黑")
+        textY.innerHTML = month;
+        svgDom.appendChild(textY);
     }
     for (let i = 0; i < 12; i++) {
         let heightData = data[i] / maxValue * 210;

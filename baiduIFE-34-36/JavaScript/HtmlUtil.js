@@ -51,5 +51,8 @@ var HtmlUtil = {
             max = Number(arr[i]) <= max ? max : Number(arr[i]);
         }
         return max;
+    },
+    isNumber: function (n) {
+        return !isNaN(Number(n));
     }
 };

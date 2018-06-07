@@ -14,22 +14,6 @@ table {
     margin-top: 10px;
 }
 
-/* form ul {
+#bar-wrapper,#line-wrapper {
     display: inline-block;
-    padding: 0;
 }
-
-ul h2{
-    font-size: 16px;
-    text-align: right;
-    margin: 0 0 5px 0;
-    padding-right: 25px;
-}
-ul li {
-    list-style: none;
-    width: 100px;
-    text-align: right;
-}
-ul li:nth-last-of-type(1) {
-    color: #848486;
-} */

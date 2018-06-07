@@ -17,20 +17,16 @@ var graph = {
             if (tr.cells) {
                 for (let i = 0; i < tr.cells.length; i++) {
                     // console.log(tr.cells.length);
-                    if (isNumber(tr.cells[i].innerHTML)) { //过滤非数字
+                    if (HtmlUtil.isNumber(tr.cells[i].innerHTML)) { //过滤非数字
                         data.push(tr.cells[i].innerHTML);
                     }
                 }
-                if (isNumber(tr.cells[2].innerHTML)) { //当前hover的表格行不含数字就不画图
+                if (HtmlUtil.isNumber(tr.cells[2].innerHTML)) { //当前hover的表格行不含数字就不画图
                     barWrapper.innerHTML = ""; //重新画图
                     lineWrapper.innerHTML = "";
                     drawBarGraph(data);
                     drawLineGraph(data);
                 }
-            }
-
-            function isNumber(n) {
-                return !isNaN(Number(n));
             }
         }
     }
