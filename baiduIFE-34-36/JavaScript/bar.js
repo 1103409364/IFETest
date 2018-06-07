@@ -21,7 +21,7 @@ function drawBarGraph(data) {
     // y轴刻度，间距35px,分度值50,
     for (let i = 0; i < 6; i++) {
         let y = 60.5 + 35 * i;
-        let valueY = maxValue * (6 - i + 1) / 6;
+        let valueY = maxValue * (6 - i) / 6;
         var scaleY = document.createElementNS(xmlns, "line")
         scaleY.setAttribute("x1", "30");
         scaleY.setAttribute("y1", y);

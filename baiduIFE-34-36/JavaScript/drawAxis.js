@@ -19,7 +19,7 @@ function drawAxis(maxValue) {
         for (let i = 0; i < 6; i++) {
             ctx.beginPath();
             let y = 60.5 + 35 * i;
-            let valueY = maxValue * (6 - i + 1) / 6;
+            let valueY = maxValue * (6 - i) / 6;
             ctx.moveTo(30.5, y);
             ctx.lineTo(630.5, y);
             ctx.strokeStyle = "#dbdbdb";
