@@ -14,20 +14,23 @@
     </form>
 
     <div id="table-wrapper"></div>
-    <div id="bar-wrapper"></div>
-    <div id="line-wrapper"></div>
+    <div id="graph-wapper">
+        <div id="bar-wrapper"></div>
+        <div id="line-wrapper"></div>
+    </div>
+
 
     <script type="text/javascript" src="JavaScript/ife31data.js"></script>
+    <script type="text/javascript" src="JavaScript/HtmlUtil.js"></script>
     <script type="text/javascript" src="JavaScript/checkbox.js"></script>
     <script type="text/javascript" src="JavaScript/table.js"></script>
     <script type="text/javascript" src="JavaScript/app.js"></script>
     <script type="text/javascript" src="JavaScript/bar.js"></script>
     <script type="text/javascript" src="JavaScript/line.js"></script>
-
+    <script type="text/javascript" src="JavaScript/graph.js"></script>
     <script>
-        // 传入华东手机的数据
-        drawBarGraph(sourceData[0]["sale"]); //取对象属性要加引号
-        drawLineGraph(sourceData[0]["sale"]);
+        graph.drawGraph(sourceData[0]["sale"]);
+        graph.setData();
     </script>
 </body>
 

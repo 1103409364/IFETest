@@ -1,7 +1,7 @@
 function drawLineGraph(data) {
     var barWrapper = document.getElementById("line-wrapper");
-    var maxY = 210,
-        maxValue = 300;
+    var maxY = HtmlUtil.maxValue(data); //210 最大值
+    var maxValue = Math.floor(maxY * 1.2); //设置一个合适的Y轴最大坐标值,显示最大值
     var canvas = document.createElement("canvas");
     canvas.setAttribute("id", "line");
     canvas.setAttribute("width", "650");
@@ -39,10 +39,10 @@ function drawLineGraph(data) {
             ctx.lineTo(x, 215);
             ctx.stroke();
         }
-        // 此时data是华东地区手机12个月的数据
+
         for (let i = 0; i < 12; i++) {
-            let heightData1 = data[i] / 300 * 210;
-            let heightData2 = data[i + 1] / 300 * 210;
+            let heightData1 = data[i] / maxValue * 210;
+            let heightData2 = data[i + 1] / maxValue * 210;
             let x1 = 30.5 + 50 * i;
             let x2 = 30.5 + 50 * (i + 1);
             let y1 = 210.5 - heightData1;
