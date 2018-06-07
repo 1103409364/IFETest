@@ -1,21 +1,14 @@
 //默认状态初始化
 renderTable(getData(sourceData));
+graph.drawGraph(sourceData[0]["sale"]); //默认数据画图
+graph.setData(); //监听moursehover事件画图
+
 //事件委托，复选框绑定点击事件
-checkboxWrapper.onclick = function (e) {
-    var target = e.target;
+checkboxWrapper.onclick = function () {
     // 渲染表格
     renderTable(getData(sourceData));
-
-    // 画多合一图
-    var barWrapper = document.getElementById("bar-wrapper");
-    var lineWrapper = document.getElementById("line-wrapper");
-    var data = getData(sourceData); //获取选中数据
-    barWrapper.innerHTML = ""; //重新画图
-    lineWrapper.innerHTML = "";
-    for (let i = 0; i < data.length; i++) {
-        // drawBarGraph(data);
-        // drawLineGraph(data[i].sale);
-        console.log(data[i].sale);
-    }
-
+    drawMultiLineGraph(getData(sourceData));
+}
+tableWrapper.onmouseout = function () {
+    drawMultiLineGraph(getData(sourceData));
 }

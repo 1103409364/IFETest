@@ -1,3 +1,4 @@
+//???好像不对。怎么搞
 var graph = {
     graphData: new Array(),
     table: document.getElementById("table-wrapper"),
@@ -6,7 +7,6 @@ var graph = {
         drawBarGraph(data);
         drawLineGraph(data);
     },
-
     setData: function () {
         var barWrapper = document.getElementById("bar-wrapper");
         var lineWrapper = document.getElementById("line-wrapper");
