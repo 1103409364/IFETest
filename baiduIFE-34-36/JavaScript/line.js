@@ -1,3 +1,4 @@
+//line与multiLine可以合并，参数要一样
 function drawLineGraph(data) {
     // var barWrapper = document.getElementById("line-wrapper");
     var maxY = HtmlUtil.maxValue(data); //最大值
