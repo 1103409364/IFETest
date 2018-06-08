@@ -8,7 +8,9 @@ checkboxWrapper.onclick = function () {
     // 渲染表格
     renderTable(getData(sourceData));
     drawMultiLineGraph(getData(sourceData));
+    drawMultiBarGraph(getData(sourceData));
 }
 tableWrapper.onmouseout = function () {
     drawMultiLineGraph(getData(sourceData));
+    drawMultiBarGraph(getData(sourceData));
 }

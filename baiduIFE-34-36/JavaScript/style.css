@@ -1,0 +1,43 @@
+table,
+table tr th,
+table tr td {
+    border: 1px #000000 solid;
+    color: #0812a8;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tr th,
+table tr td {
+    font-size: 15px;
+    width: 80px;
+}
+
+table {
+    margin-top: 10px;
+}
+
+tr:hover {
+    background-color: #60acfc;
+}
+
+td:hover {
+    background-color: #1279e7;
+}
+
+/* 表头一行不变色 */
+
+tr:nth-of-type(1) {
+    background-color: #fff;
+}
+
+/* 合并单元格的单元格不变色 */
+
+[rowspan] {
+    background-color: #fff;
+}
+
+#bar-wrapper,
+#line-wrapper {
+    display: inline-block;
+}

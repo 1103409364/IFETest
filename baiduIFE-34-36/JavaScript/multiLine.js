@@ -2,7 +2,6 @@
 function drawMultiLineGraph(data) {
     // 颜色数组
     var colorArr = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
-    var barWrapper = document.getElementById("bar-wrapper");
     var lineWrapper = document.getElementById("line-wrapper");
     // barWrapper.innerHTML = ""; //重新画图
     lineWrapper.innerHTML = "";
@@ -16,7 +15,7 @@ function drawMultiLineGraph(data) {
 
 
     var maxY = HtmlUtil.maxValue(maxValueArr); //最大值中的最大值，就是几组数据中的最大值
-    console.log(maxY);
+    // console.log(maxY);
     var maxValue = Math.floor(maxY * 1.2); //y轴最大范围
 
     ctx = drawAxis(maxValue);
