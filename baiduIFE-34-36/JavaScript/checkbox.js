@@ -67,8 +67,20 @@ function creatCheckBox(checkBoxWrapper, objData) {
         if (target.type == "checkbox") {
             var attribute = target.getAttribute("checkbox-type"); //读取自定义属性
             if (attribute == "all") {
-                for (let j = 0; j < checks.length; j++) {
-                    checks[j].checked = true; //true用boolean值而不是字符串
+                if (target.checked == true) { //选中全选复选框时
+                    for (let j = 0; j < checks.length; j++) {
+                        checks[j].checked = true; //true用boolean值而不是字符串
+                    }
+                } else { //取消选中全选复选框时
+                    for (let j = 0; j < checks.length; j++) {
+                        if (j == 0) {
+                            checks[j].checked = true; //true用boolean值而不是字符串
+
+                        } else {
+                            checks[j].checked = false; //true用boolean值而不是字符串
+
+                        }
+                    }
                 }
             }
             for (let j = 0; j < checks.length; j++) {
