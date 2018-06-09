@@ -1,8 +1,8 @@
 table,
 table tr th,
 table tr td {
-    border: 1px #000000 solid;
-    color: #0812a8;
+    border: 1px #8141c0 solid;
+    color: #8a56be;
     border-collapse: collapse;
     text-align: center;
 }
@@ -11,8 +11,13 @@ table tr th,
 table tr td,
 table input {
     font-size: 15px;
-    width: 80px;
+    width: 90px;
     height: 30px;
+}
+
+table tr th {
+    background-color: #8a56be;
+    color: #fff;
 }
 
 table input {
@@ -24,13 +29,14 @@ table {
     margin-top: 10px;
 }
 
-/* tr:hover {
-    background-color: #60acfc;
-} */
+tr:hover {
+    background-color: #c391f588;
+}
 
-/* td:hover {
-    background-color: #1279e7;
-} */
+td:hover {
+    background-color: #8a56be;
+    color: #fff;
+}
 
 /* 表头一行不变色 */
 
@@ -47,4 +53,40 @@ tr:nth-of-type(1) {
 #bar-wrapper,
 #line-wrapper {
     display: inline-block;
+}
+
+#graph-wapper {
+    width: 1305px;
+    margin: 0 auto;
+}
+
+#checkbox-wrapper,
+#table-wrapper {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+#checkbox-wrapper label {
+    display: inline-block;
+    text-align: left;
+    padding-left: 5px;
+    color: #8a56be;
+}
+
+#checkbox-wrapper input {
+    margin: 0 20px 10px 5px;
+}
+
+#checkbox-wrapper input:nth-last-of-type(1) {
+    margin-right: 5px;
+}
+
+#region-wrapper,
+#product-wrapper {
+    margin: 0 10px 10px 0;
+    display: inline;
+    border: #8a56be 2px solid;
+    padding: 5px;
+    /* background-color: #8141c08e; */
+    ;
 }
