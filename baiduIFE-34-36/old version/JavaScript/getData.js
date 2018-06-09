@@ -34,5 +34,5 @@ function getData(sourceData) {
         }
     }
     // console.log(newData);
-    return newData; //返回一个对象数组
+    return newData;
 }

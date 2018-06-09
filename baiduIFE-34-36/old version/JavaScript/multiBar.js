@@ -1,4 +1,3 @@
-// 绘制柱状图,参数是对象数组
 function drawMultiBarGraph(data) {
     var colorArr = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
 

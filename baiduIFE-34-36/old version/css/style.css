@@ -8,29 +8,22 @@ table tr td {
 }
 
 table tr th,
-table tr td,
-table input {
+table tr td {
     font-size: 15px;
     width: 80px;
-    height: 30px;
-}
-
-table input {
-    border: none;
-    text-align: center;
 }
 
 table {
     margin-top: 10px;
 }
 
-/* tr:hover {
+tr:hover {
     background-color: #60acfc;
-} */
+}
 
-/* td:hover {
+td:hover {
     background-color: #1279e7;
-} */
+}
 
 /* 表头一行不变色 */
 

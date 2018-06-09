@@ -1,4 +1,4 @@
-//绘制折线图，参数是对象数组
+//绘制多条折线图
 function drawMultiLineGraph(data) {
     // 颜色数组
     var colorArr = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
