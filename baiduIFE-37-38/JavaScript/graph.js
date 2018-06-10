@@ -11,6 +11,8 @@ var graph = {
         var barWrapper = document.getElementById("bar-wrapper");
         var lineWrapper = document.getElementById("line-wrapper");
         this.table.onmouseover = function (e) {
+            var storage = window.localStorage;
+            var newSourceData;
             var data = [];
             target = e.target;
             var tr = target.parentElement; //当前hover元素的父元素
@@ -24,14 +26,26 @@ var graph = {
                         data.push(sourceData[i]);
                     }
                 }
-                console.log(data);
-
-                if (HtmlUtil.isNumber(tr.cells[2].innerHTML)) { //当前hover的表格行不含数字就不画图
-                    barWrapper.innerHTML = ""; //重新画图
-                    lineWrapper.innerHTML = "";
-                    drawMultiBarGraph(data);
-                    drawMultiLineGraph(data);
+                // 判断LocalStorage中是否有数据，从LocalStorage中读取数据，判断是否有相同数据，有就替换js文件ife31data中得到的数据。
+                if (storage.getItem("newSourceData")) {
+                    let json = storage.getItem("newSourceData")
+                    newSourceData = JSON.parse(json);
+                    for (let i = 0; i < data.length; i++) {
+                        for (let j = 0; j < newSourceData.length; j++) {
+                            if (data[i].region == newSourceData[j].region && data[i].product == newSourceData[j].product) {
+                                data[i] = newSourceData[j]; //有相同的数据，用本地存储的数据替换
+                            }
+                        }
+                    }
                 }
+                // console.log(target);
+
+                // if (HtmlUtil.isNumber(tr.cells[2].innerHTML)) { //当前hover的表格行不含数字就不画图
+                barWrapper.innerHTML = ""; //重新画图
+                lineWrapper.innerHTML = "";
+                drawMultiBarGraph(data);
+                drawMultiLineGraph(data);
+                // }
             }
         }
     }

@@ -16,7 +16,6 @@ function renderTable(data) {
         th.innerHTML = tableHead[i];
         tr.appendChild(th);
     }
-
     for (let i = 0; i < data.length; i++) {
         var tr = document.createElement("tr");
         table.appendChild(tr);
@@ -29,16 +28,167 @@ function renderTable(data) {
                 for (let j = 0; j < data[i][x].length; j++) { //data[i]对象的的第三个属性sale是数组，对齐进行遍历填充
                     var td = document.createElement("td"),
                         inputData = document.createElement("input"),
-                        button = document.createElement("button");
-                    button.setAttribute("type", "button");
-                    button.innerHTML = "保存";
-                    // td.appendChild(button);
-
+                        inputConfirm = document.createElement("input"),
+                        inputCancel = document.createElement("input"),
+                        img = document.createElement("img"),
+                        textCont = document.createTextNode(data[i][x][j]);
+                    img.setAttribute("src", "images/edit.png");
+                    img.setAttribute("alt", "编辑");
+                    img.setAttribute("width", "10px");
+                    img.setAttribute("height", "10px");
+                    inputConfirm.setAttribute("type", "button");
+                    inputConfirm.setAttribute("value", "确定");
+                    inputConfirm.setAttribute("class", "confirm");
+                    inputConfirm.setAttribute("style", "display:none");
+                    inputCancel.setAttribute("type", "button");
+                    inputCancel.setAttribute("value", "取消");
+                    inputCancel.setAttribute("class", "cancel");
+                    inputCancel.setAttribute("style", "display:none");
+                    inputData.setAttribute("type", "text");
                     inputData.setAttribute("value", data[i][x][j]);
-                    // td.appendChild(inputData);
+                    inputData.setAttribute("class", "inputData");
+                    inputData.setAttribute("style", "display:none");
 
-                    td.innerHTML = data[i][x][j];
+                    td.appendChild(inputConfirm);
+                    td.appendChild(inputCancel);
+                    td.appendChild(inputData); //输入框
+                    td.appendChild(img);
+                    td.setAttribute("style", "overflow:hidden;position:relative;");
+                    td.appendChild(textCont);
+                    // inputData.setAttribute("value", data[i][x][j]);
+
+                    // td.innerHTML = data[i][x][j];
                     tr.appendChild(td);
+
+                    //点击编辑图标显示按钮和输入框
+                    img.onclick = function (e) {
+                        var target = e.target;
+                        target.parentElement.children[0].setAttribute("style", "display:block");
+                        target.parentElement.children[1].setAttribute("style", "display:block");
+                        target.parentElement.children[2].setAttribute("style", "display:block");
+                        target.parentElement.children[2].focus();
+                        target.parentElement.children[3].setAttribute("style", "display:none");
+                    }
+                    // 点击确定
+                    inputConfirm.onclick = function (e) {
+                        var target = e.target;
+                        // var temp = target.parentElement.innerHTML;
+                        var temp = target.parentElement.textContent;
+                        console.log(target.parentElement.textContent);
+                        if (!HtmlUtil.isNumber(target.parentElement.children[2].value)) {
+                            alert("请输入数字");
+                            target.parentElement.children[2].value = temp;
+                            // target.parentElement.children[2].focus();
+                        } else {
+                            target.parentElement.children[0].setAttribute("style", "display:none");
+                            target.parentElement.children[1].setAttribute("style", "display:none");
+                            target.parentElement.children[2].setAttribute("style", "display:none");
+                            target.parentElement.children[3].setAttribute("style", "display:block");
+
+                            var newData = {};
+                            var sale = [];
+                            // var table = e.target.parentElement.parentElement.parentElement;
+                            var tr = e.target.parentElement.parentElement;
+                            var inputData = tr.getElementsByClassName("inputData");
+                            if (table.rows[0].cells[0].innerHTML == "商品") {
+                                newData["product"] = tr.cells[0].innerHTML;
+                                newData["region"] = tr.cells[1].innerHTML;
+                                for (let i = 0; i < inputData.length; i++) {
+                                    sale.push(Number(inputData[i].value)); //输入值是字符串，转数字
+                                }
+                                newData["sale"] = sale;
+                            } else {
+                                newData["product"] = tr.cells[1].innerHTML;
+                                newData["region"] = tr.cells[0].innerHTML;
+                                for (let i = 0; i < inputData.length; i++) {
+                                    sale.push(Number(inputData[i].value));
+                                }
+                                newData["sale"] = sale;
+                            }
+                            // console.log(newData);
+                            storageNewData(newData);
+                        }
+                    }
+                    // 点击取消
+                    inputCancel.onclick = function (e) {
+                        var target = e.target;
+                        var temp = target.parentElement.textContent;
+                        target.parentElement.children[0].setAttribute("style", "display:none");
+                        target.parentElement.children[1].setAttribute("style", "display:none");
+                        target.parentElement.children[2].setAttribute("style", "display:none");
+                        target.parentElement.children[3].setAttribute("style", "display:block");
+                        target.parentElement.children[2].value = temp;
+                    }
+                    // 在输入框内监听按键按下
+                    inputData.onkeydown = function (e) {
+                        console.log(e.keyCode); //esc 27 enter 13
+                        if (e.keyCode == "27") {
+                            this.parentElement.children[0].setAttribute("style", "display:none");
+                            this.parentElement.children[1].setAttribute("style", "display:none");
+                            this.parentElement.children[2].setAttribute("style", "display:none");
+                            this.parentElement.children[3].setAttribute("style", "display:block");
+                            this.parentElement.children[2].value = "";
+                        }
+                        if (e.keyCode == "13") {
+                            if (!HtmlUtil.isNumber(target.parentElement.children[2].value)) {
+                                alert("请输入数字");
+                                this.parentElement.children[2].value = "";
+                                this.parentElement.children[2].focus();
+                            } else {
+                                this.parentElement.children[0].setAttribute("style", "display:none");
+                                this.parentElement.children[1].setAttribute("style", "display:none");
+                                this.parentElement.children[2].setAttribute("style", "display:none");
+                                this.parentElement.children[3].setAttribute("style", "display:block");
+                            }
+                        }
+
+                    }
+                    // 失去焦点，隐藏输入框和按钮
+                    inputData.onblur = function (e) {
+                        var target = e.target;
+                        var temp = target.parentElement.textContent;
+                        setTimeout(function () { //设置延迟，防止按钮按不到就消失了
+                            if (e.target.parentElement.children[0].style.display == "block") {
+                                target.parentElement.children[0].setAttribute("style", "display:none");
+                            }
+                            if (e.target.parentElement.children[1].style.display == "block") {
+                                target.parentElement.children[1].setAttribute("style", "display:none");
+                            }
+                            if (e.target.parentElement.children[2].style.display == "block") {
+                                target.parentElement.children[2].setAttribute("style", "display:none");
+                            }
+                            if (e.target.parentElement.children[3].style.display == "none") {
+                                target.parentElement.children[3].setAttribute("style", "display:block");
+                            }
+                            target.parentElement.children[2].value = temp;
+                        }, 266);
+                    }
+                    //---------------------------
+                    // button.onclick = function (e) {
+                    //     var newData = {};
+                    //     var sale = [];
+                    //     var table = e.target.parentElement.parentElement.parentElement;
+                    //     var tr = e.target.parentElement.parentElement;
+                    //     var inputData = tr.getElementsByTagName("input");
+
+                    //     if (table.rows[0].cells[0].innerHTML == "商品") {
+                    //         newData["product"] = tr.cells[0].innerHTML;
+                    //         newData["region"] = tr.cells[1].innerHTML;
+                    //         for (let i = 0; i < inputData.length; i++) {
+                    //             sale.push(Number(inputData[i].value)); //输入值是字符串，转数字
+                    //         }
+                    //         newData["sale"] = sale;
+                    //     } else {
+                    //         newData["product"] = tr.cells[1].innerHTML;
+                    //         newData["region"] = tr.cells[0].innerHTML;
+                    //         for (let i = 0; i < inputData.length; i++) {
+                    //             sale.push(Number(inputData[i].value));
+                    //         }
+                    //         newData["sale"] = sale;
+                    //     }
+                    //     // console.log(newData);
+                    //     storageNewData(newData);
+                    // }
                 }
             }
         }

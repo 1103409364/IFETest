@@ -8,11 +8,50 @@ table tr td {
 }
 
 table tr th,
-table tr td,
-table input {
+table tr td {
     font-size: 15px;
     width: 90px;
-    height: 30px;
+    height: 40px;
+}
+
+table td img {
+    /* 添加一个编辑图标 并隐藏*/
+    position: absolute;
+    right: -20px;
+}
+
+table td:hover img {
+    /*显示编辑图标*/
+    right: 5px;
+}
+
+.confirm,
+.cancel {
+    position: absolute;
+    right: 1px;
+    background-color: #1e58c4;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    width: 30px;
+    height: 20px;
+    padding: 0;
+}
+
+.confirm {
+    top: 0;
+}
+
+.cancel {
+    bottom: 0;
+}
+
+table .inputData {
+    width: 55px;
+    height: 36px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
 }
 
 table tr th {
@@ -34,8 +73,8 @@ tr:hover {
 }
 
 td:hover {
-    background-color: #8a56be;
-    color: #fff;
+    background-color: #ffffff;
+    color: #8a56be;
 }
 
 /* 表头一行不变色 */
@@ -56,7 +95,7 @@ tr:nth-of-type(1) {
 }
 
 #graph-wapper {
-    width: 1305px;
+    width: 1310px;
     margin: 0 auto;
 }
 
