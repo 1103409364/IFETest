@@ -66,7 +66,8 @@ function renderTable(data) {
                         target.parentElement.children[0].setAttribute("style", "display:block");
                         target.parentElement.children[1].setAttribute("style", "display:block");
                         target.parentElement.children[2].setAttribute("style", "display:block");
-                        target.parentElement.children[2].focus();
+                        target.parentElement.children[2].focus(); //获得输入框焦点
+                        target.parentElement.children[2].select(); //默认选中输入框的内容
                         target.parentElement.children[3].setAttribute("style", "display:none");
                     }
                     // 点击确定
