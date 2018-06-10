@@ -17,6 +17,7 @@ table tr td {
 table td img {
     /* 添加一个编辑图标 并隐藏*/
     position: absolute;
+    top: 4px;
     right: -20px;
 }
 
