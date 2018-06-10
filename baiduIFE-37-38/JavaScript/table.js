@@ -108,7 +108,7 @@ function renderTable(data) {
                             // console.log(newData);
                             storageNewData(newData);
                         }
-                        // 更新数据之后重新渲染表格
+                        // 输入数据之后重新渲染表格
                         renderTable(getData(sourceData));
                     }
                     // 点击取消
@@ -129,21 +129,45 @@ function renderTable(data) {
                             this.parentElement.children[1].setAttribute("style", "display:none");
                             this.parentElement.children[2].setAttribute("style", "display:none");
                             this.parentElement.children[3].setAttribute("style", "display:block");
-                            this.parentElement.children[2].value = "";
+                            // this.parentElement.children[2].value = "";
                         }
                         if (e.keyCode == "13") {
                             if (!HtmlUtil.isNumber(target.parentElement.children[2].value)) {
                                 alert("请输入数字");
-                                this.parentElement.children[2].value = "";
+                                // this.parentElement.children[2].value = "";
                                 this.parentElement.children[2].focus();
                             } else {
                                 this.parentElement.children[0].setAttribute("style", "display:none");
                                 this.parentElement.children[1].setAttribute("style", "display:none");
                                 this.parentElement.children[2].setAttribute("style", "display:none");
                                 this.parentElement.children[3].setAttribute("style", "display:block");
-                            }
-                        }
 
+                                var newData = {};
+                                var sale = [];
+                                // var table = e.target.parentElement.parentElement.parentElement;
+                                var tr = e.target.parentElement.parentElement;
+                                var inputData = tr.getElementsByClassName("inputData");
+                                if (table.rows[0].cells[0].innerHTML == "商品") {
+                                    newData["product"] = tr.cells[0].innerHTML;
+                                    newData["region"] = tr.cells[1].innerHTML;
+                                    for (let i = 0; i < inputData.length; i++) {
+                                        sale.push(Number(inputData[i].value)); //输入值是字符串，转数字
+                                    }
+                                    newData["sale"] = sale;
+                                } else {
+                                    newData["product"] = tr.cells[1].innerHTML;
+                                    newData["region"] = tr.cells[0].innerHTML;
+                                    for (let i = 0; i < inputData.length; i++) {
+                                        sale.push(Number(inputData[i].value));
+                                    }
+                                    newData["sale"] = sale;
+                                }
+                                // console.log(newData);
+                                storageNewData(newData);
+                            }
+                            // 输入数据之后重新渲染表格
+                            renderTable(getData(sourceData));
+                        }
                     }
                     // 失去焦点，隐藏输入框和按钮
                     inputData.onblur = function (e) {
