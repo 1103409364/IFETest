@@ -16,7 +16,12 @@ var graph = {
             var data = [];
             target = e.target;
             var tr = target.parentElement; //当前hover元素的父元素
-            if (tr.cells) {
+            var tr2 = target.parentElement.parentElement; //加一种情况，父元素的父元素也可能是tr
+            console.log(tr2);
+            if (tr.cells || tr2.cells) {
+                if (tr2.cells) { //判tr2是不是表格的行
+                    tr = tr2;
+                }
                 for (let i = 0; i < sourceData.length; i++) {
                     if (sourceData[i].region == tr.cells[1].innerHTML && sourceData[i].product == tr.cells[0].innerHTML) {
                         data.push(sourceData[i]);
@@ -38,14 +43,13 @@ var graph = {
                         }
                     }
                 }
-                // console.log(target);
 
-                // if (HtmlUtil.isNumber(tr.cells[2].innerHTML)) { //当前hover的表格行不含数字就不画图
-                barWrapper.innerHTML = ""; //重新画图
-                lineWrapper.innerHTML = "";
-                drawMultiBarGraph(data);
-                drawMultiLineGraph(data);
-                // }
+                if (HtmlUtil.isNumber(tr.cells[2].textContent) || HtmlUtil.isNumber(tr2.cells[2].textContent)) { //当前hover的表格行不含数字就不画图
+                    barWrapper.innerHTML = ""; //重新画图
+                    lineWrapper.innerHTML = "";
+                    drawMultiBarGraph(data);
+                    drawMultiLineGraph(data);
+                }
             }
         }
     }

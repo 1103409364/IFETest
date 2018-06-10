@@ -39,7 +39,7 @@ function drawAxisBar(maxValue) {
         textY.setAttribute("x", 0);
         textY.setAttribute("y", y + 5);
         textY.setAttribute("style", "font-size:13;font-family:微软雅黑")
-        textY.innerHTML = valueY;
+        textY.innerHTML = Math.round(valueY); //四舍五入
         svgDom.appendChild(textY);
     }
 

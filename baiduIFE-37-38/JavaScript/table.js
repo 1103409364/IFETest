@@ -72,9 +72,9 @@ function renderTable(data) {
                     // 点击确定
                     inputConfirm.onclick = function (e) {
                         var target = e.target;
-                        // var temp = target.parentElement.innerHTML;
+                        // 暂存表格数据
                         var temp = target.parentElement.textContent;
-                        console.log(target.parentElement.textContent);
+                        // console.log(target.parentElement.textContent);
                         if (!HtmlUtil.isNumber(target.parentElement.children[2].value)) {
                             alert("请输入数字");
                             target.parentElement.children[2].value = temp;
@@ -108,6 +108,8 @@ function renderTable(data) {
                             // console.log(newData);
                             storageNewData(newData);
                         }
+                        // 更新数据之后重新渲染表格
+                        renderTable(getData(sourceData));
                     }
                     // 点击取消
                     inputCancel.onclick = function (e) {

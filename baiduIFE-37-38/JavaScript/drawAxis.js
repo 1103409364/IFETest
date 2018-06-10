@@ -30,7 +30,7 @@ function drawAxis(maxValue) {
             ctx.strokeStyle = "#000";
             ctx.stroke();
             ctx.font = "12px 微软雅黑";
-            ctx.fillText(valueY, 0, y + 5);
+            ctx.fillText(Math.round(valueY), 0, y + 5); //四舍五入
         }
         // x轴刻度
         ctx.restore();

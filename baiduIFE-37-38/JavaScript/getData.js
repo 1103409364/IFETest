@@ -19,7 +19,7 @@ function getCheckedItem(data) { //获取复选框被选中的个数
     return checkedArr;
 }
 
-//获取复选框选中的数据
+//获取复选框选中的数据，优先从本地存储获取数据
 function getData(sourceData) {
     var storage = window.localStorage;
     var newSourceData;
