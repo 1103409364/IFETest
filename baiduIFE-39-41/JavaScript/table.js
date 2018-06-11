@@ -34,8 +34,8 @@ function renderTable(data) {
                         textCont = document.createTextNode(data[i][x][j]);
                     img.setAttribute("src", "images/edit.png");
                     img.setAttribute("alt", "编辑");
-                    img.setAttribute("width", "10px");
-                    img.setAttribute("height", "10px");
+                    img.setAttribute("width", "15px");
+                    img.setAttribute("height", "15px");
                     inputConfirm.setAttribute("type", "button");
                     inputConfirm.setAttribute("value", "确定");
                     inputConfirm.setAttribute("class", "confirm");
