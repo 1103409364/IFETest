@@ -110,6 +110,7 @@ function renderTable(data) {
                         }
                         // 输入数据之后重新渲染表格
                         renderTable(getData(sourceData));
+                        tableDisplayOpt();
                     }
                     // 点击取消
                     inputCancel.onclick = function (e) {
@@ -167,6 +168,7 @@ function renderTable(data) {
                             }
                             // 输入数据之后重新渲染表格
                             renderTable(getData(sourceData));
+                            tableDisplayOpt();
                         }
                     }
                     // 失去焦点，隐藏输入框和按钮
