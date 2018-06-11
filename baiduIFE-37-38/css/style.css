@@ -1,7 +1,7 @@
 table,
 table tr th,
 table tr td {
-    border: 1px #8141c0 solid;
+    border: 2px #8a56be solid;
     color: #8a56be;
     border-collapse: collapse;
     text-align: center;
@@ -80,15 +80,10 @@ tr:hover {
 }
 
 td:hover {
-    background-color: #3390ff;
+    background: #5bc49f;
+    /*设置背景颜色在火狐下边框被背景遮挡，？??chrome下正常*/
     color: #fff;
     cursor: pointer;
-}
-
-/* 表头一行不变色 */
-
-tr:nth-of-type(1) {
-    background-color: #fff;
 }
 
 /* 合并单元格的单元格不变色 */
