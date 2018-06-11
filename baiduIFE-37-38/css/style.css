@@ -12,6 +12,9 @@ table tr td {
     font-size: 15px;
     width: 90px;
     height: 40px;
+    overflow: hidden;
+    /*越界隐藏，隐藏编辑图标*/
+    position: relative;
 }
 
 table td img {
@@ -24,6 +27,7 @@ table td img {
 table td:hover img {
     /*显示编辑图标*/
     right: 5px;
+    /* cursor:; */
 }
 
 .confirm,
@@ -35,24 +39,26 @@ table td:hover img {
     font-size: 12px;
     text-align: center;
     width: 30px;
-    height: 20px;
+    height: 19px;
     padding: 0;
+    display: none;
 }
 
 .confirm {
-    top: 0;
+    top: 1px;
 }
 
 .cancel {
-    bottom: 0;
+    bottom: 1px;
 }
 
 table .inputData {
-    width: 55px;
+    width: 54px;
     height: 36px;
     position: absolute;
     left: 2px;
     top: 2px;
+    display: none;
 }
 
 table tr th {
@@ -74,8 +80,9 @@ tr:hover {
 }
 
 td:hover {
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     color: #8a56be;
+    cursor: pointer;
 }
 
 /* 表头一行不变色 */

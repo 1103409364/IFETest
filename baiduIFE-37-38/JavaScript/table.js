@@ -39,21 +39,20 @@ function renderTable(data) {
                     inputConfirm.setAttribute("type", "button");
                     inputConfirm.setAttribute("value", "确定");
                     inputConfirm.setAttribute("class", "confirm");
-                    inputConfirm.setAttribute("style", "display:none");
+                    // inputConfirm.setAttribute("style", "display:none"); 改为css文件设置样式
                     inputCancel.setAttribute("type", "button");
                     inputCancel.setAttribute("value", "取消");
                     inputCancel.setAttribute("class", "cancel");
-                    inputCancel.setAttribute("style", "display:none");
+                    // inputCancel.setAttribute("style", "display:none");
                     inputData.setAttribute("type", "text");
                     inputData.setAttribute("value", data[i][x][j]);
                     inputData.setAttribute("class", "inputData");
-                    inputData.setAttribute("style", "display:none");
+                    // inputData.setAttribute("style", "display:none");
 
                     td.appendChild(inputConfirm);
                     td.appendChild(inputCancel);
                     td.appendChild(inputData); //输入框
                     td.appendChild(img);
-                    td.setAttribute("style", "overflow:hidden;position:relative;");
                     td.appendChild(textCont);
                     // inputData.setAttribute("value", data[i][x][j]);
 
