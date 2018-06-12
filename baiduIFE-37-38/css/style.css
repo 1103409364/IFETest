@@ -19,7 +19,7 @@ table tr td {
     overflow: hidden;
     /*越界隐藏，隐藏编辑图标*/
     position: relative;
-    /* 解决td在relative模式下，不显示边框的问题。 */
+    /* 解决td在relative模式下，火狐浏览器不显示边框的问题。 */
     background-clip: padding-box;
 }
 
@@ -91,7 +91,6 @@ tr:hover {
 
 td:hover {
     background: #5bc49f;
-    /*设置背景颜色在火狐下边框被背景遮挡，？??chrome下正常*/
     color: #fff;
     cursor: pointer;
     background-clip: padding-box;

@@ -1,3 +1,7 @@
+body {
+    font-family: "consolas", "微软雅黑", "monospace";
+}
+
 table,
 table tr th,
 table tr td {
@@ -11,10 +15,12 @@ table tr th,
 table tr td {
     font-size: 15px;
     width: 90px;
-    height: 40px;
+    height: 38px;
     overflow: hidden;
     /*越界隐藏，隐藏编辑图标*/
     position: relative;
+    /* 解决td在relative模式下，火狐浏览器不显示边框的问题。 */
+    background-clip: padding-box;
 }
 
 table td img {
@@ -24,11 +30,13 @@ table td img {
     right: -20px;
 }
 
+/*显示编辑图标*/
+
 table td:hover img {
-    /*显示编辑图标*/
     right: 5px;
-    /* cursor:; */
 }
+
+/* 输入框旁边的确认和取消按钮 */
 
 .confirm,
 .cancel {
@@ -39,7 +47,7 @@ table td:hover img {
     font-size: 12px;
     text-align: center;
     width: 30px;
-    height: 19px;
+    height: 18px;
     padding: 0;
     display: none;
 }
@@ -51,6 +59,8 @@ table td:hover img {
 .cancel {
     bottom: 1px;
 }
+
+/* 输入框 */
 
 table .inputData {
     width: 54px;
@@ -81,9 +91,9 @@ tr:hover {
 
 td:hover {
     background: #5bc49f;
-    /*设置背景颜色在火狐下边框被背景遮挡，？??chrome下正常*/
     color: #fff;
     cursor: pointer;
+    background-clip: padding-box;
 }
 
 /* 合并单元格的单元格不变色 */
@@ -129,6 +139,4 @@ td:hover {
     display: inline;
     border: #8a56be 2px solid;
     padding: 5px;
-    /* background-color: #8141c08e; */
-    ;
 }
