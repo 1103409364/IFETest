@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+</body>
+<script>
+    var cont = document.getElementById("cont"),
+        buttonA = document.getElementById("a"),
+        buttonB = document.getElementById("b"),
+        buttonC = document.getElementById("c");
+    buttonA.onclick = function () {
+        cont.innerHTML = this.innerHTML;
+        location.hash = "A";
+    }
+    buttonB.onclick = function () {
+        cont.innerHTML = this.innerHTML;
+        location.hash = "B";
+    }
+    buttonC.onclick = function () {
+        cont.innerHTML = this.innerHTML;
+        location.hash = "C";
+    }
+    if ("onhashchange" in window) {
+        console.log("该浏览器支持 hashchange 事件!");
+    }
+
+    function locationHashChanged() {
+        switch (location.hash) {
+            case "#A":
+                cont.innerHTML = buttonA.innerHTML;
+                break;
+            case "#B":
+                cont.innerHTML = buttonB.innerHTML;
+                break;
+            case "#C":
+                cont.innerHTML = buttonC.innerHTML;
+                break;
+            default:
+                // hash为空的时候cont为空
+                cont.innerHTML = "";
+        }
+    }
+    // 保存状态
+    locationHashChanged();
+    // 前进后退
+    window.onhashchange = locationHashChanged;
+
+</script>
+
+</html>
