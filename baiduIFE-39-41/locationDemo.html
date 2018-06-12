@@ -18,15 +18,15 @@
         buttonB = document.getElementById("b"),
         buttonC = document.getElementById("c");
     buttonA.onclick = function () {
-        cont.innerHTML = this.innerHTML;
+        // cont.innerHTML = this.innerHTML;
         location.hash = "A";
     }
     buttonB.onclick = function () {
-        cont.innerHTML = this.innerHTML;
+        // cont.innerHTML = this.innerHTML;
         location.hash = "B";
     }
     buttonC.onclick = function () {
-        cont.innerHTML = this.innerHTML;
+        // cont.innerHTML = this.innerHTML;
         location.hash = "C";
     }
     if ("onhashchange" in window) {
@@ -53,7 +53,6 @@
     locationHashChanged();
     // 前进后退
     window.onhashchange = locationHashChanged;
-
 </script>
 
 </html>
