@@ -114,7 +114,9 @@ td:hover {
 
 #checkbox-wrapper,
 #table-wrapper {
-    width: 1260px;
+    /* 与折线图柱状图对齐 */
+    padding-left: 15px;
+    width: 1270px;
     margin: 0 auto;
 }
 
