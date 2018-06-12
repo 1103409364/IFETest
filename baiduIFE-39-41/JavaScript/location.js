@@ -74,7 +74,7 @@ checkboxWrapper.addEventListener("click", function (e) {
 function getHash() {
     return location.hash.slice(1).split(",");
 }
-// hashArr数组是选中的项目， 将他们设为选中
+// 默认选中第一项
 function locationHashChanged() {
     if (location.hash == "") {
         location.hash = ["华东", "手机"];
@@ -88,7 +88,7 @@ function locationHashChanged() {
 
         if (checkboxGet[i].value != "on") {
             // console.log(checkboxGet[i].value);
-            // checkboxGet[i].checked = false; //先默认hash中不存在，再遍历hash，若存在设为true
+            checkboxGet[i].checked = false; //先默认hash中不存在，再遍历hasharr，若存在设为true
             for (let j = 0; j < hashArrDecode.length; j++) {
                 if (checkboxGet[i].value == hashArrDecode[j]) {
                     checkboxGet[i].checked = true;
