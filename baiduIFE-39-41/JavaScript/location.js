@@ -3,7 +3,7 @@
 // 分享或再次打开某个URL，需要从URL中读取到数据状态，并且进行页面呈现的还原
 // 需要记录的状态包括：产品的选择以及地域的选择
 // 选中项目的加入数组，未选中的移除
-var hashArr = ["华东", "手机"]; //给个默认值
+var hashArr = [];
 var regionItem = ["华东", "华南", "华北"];
 var productItem = ["手机", "智能音箱", "笔记本"]
 checkboxWrapper.addEventListener("click", function (e) {
@@ -76,29 +76,34 @@ function getHash() {
 }
 // 默认选中第一项
 function locationHashChanged() {
+    // 默认选中第一项
     if (location.hash == "") {
         location.hash = ["华东", "手机"];
     }
+    // hashArr网页载入时初始化
+    hashArr = decodeURI(getHash()).split(",");
+
     var checkboxGet = checkboxWrapper.getElementsByTagName("input");
-    // console.log(decodeURI(getHash())); 中文hash需要解码。解码之后是字符串，要转成数组
+    // console.log(decodeURI(getHash())); 中文hash取回时需要解码。解码之后是字符串，要转成数组
     var hashArrDecode = decodeURI(getHash()).split(",");
-    console.log(hashArrDecode);
+    // console.log(hashArrDecode);
 
     for (let i = 0; i < checkboxGet.length; i++) {
-
         if (checkboxGet[i].value != "on") {
             // console.log(checkboxGet[i].value);
             checkboxGet[i].checked = false; //先默认hash中不存在，再遍历hasharr，若存在设为true
             for (let j = 0; j < hashArrDecode.length; j++) {
                 if (checkboxGet[i].value == hashArrDecode[j]) {
                     checkboxGet[i].checked = true;
-                    console.log(checkboxGet[i]);
+
+                    // console.log(checkboxGet[i]);
                     break;
                 }
             }
         }
     }
-    // 需要重新渲染表格合并单元格?? 载入时渲染
+    // 差个全选状态全选复选框选中没写
+    // hash在 regionItem 和productItem中的数量等于3就选中全选按钮。
 }
 // 进来先执行一次渲染函数
 locationHashChanged();

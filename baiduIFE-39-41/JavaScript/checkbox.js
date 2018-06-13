@@ -22,9 +22,8 @@ var productCheckboxObj = [{
     value: "智能音箱",
     text: "智能音箱"
 }]
-
+//生成复选框
 creatCheckBox(regionWrapper, regionCheckboxObj);
-
 creatCheckBox(productWrapper, productCheckboxObj);
 
 function creatCheckBox(checkBoxWrapper, objData) {
