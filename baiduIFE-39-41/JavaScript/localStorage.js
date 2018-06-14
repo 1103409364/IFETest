@@ -9,21 +9,19 @@ function storageNewData(newData) {
 
             for (let i = 0; i < newSourceData.length; i++) { //判断是否存在相同的数据
                 if (newData["product"] == newSourceData[i]["product"] && newData["region"] == newSourceData[i]["region"]) {
-                    newSourceData[i]["sale"] = newData["sale"]; //发现重复，用新的数据进行替换
-                    // console.log("重复");
-                    // console.log(newSourceData);
-
-
-                } else {
-                    newSourceData.push(newData);
+                    newSourceData[i]["sale"] = newData["sale"]; //发现重复的项，用新的sale数据进行替换
+                    let d2 = JSON.stringify(newSourceData);
+                    storage.setItem("newSourceData", d2); //替换本地数据
+                    return true; //结束函数
                 }
-                let d2 = JSON.stringify(newSourceData); //将JSON对象转换成为JSON字符串
-                storage.setItem("newSourceData", d2);
             }
+            newSourceData.push(newData);
+            let d2 = JSON.stringify(newSourceData);
+            storage.setItem("newSourceData", d2);
         } else {
             let newSourceData = [];
             newSourceData.push(newData);
-            let d = JSON.stringify(newSourceData); //将JSON对象转换成为JSON字符串
+            let d = JSON.stringify(newSourceData);
             storage.setItem("newSourceData", d);
         }
     }
