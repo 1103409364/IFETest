@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>History API</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <div id="button-wrapper">
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+    </div>
+
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+    <script>
+        //记录两个状态
+        // abc点击了，把按钮文字显示在contABC中
+        // def点击了，把按钮文字显示在contDEF中
+        // 同样在页面刷新时，保留之前的渲染状态
+        // 页面URL copy再打开后，保留渲染状态
+        var contABC = document.getElementById("contABC"),
+            contDEF = document.getElementById("contDEF"),
+            buttonWrapper = document.getElementById("button-wrapper"),
+            buttonA = document.getElementById("a"),
+            buttonB = document.getElementById("b"),
+            buttonC = document.getElementById("c"),
+            buttonD = document.getElementById("d"),
+            buttonE = document.getElementById("e"),
+            buttonF = document.getElementById("f");
+        //按钮点击事件
+        buttonWrapper.onclick = function (e) {
+            var state = {
+                title: "page" + e.target.textContent,
+                button: e.target.textContent,
+                cont: e.target.textContent,
+            }
+            var x = state.cont,
+                abc = "ABC",
+                def = "DEF";
+            //判断点击的是按钮，不是空白
+            if (e.target.id != "button-wrapper") {
+
+                // ? 分隔实际的URL和参数 
+                if (getStatus().length < 2) {
+                    //判断点击的是abc还是def，同时hash也是abc或者def，如果是就替换，否则进行字符串拼接
+                    if (abc.indexOf(x) >= 0 && abc.indexOf(getStatus()) >= 0) {
+                        // location.search = x;
+                        history.pushState(state, "", "?" + x);
+                    } else if (def.indexOf(x) >= 0 && def.indexOf(getStatus()) >= 0) {
+                        history.pushState(state, "", "?" + x);
+                    } else {
+                        // location.search = x + getStatus();
+                        history.pushState(state, "", "?" + x + getStatus());
+                    }
+                } else {
+                    for (let i = 0; i < getStatus().length; i++) {
+                        if (abc.indexOf(x) >= 0) {
+                            // 如果是abc其中一个，进行替换
+                            if (abc.indexOf(getStatus()[i]) >= 0) {
+                                // location.search = getStatus().replace(getStatus()[i], x);
+                                history.pushState(state, "", "?" + getStatus().replace(getStatus()[i], x));
+                            }
+                        } else {
+                            if (def.indexOf(getStatus()[i]) >= 0)
+                                history.pushState(state, "", "?" + getStatus().replace(getStatus()[i], x));
+                        }
+                    }
+                }
+            }
+            statusChanged();
+        }
+
+        if ("pushState" in history) {
+            console.log("该浏览器支持 pushState方法!");
+        }
+
+        function getStatus() {
+            return location.search.slice(1);
+        }
+        // 状态渲染函数
+        function statusChanged() {
+            if ((getStatus().indexOf("A")) >= 0) {
+                contABC.innerHTML = buttonA.innerHTML;
+            }
+            if ((getStatus().indexOf("B")) >= 0) {
+                contABC.innerHTML = buttonB.innerHTML;
+            }
+            if ((getStatus().indexOf("C")) >= 0) {
+                contABC.innerHTML = buttonC.innerHTML;
+            }
+            if ((getStatus().indexOf("D")) >= 0) {
+                contDEF.innerHTML = buttonD.innerHTML;
+            }
+            if ((getStatus().indexOf("E")) >= 0) {
+                contDEF.innerHTML = buttonE.innerHTML;
+            }
+            if ((getStatus().indexOf("F")) >= 0) {
+                contDEF.innerHTML = buttonF.innerHTML;
+            }
+            if (getStatus() == "") {
+                contABC.innerHTML = "";
+                contDEF.innerHTML = "";
+            }
+        }
+        // 进来先执行一次渲染函数
+        statusChanged();
+        window.onpopstate = function () {
+            console.log(history.state);
+            statusChanged();
+        }
+
+    </script>
+    <!-- <script>
+        //记录一个状态
+        var contABC = document.getElementById("contABC"),
+            buttonWrapper = document.getElementById("button-wrapper"),
+            buttonA = document.getElementById("a"),
+            buttonB = document.getElementById("b"),
+            buttonC = document.getElementById("c");
+
+        buttonWrapper.onclick = function (e) {
+            if (e.target.id != "button-wrapper") {
+                contABC.textContent = e.target.textContent;
+                var state = {
+                    title: "page" + e.target.textContent,
+                    cont: e.target.textContent,
+                }
+                // ? 分隔实际的URL和参数 
+                history.pushState(state, "", "?" + e.target.textContent)
+            }
+        }
+
+        // 渲染函数
+        function statusChanged() {
+            var status = location.search.slice(1);
+            console.log(status);
+            switch (status) {
+                case "A":
+                    contABC.textContent = buttonA.textContent;
+                    break;
+                case "B":
+                    contABC.textContent = buttonB.textContent;
+                    break;
+                case "C":
+                    contABC.textContent = buttonC.textContent;
+                    break;
+            }
+        }
+        statusChanged();
+        window.onpopstate = function () {
+            console.log("haha");
+            statusChanged();
+        }
+    </script> -->
+
+</body>
+
+</html>

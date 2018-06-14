@@ -39,28 +39,34 @@
         var x = e.target.innerHTML,
             abc = "ABC",
             def = "DEF";
-        if (getHash().length < 2) {
-            if (abc.indexOf(x) >= 0 && abc.indexOf(getHash()) >= 0) {
-                location.hash = x;
-            } else if (def.indexOf(x) >= 0 && def.indexOf(getHash()) >= 0) {
-                location.hash = x;
-            } else {
-                location.hash = x + getHash();
-            }
-        } else {
-            for (let i = 0; i < getHash().length; i++) {
-                if (abc.indexOf(x) >= 0) {
-                    // console.log(abc.indexOf(getHash()[i]));
-                    // 如果是abc其中一个，进行替换
-                    if (abc.indexOf(getHash()[i]) >= 0) {
-                        location.hash = getHash().replace(getHash()[i], x);
-                    }
+        console.log(e.target.id);
+        //判断点击的是按钮，不是空白
+        if (e.target.id != "button-wrapper") {
+            if (getHash().length < 2) {
+                //判断点击的是abc还是def，同时hash也是abc或者def，如果是就替换，否则进行字符串拼接
+                if (abc.indexOf(x) >= 0 && abc.indexOf(getHash()) >= 0) {
+                    location.hash = x;
+                } else if (def.indexOf(x) >= 0 && def.indexOf(getHash()) >= 0) {
+                    location.hash = x;
                 } else {
-                    if (def.indexOf(getHash()[i]) >= 0)
-                        location.hash = getHash().replace(getHash()[i], x);
+                    location.hash = x + getHash();
+                }
+            } else {
+                for (let i = 0; i < getHash().length; i++) {
+                    if (abc.indexOf(x) >= 0) {
+                        // console.log(abc.indexOf(getHash()[i]));
+                        // 如果是abc其中一个，进行替换
+                        if (abc.indexOf(getHash()[i]) >= 0) {
+                            location.hash = getHash().replace(getHash()[i], x);
+                        }
+                    } else {
+                        if (def.indexOf(getHash()[i]) >= 0)
+                            location.hash = getHash().replace(getHash()[i], x);
+                    }
                 }
             }
         }
+
     }
 
     if ("onhashchange" in window) {
