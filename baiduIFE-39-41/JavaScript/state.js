@@ -14,6 +14,7 @@ function getStatus() {
     }
     return str;
 }
+
 function setStatus() {
     // 默认选中地区和商品的第一项
     if (location.search === "") {
@@ -32,6 +33,7 @@ function setStatus() {
         }
     }
 }
+
 //监听checkbox点击事件
 checkboxWrapper.addEventListener("click", function () {
     let str = getStatus();
@@ -47,16 +49,4 @@ window.onpopstate = function () {
     // 绘制统计图
     graph.drawGraph(getData(sourceData));
 }
-
-// function reDraw() {
-//     let query = location.href.split("?")[1];
-//     let str = getStatus();
-//     if (!query) {
-//         // 首先判断location.search是否存在，如果不存在则根据checkbox选中状态替换一条历史记录
-//         history.replaceState("state", null, "?" + str)
-//     } else {
-//         // 如果存在则根据location.search设置checkbox状态，并执行以下函数
-//         setStatus();
-//     }
-// }
 
