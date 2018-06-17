@@ -1,8 +1,8 @@
 class Restaurant {
-    constructor(cash, seats) {
-        this.cash = cash;
-        this.seats = seats;
-        this.staff = [];
+    constructor(obj) {
+        this.cash = obj.cash;
+        this.seats = obj.seats;
+        this.staff = obj.staff;
     }
     hire(newStaff) {
         this.staff.push(newStaff);
@@ -33,11 +33,11 @@ class Waiter extends Staff {
     constructor(id, name, age, salary) {
         super(id, name, age, salary)
     }
-    static work(work) {
-        if (Array.isArray(foods)) {
-            this.menu = foods;
+    work(task) {
+        if (Array.isArray(task)) {
+            console.log("the order is" + task)
         } else {
-            return menu;
+            console.log(task);
         }
     }
 }
@@ -47,9 +47,8 @@ class Cook extends Staff {
     constructor(id, name, age, salary) {
         super(id, name, age, salary);
     }
-    static work(menu) {
-        this.menu = menu;
-        return menu;
+    work(dishes) {
+        console.log("菜做好了")
     }
 }
 
@@ -58,11 +57,11 @@ class Customer {
     constructor(name) {
         this.name = name;
     }
-    eat(food) {
-        console.log("eat" + food);
+    eat() {
+        console.log("eat");
     }
-    order(food) {
-        return this.menu.push(food);
+    order(dishes) {
+        console(dishes);
     }
 }
 
@@ -75,10 +74,16 @@ class Dish {
     }
 }
 
-var ifeRestaurant = new Restaurant(1000000, 20);
+var ifeRestaurant = new Restaurant({
+    cash: 1000000,
+    seats: 20,
+    staff: []
+});
 var newCook = new Cook(002, "Tony", 32, 10000);
+var newCook1 = new Cook(003, "Tony", 32, 10000);
 ifeRestaurant.hire(newCook);
-console.log(ifeRestaurant);
+ifeRestaurant.hire(newCook1);
+console.log(ifeRestaurant.staff);
 
-// ifeRestaurant.fire(newCook);
-// console.log(ifeRestaurant.staff);
+ifeRestaurant.fire(newCook1);
+console.log(ifeRestaurant.staff);

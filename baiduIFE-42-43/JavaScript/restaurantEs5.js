@@ -1,7 +1,7 @@
-function Restaurant(cash, seats) {
-    this.cash = cash;
-    this.seats = seats;
-    this.staff = [];
+function Restaurant(obj) {
+    this.cash = obj.cash;
+    this.seats = obj.seats;
+    this.staff = obj.staff;
 }
 // 招聘职员
 Restaurant.prototype.hire = function (newStaff) {
@@ -31,11 +31,11 @@ function Waiter(id, name, age, salary) {
 }
 Waiter.prototype = new Staff();
 Waiter.prototype.constructor = Waiter;
-Waiter.work = function (work) {
-    if (Array.isArray(foods)) {
-        this.menu = foods;
+Waiter.work = function (task) {
+    if (Array.isArray(task)) {
+        console.log("the order is" + task)
     } else {
-        return menu;
+        console.log(task);
     }
 }
 //厨师类
@@ -44,9 +44,8 @@ function Cook(id, name, age, salary) {
 }
 Cook.prototype = new Staff(); //不传参
 Cook.prototype.constructor = Cook;
-Cook.work = function (menu) {
-    this.menu = menu;
-    return menu;
+Cook.work = function (dishes) {
+    console.log("菜做好了")
 }
 // 顾客类
 function Customer(name) {
@@ -56,7 +55,7 @@ Customer.prototype.eat = function (food) {
     console.log("eat" + food);
 }
 Customer.prototype.order = function (food) {
-    return this.menu.push(food);
+    return this.order.push(food);
 }
 //菜品类
 function Dish(name, cost, price) {
@@ -65,7 +64,11 @@ function Dish(name, cost, price) {
     this.price = price;
 }
 
-var ifeRestaurant = new Restaurant(100000, 20);
+var ifeRestaurant = new Restaurant({
+    cash: 1000000,
+    seats: 20,
+    staff: []
+});
 var newCook = new Cook(002, "Tony", 32, 10000);
 ifeRestaurant.hire(newCook);
 console.log(ifeRestaurant.staff);
