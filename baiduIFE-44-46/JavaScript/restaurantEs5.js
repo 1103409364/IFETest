@@ -84,10 +84,10 @@ Customer.prototype.eat = function (dishes) {
 Customer.prototype.come = function (res) {
     if (res.seats > 0) {
         res.seats--;
-        console.log("顾客来吃饭，先坐下点菜");
+        console.log(this.name + "来吃饭，先坐下点菜");
 
     } else {
-        console.log("顾客排队");
+        console.log(this.name + "排队");
     }
 }
 Customer.prototype.leave = function (res) {
@@ -120,19 +120,57 @@ var ifeRestaurant = new Restaurant({
     staff: []
 });
 
+function Queue(size) {
+    var list = [];
+    //向队列中添加数据
+    this.push = function (data) {
+        if (data == null) {
+            return false;
+        }
+        //如果传递了size参数就设置了队列的大小
+        if (size != null && !isNaN(size)) {
+            if (list.length == size) {
+                this.pop();
+            }
+        }
+        list.unshift(data);
+        return true;
+    }
+    //从队列中取出数据
+    this.pop = function () {
+        return list.pop();
+    }
+
+    //返回队列的大小
+    this.size = function () {
+        return list.length;
+    }
+
+    //返回队列的内容
+    this.quere = function () {
+        return list;
+    }
+}
+
+var queueCus = new Queue();
+for (let i = 0; i < 10; i++) {
+    let cus = new Customer("顾客" + i);
+    queueCus.push(cus);
+}
 var waiter = Waiter.getSingle(001, "Fan", 25, 5000);
 var cook = Cook.getSingle(002, "Q", 35, 8000);
 ifeRestaurant.hire(waiter);
 ifeRestaurant.hire(cook);
 // console.log(ifeRestaurant);
-var customer1 = new Customer("小明");
-customer1.come(ifeRestaurant);
-customer1.order(1);
-var dishesList = waiter.work(customer1["dishes"]);
-var dish = cook.work(dishesList);
-for (let i = 0; i < dish.length; i++) {
-    waiter.work(dish[i]);
+for (let i = 0; i < 10; i++) {
+    var customer1 = queueCus.pop();
+    customer1.come(ifeRestaurant);
+    customer1.order(1);
+    var dishesList = waiter.work(customer1["dishes"]);
+    var dish = cook.work(dishesList);
+    for (let i = 0; i < dish.length; i++) {
+        waiter.work(dish[i]);
+    }
+    customer1.eat(dish);
+    customer1.leave(ifeRestaurant);
 }
-customer1.eat(dish);
-customer1.leave(ifeRestaurant);
-    // customer1.eat(dishes);
