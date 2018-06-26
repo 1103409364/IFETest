@@ -32,11 +32,12 @@ function Waiter(id, name, age, salary) {
 Waiter.prototype = new Staff();
 Waiter.prototype.constructor = Waiter;
 
-Waiter.prototype.work = function (task) {
-    if (Array.isArray(task)) {
-        console.log("the order is" + task)
+Waiter.prototype.work = function (dishes) {
+    if (Array.isArray(dishes)) {
+        console.log("服务员告诉厨师顾客点的菜是：" + dishes)
+        return dishes;
     } else {
-        return task;
+        console.log("服务员上菜:" + dishes);
     }
 }
 //添加一个静态方法来实现单例：
@@ -55,9 +56,11 @@ function Cook(id, name, age, salary) {
 }
 Cook.prototype = new Staff(); //不传参
 Cook.prototype.constructor = Cook;
-Cook.prototype.work = function (orders) {
-    console.log(orders + "做好了")
-    return orders;
+Cook.prototype.work = function (dishes) {
+    for (let i = 0; i < dishes.length; i++) {
+        console.log("厨师:" + dishes[i] + "做好了");
+    }
+    return dishes;
 }
 Cook.getSingle = (function () {
     var cook = null;
@@ -71,22 +74,29 @@ Cook.getSingle = (function () {
 // 顾客类
 function Customer(name) {
     this.name = name;
+    this.dishes = [];
 }
 Customer.prototype.eat = function (dishes) {
-    console.log("顾客开始吃" + dishes);
-}
-Customer.prototype.seat = function (res) {
-    if (res.seats > 0) {
-        res.seats--;
-        console.log("顾客坐下");
-
-    } else {
-        console.log("排队");
+    for (let i = 0; i < dishes.length; i++) {
+        console.log("顾客吃:" + dishes[i]);
     }
 }
+Customer.prototype.come = function (res) {
+    if (res.seats > 0) {
+        res.seats--;
+        console.log("顾客来吃饭，先坐下点菜");
+
+    } else {
+        console.log("顾客排队");
+    }
+}
+Customer.prototype.leave = function (res) {
+    res.seats++;
+    console.log(this.name + "离开")
+}
 // 点菜
-Customer.prototype.order = function (menu) {
-    return menu.order(1);
+Customer.prototype.order = function (dishesId) {
+    this.dishes.push(menu.order(dishesId));
 }
 // 菜品类
 // function Dish(name, cost, price) {
@@ -99,7 +109,6 @@ var menu = {
         name: "烤鱼",
         price: 199,
     },
-
     order: function (id) {
         console.log("点菜");
         return this[id]["name"];
@@ -116,11 +125,14 @@ var cook = Cook.getSingle(002, "Q", 35, 8000);
 ifeRestaurant.hire(waiter);
 ifeRestaurant.hire(cook);
 // console.log(ifeRestaurant);
-var customer1 = new Customer;
-customer1.seat(ifeRestaurant);
-if (ifeRestaurant.seats == 0) {
-    console.log("有客人");
-    var orders = waiter.orderSer(customer1);
-    var dishes = cook.work(orders);
-    customer1.eat(dishes);
+var customer1 = new Customer("小明");
+customer1.come(ifeRestaurant);
+customer1.order(1);
+var dishesList = waiter.work(customer1["dishes"]);
+var dish = cook.work(dishesList);
+for (let i = 0; i < dish.length; i++) {
+    waiter.work(dish[i]);
 }
+customer1.eat(dish);
+customer1.leave(ifeRestaurant);
+    // customer1.eat(dishes);
