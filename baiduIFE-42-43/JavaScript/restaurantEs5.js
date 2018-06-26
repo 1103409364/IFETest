@@ -31,7 +31,7 @@ function Waiter(id, name, age, salary) {
 }
 Waiter.prototype = new Staff();
 Waiter.prototype.constructor = Waiter;
-Waiter.work = function (task) {
+Waiter.prototype.work = function (task) {
     if (Array.isArray(task)) {
         console.log("the order is" + task)
     } else {

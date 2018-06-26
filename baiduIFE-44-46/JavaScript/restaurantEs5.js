@@ -31,15 +31,13 @@ function Waiter(id, name, age, salary) {
 }
 Waiter.prototype = new Staff();
 Waiter.prototype.constructor = Waiter;
+
 Waiter.prototype.work = function (task) {
     if (Array.isArray(task)) {
         console.log("the order is" + task)
     } else {
-        console.log(task);
+        return task;
     }
-}
-waiter.prototype.getOrder = function (customer) {
-    return customer.order;
 }
 //添加一个静态方法来实现单例：
 Waiter.getSingle = (function () {
@@ -57,8 +55,9 @@ function Cook(id, name, age, salary) {
 }
 Cook.prototype = new Staff(); //不传参
 Cook.prototype.constructor = Cook;
-Cook.work = function (dishes) {
-    console.log("菜做好了")
+Cook.prototype.work = function (orders) {
+    console.log(orders + "做好了")
+    return orders;
 }
 Cook.getSingle = (function () {
     var cook = null;
@@ -74,29 +73,37 @@ function Customer(name) {
     this.name = name;
 }
 Customer.prototype.eat = function (dishes) {
-    console.log("eat" + dishes);
+    console.log("顾客开始吃" + dishes);
 }
 Customer.prototype.seat = function (res) {
     if (res.seats > 0) {
         res.seats--;
-        console.log("坐下");
+        console.log("顾客坐下");
 
     } else {
         console.log("排队");
     }
 }
 // 点菜
-Customer.prototype.order = function (menu, dish) {
-     return menu.push(dish);
+Customer.prototype.order = function (menu) {
+    return menu.order(1);
 }
-菜品类
-function Dish(name, cost, price) {
-    this.name = name;
-    this.cost = cost;
-    this.price = price;
-}
-function Menu(dish) {
-    this.menu = [];
+// 菜品类
+// function Dish(name, cost, price) {
+//     this.name = name;
+//     this.cost = cost;
+//     this.price = price;
+// }
+var menu = {
+    1: {
+        name: "烤鱼",
+        price: 199,
+    },
+
+    order: function (id) {
+        console.log("点菜");
+        return this[id]["name"];
+    }
 }
 var ifeRestaurant = new Restaurant({
     cash: 1000000,
@@ -109,5 +116,11 @@ var cook = Cook.getSingle(002, "Q", 35, 8000);
 ifeRestaurant.hire(waiter);
 ifeRestaurant.hire(cook);
 // console.log(ifeRestaurant);
-var customer = new Customer;
-customer.seat(ifeRestaurant);
+var customer1 = new Customer;
+customer1.seat(ifeRestaurant);
+if (ifeRestaurant.seats == 0) {
+    console.log("有客人");
+    var orders = waiter.orderSer(customer1);
+    var dishes = cook.work(orders);
+    customer1.eat(dishes);
+}
