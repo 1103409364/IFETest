@@ -119,7 +119,8 @@ var ifeRestaurant = new Restaurant({
     seats: 1,
     staff: []
 });
-
+//用数组实现一个队列：先进先出，插入在一端，删除在另一端。
+//就像排队一样，刚来的人入队（push）要排在队尾(rear)，每次出队(pop)的都是队首(front)的人
 function Queue(size) {
     var list = [];
     //向队列中添加数据
