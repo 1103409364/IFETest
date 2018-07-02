@@ -3,74 +3,82 @@ function Restaurant(obj) {
     this.seats = obj.seats;
     this.staff = obj.staff;
 }
-// 招聘职员
-Restaurant.prototype.hire = function (newStaff) {
-    this.staff.push(newStaff);
-}
-// 解雇职员
-Restaurant.prototype.fire = function (oldStaff) {
-    var index = this.staff.indexOf(oldStaff);
-    if (index >= 0) {
-        this.staff.splice(index, 1);
+Restaurant.prototype = {
+    // 招聘职员
+    hire: function (newStaff) {
+        this.staff.push(newStaff);
+    },
+
+    // 解雇职员
+    fire: function (oldStaff) {
+        var index = this.staff.indexOf(oldStaff);
+        if (index >= 0) {
+            this.staff.splice(index, 1);
+        }
     }
 }
 //职员类
-function Staff(id, name, age, salary) {
+function Staff(id, name, salary) {
     this.id = id;
     this.name = name;
-    this.age = age;
     this.salary = salary;
 }
-Staff.prototype.work = function () {
-    console.log("完成");
+Staff.prototype = {
+    finishWork: function () {
+        console.log("完成工作");
+    }
 }
 // 服务员类
 // 混合继承（构造+原型）
-function Waiter(id, name, age, salary) {
-    Staff.call(this, id, name, age, salary)
-}
-Waiter.prototype = new Staff();
-Waiter.prototype.constructor = Waiter;
-
-Waiter.prototype.work = function (dishes) {
-    if (Array.isArray(dishes)) {
-        console.log("服务员告诉厨师顾客点的菜是：" + dishes)
-        return dishes;
-    } else {
-        console.log("服务员上菜:" + dishes);
+var SingleWaiter = (function () {
+    var waiter;
+    function Waiter(id, name, salary) {
+        Staff.call(this, id, name, salary)
     }
-}
-//添加一个静态方法来实现单例：
-Waiter.getSingle = (function () {
-    var waiter = null;
-    return function (id, name, age, salary) {
-        if (!waiter) {
-            waiter = new Waiter(id, name, age, salary);
+    Waiter.prototype = {
+        finishWork: function (order) {
+            if (Array.isArray(order)) {
+
+            } else {
+
+            }
         }
-        return waiter;
+    }
+    return {
+        getSingle: function (id, name, salary) {
+            if (!waiter) {
+                waiter = new Waiter(id, name, salary);
+            }
+            return waiter;
+        }
+    };
+})();
+
+//厨师类
+var SingleCook = (function () {
+    var cook;
+    function Cook(id, name, salary) {
+        Staff.call(this, id, name, salary)
+    }
+    Cook.prototype = {
+        finishWork: function (order) {
+            for (let i = 0; i < dishes.length; i++) {
+                console.log("厨师:" + dishes[i] + "做好了");
+            }
+            return dishes;
+        }
+    }
+
+    return {
+        getSingle: function (id, name, salary) {
+            if (!cook) {
+                cook = new Cook(id, name, salary);
+            }
+            return cook;
+        }
     }
 })();
-//厨师类
-function Cook(id, name, age, salary) {
-    Staff.call(this, id, name, age, salary)
-}
-Cook.prototype = new Staff(); //不传参
-Cook.prototype.constructor = Cook;
-Cook.prototype.work = function (dishes) {
-    for (let i = 0; i < dishes.length; i++) {
-        console.log("厨师:" + dishes[i] + "做好了");
-    }
-    return dishes;
-}
-Cook.getSingle = (function () {
-    var cook = null;
-    return function (id, name, age, salary) {
-        if (!cook) {
-            cook = new Cook(id, name, age, salary);
-        }
-        return cook;
-    }
-})()
+
 // 顾客类
 function Customer(name) {
     this.name = name;
