@@ -4,6 +4,8 @@ function Restaurant(obj) {
     this.staff = obj.staff;
 }
 Restaurant.prototype = {
+    // 重设constructor属性
+    constructor: Restaurant,
     // 招聘职员
     hire: function (newStaff) {
         this.staff.push(newStaff);
