@@ -1,16 +1,20 @@
-.info span,
-.contact span {
+.info span, .contact span {
   font-weight: bold;
 }
-.info p,
-.contact p {
+
+.info p, .contact p {
   word-spacing: 2em;
 }
-.ability span,
-.education span,
-.project span {
+
+.ability span, .education span, .project span {
   font-weight: 700;
 }
+
 body {
   width: 1000px;
+}
+
+.resume {
+  padding: 20px;
+  box-shadow: 0 0 10px #535353;
 }

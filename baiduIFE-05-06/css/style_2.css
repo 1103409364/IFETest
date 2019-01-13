@@ -1,14 +1,12 @@
-.info span,
-.contact span {
+.info span, .contact span {
   font-weight: bold;
 }
-.info p,
-.contact p {
+
+.info p, .contact p {
   word-spacing: 2em;
 }
-.ability span,
-.education span,
-.project span {
+
+.ability span, .education span, .project span {
   font-weight: 700;
 }
 
@@ -23,13 +21,8 @@ header {
 }
 
 main {
-  box-sizing: border-box;
-  margin-left: 150px;
-  padding-left: 1.5em;
-  height: 800px;
-  vertical-align: bottom;
-  display:table-cell;
-  vertical-align:middle
+  float: left;
+  padding: 20px;
 }
 
 main p {
@@ -37,9 +30,14 @@ main p {
 }
 
 .clear-fix:after {
-  content:"."; 
-  display:block; 
-  height:0; 
-  visibility:hidden; 
-  clear:both; 
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.resume {
+  width: 1000px;
+  box-shadow: 0 0 10px #535353;
 }
