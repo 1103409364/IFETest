@@ -25,27 +25,31 @@
     font-style: normal;
 
 }
+
+
 * {
     box-sizing: border-box;
 }
 body {
     margin: 0;
-    background-color: rgb(242, 242, 242)
+    background-color: #fff;
 }
 .container {
     margin: 0 auto;
-    width: 1600px;
+    width: 1366px;
 }
+
 header {
     width: 100%;
     height: 990px;
     /* 文字距离上边209减去文字行高与实际文字大小的差值：209-(62-48)/2 */
     padding-top: 202px; 
     background: url("../images/header-background.png") no-repeat 0 0;
+    background-size:100% 100%;
 }
 header h1{
     margin: 0;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     font-family: "montserratextralight";
     font-size: 62px;
     font-weight: normal;
@@ -55,7 +59,7 @@ header h1{
 header p{
 
     margin-top: 75px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffffcc;
     font-family: "montserratextralight";
     font-size: 20px;
     line-height: 32px;
@@ -63,7 +67,7 @@ header p{
 }
 
 header form {
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     font-family: "montserratlight";
     /* 表单元素居中 */
     text-align: center;
@@ -73,7 +77,7 @@ header fieldset{
     padding-top: 56px;
     width: 970px;
     height: 250px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff33;
     border-radius: 2px;
 }
 header span:nth-of-type(1) {
@@ -87,16 +91,16 @@ header span:nth-of-type(2) {
     font-size: 12px;
     letter-spacing: 2px;
     word-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.3)
+    color: #ffffff4d
 }
 header input {
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     margin-top: 46px;
     margin-right: 30px;
     padding: 1.5em;
     width: 292px;
     height: 50px;
-    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    border: 0.5px solid #ffffff33;
     border-radius: 2px;
     background-color: transparent;
 }
@@ -122,7 +126,7 @@ header input[placeholder="Create you password"] {
     height: 710px;
     /* ps文字中线到顶端的长度减去半行高 1084.5-990-28/2 */
     padding-top: 80.5px;
-    background-color:rgb(255, 255, 255);
+    background-color:#ffffff;
 }
 .feature h6 {
     font-family: "montserratlight";
@@ -207,8 +211,9 @@ header input[placeholder="Create you password"] {
     height: 800px;
     padding-top: 172.5px;
     padding-bottom: 185px;
-    background: url("../images/calltoaction.png") no-repeat 0 0;
-    color: rgb(255, 255, 255);
+    background: url("../images/calltoaction.png") no-repeat;
+    background-size: 100% 100%;
+    color: #ffffff;
     position: relative;
 }
 .calltoaction .left {
@@ -225,7 +230,7 @@ header input[placeholder="Create you password"] {
     font-family: "montserratextralight";
     font-size: 18px;
     line-height: 28px;
-    color: rgba(255, 255, 255, 0.74);
+    color: #ffffffbd;
 }
 .calltoaction a {
     display: inline-block;
@@ -233,7 +238,7 @@ header input[placeholder="Create you password"] {
     font-size: 12px;
     width: 240px;
     height: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff33;
     border-radius: 2px;
     background-color: transparent;
     text-align: center;
@@ -247,19 +252,19 @@ header input[placeholder="Create you password"] {
 }
 .calltoaction a:nth-of-type(1) {
     color:rgb(2, 2, 2);
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     margin-right: 30px;
 }
 .calltoaction a:nth-of-type(2) {
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 .calltoaction .right {
     position: absolute;
     top: 104px;
     left: 955px;
-    width: 645px;
+    width: 411px;
     height: 600px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff33;
     border-right: 0;
     border-top-left-radius: 44px;
     border-bottom-left-radius: 44px;
@@ -267,13 +272,13 @@ header input[placeholder="Create you password"] {
 .calltoaction .camera {
     width: 10px;
     height: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff33;
     border-radius: 5px;
     margin-left: 32px;
     margin-top: 295px;
 }
 .calltoaction .screen {
-    width: 585px;
+    width: 351px;
     height: 542px;
     background: url("../images/Screen.png");
     position: absolute;
@@ -284,9 +289,14 @@ header input[placeholder="Create you password"] {
 .feature2 {
     width: 100%;
     height: 580px;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     padding-top: 93.5px;
     font-family: "montserratextralight";
+}
+
+.feature2 .para {
+    width: 910px;
+    margin: auto;
 }
 .feature2 h2 {
     display: block;
@@ -298,28 +308,29 @@ header input[placeholder="Create you password"] {
 }
 .feature2 p {
     display: inline-block;
-    margin: 85px 38px;
+    margin: 85px auto;
     text-align: center;
     line-height: 26px;
     vertical-align: top;
 }
-.feature2 p:nth-of-type(1) {
-    margin-left: 322px;
+.feature2 p:nth-of-type(2) {
+    margin: 85px 38px;
 }
 
 .feature3 {
     width: 100%;
     height: 1000px;
-    background-color: rgb(255, 255, 255);
-    border-top: 1px solid rgb(231, 231, 231);
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
 }
-
+.feature3 .wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
 .feature3 [src="images/photo1.png"] {
     height: 349px;
     width: 570px;
     float: left;
-    margin-left: 315px;
-    margin-top: 114px;
 }
 .feature3 h2 {
     font-family: "montserratlight";
@@ -333,7 +344,7 @@ header input[placeholder="Create you password"] {
 }
 .feature3 p:nth-of-type(1),
 .feature3 h2:nth-of-type(1) {
-    margin-left: 985px;
+    margin-left: 685px;
 }
 .feature3 h2:nth-of-type(1){
     margin-top: 191px;
@@ -342,7 +353,7 @@ header input[placeholder="Create you password"] {
     height: 349px;
     width: 570px;
     float: right;
-    margin-right: 310px;
+    /* margin-right: 310px; */
     margin-top: 80px;
     overflow: hidden;
 }
@@ -351,17 +362,17 @@ header input[placeholder="Create you password"] {
 }
 .feature3 h2:nth-of-type(2){
     margin-top: 153px;
-    margin-left: 315px;
+    margin-left: 215px;
 }
 .feature3 p:nth-of-type(2) {
-    margin-left: 315px;
+    margin-left: 215px;
 }
 
 .team {
     width:100%;
     height: 1084px;
-    background-color: rgb(255, 255, 255);
-    border-top: 1px solid rgb(231, 231, 231);
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
     font-family: "montserratextralight";
     text-align: center;
     padding-top: 88px;
@@ -394,7 +405,6 @@ header input[placeholder="Create you password"] {
     margin-bottom: 30px;
     flex: 1;
     flex-wrap: wrap;
-    /* background-color: rgb(20, 20, 20); */
     position: relative;
     border-radius: 2px;
 }
@@ -409,7 +419,7 @@ header input[placeholder="Create you password"] {
     font-family: "montserratlight";
     padding-top: 110px;
     position: absolute;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 /* 将div藏在上下左右边之外 */
 .left-to-right {
@@ -443,7 +453,7 @@ header input[placeholder="Create you password"] {
     top: 0;
     left: 0;
     transition: .3s;
-    background-color: rgba(31, 30, 30, 0.479);
+    background-color: #1f1e1e7a;
     cursor: pointer;
 }
 
@@ -456,15 +466,21 @@ header input[placeholder="Create you password"] {
 .contact {
     width: 100%;
     height: 700px;
-    background-color: rgb(255, 255, 255);
-    border-top: 1px solid rgb(231, 231, 231);
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
     padding-top: 70px;
-    padding-left: 315px;
+    /* padding-left: 315px; */
+}
+.contact .wrap {
+    width: 1080px;
+    margin: auto;
+    /* 消除空格 */
+    font-size: 0;
 }
 .contact form{
     width: 470px;
     height: 560px;
-    border: 1px solid rgb(231, 231, 231);
+    border: 1px solid #e7e7e7;
     border-radius: 10px;
     text-align: center;
     padding-top: 41px;
@@ -481,7 +497,7 @@ header input[placeholder="Create you password"] {
 .contact button {
     width: 292px;
     height: 50px;
-    border: 1px solid rgb(212, 211, 211);
+    border: 1px solid #d4d3d3;
     border-radius: 2px;
     margin-bottom: 30px;
     padding-left: 22px;
@@ -493,7 +509,7 @@ header input[placeholder="Create you password"] {
     font-family: "montserratlight";
     font-size: 14px;
     line-height: 26px;
-    border: 1px solid rgb(212, 211, 211);
+    border: 1px solid #d4d3d3;
     width: 292px;
     height: 144px;
     resize: none;
@@ -501,8 +517,8 @@ header input[placeholder="Create you password"] {
     padding-left: 22px;
 }
 .contact button {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    background-color: #000000;
+    color: #ffffff;
     padding-left: 0;
 }
 .contact form,
@@ -518,6 +534,7 @@ header input[placeholder="Create you password"] {
     vertical-align: top;
     padding-top: 77px;
 }
+
 .contacts h2 {
     font-size: 42px;
     line-height: 52px;
@@ -536,14 +553,13 @@ header input[placeholder="Create you password"] {
 }
 .contacts address p:nth-of-type(1) {
     margin-top: 60px;
-    /* margin-bottom: 0; */
 }
 .contacts address p:nth-of-type(2) {
     margin-top: 25.5px;
     margin-bottom: 25.5px;
 }
 .contacts img {
-    float: left;
+    /* float: left; */
     margin-top: 5px;
     margin-right: 20px;
 }
@@ -558,8 +574,13 @@ footer {
     background-color: rgb(20, 20, 20);
     color: rgb(255, 255, 255);
     font-family: "montserratlight";
-    padding-left: 215px;
+    /* padding-left: 215px; */
     padding-top: 74px;
+    font-size: 0;
+}
+footer .wrap {
+    width: 1250px;
+    margin: 0 auto;
 }
 footer ul {
     list-style-type: none;
@@ -583,12 +604,38 @@ footer h4 {
     letter-spacing: 1px;
     margin-top: 0;
 }
-footer div {
+footer .wrap div {
     width: 300px;
     display: inline-block;
-    overflow: visible;
+    /* overflow: visible; */
     vertical-align: top;
 }
 footer img {
     margin-right: 24px;
+}
+
+@media (min-width: 1600px) {
+    .container {
+        margin: 0 auto;
+        width: 100%;
+    }
+    .calltoaction .screen {
+        width: 585px;
+        height: 542px;
+        background: url("../images/Screen.png");
+        position: absolute;
+        right: 0;
+        top: 30px;
+    }
+    .calltoaction .right {
+        position: absolute;
+        top: 104px;
+        left: 955px;
+        width: 645px;
+        height: 600px;
+        border: 1px solid #ffffff33;
+        border-right: 0;
+        border-top-left-radius: 44px;
+        border-bottom-left-radius: 44px;
+    }
 }
