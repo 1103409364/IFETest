@@ -1,78 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>简历</title>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="keywords" content="前端，简历">
-  <meta name="description" content="精通HTML、css、 JavaScript 熟练使用vue jQuery">
-  <link rel="stylesheet" href="css/style_2.css" id="link">
-  <style>
-  </style>
+    <meta charset="UTF-8">
+    <title>我的简历</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="前端，简历">
+    <meta name="description" content="精通HTML、css、 JavaScript 熟练使用vue、react">
+    <link rel="stylesheet" href="css/style_1.css">
+    <style>
+    </style>
 </head>
+
 <body>
-  <div class="clear-fix">
-    <header>
-      <h1>简历</h1>
-    </header>
-    <main>
-      <section class="info">
-        <h2>基本信息</h2>
-        <button id="say-hello-btn">和我打招呼:吃了吗？</button>
-        <p><span>姓名：</span>张三 <span>性别：</span>男 <span>应聘职位：</span>Web前端工程师</p>
-      </section>
+    <div class="clear-fix resume">
+        <header>
+            <h1>简历</h1>
+        </header>
+        <main>
+            <section class="info">
+                <h2>基本信息</h2>
+                <p>
+                    <span>姓名：</span>张三
+                    <span>性别：</span>男
+                    <span>应聘职位：</span>Web前端工程师</p>
+            </section>
 
-      <section class="contact">
-        <h2>联系方式</h2>
-        <p><span>手机：</span>12345678901 <span>Email：</span><a href="mailto:222222@baidu.com">222222@baidu.com</a> <span>个人主页：</span><a href="#">Github</a></p>
-      </section>
+            <section class="contact">
+                <h2>联系方式</h2>
+                <p>
+                    <span>手机：</span>12345678901
+                    <span>Email：</span>
+                    <a href="mailto:222222@baidu.com">222222@baidu.com</a>
+                    <span>个人主页：</span>
+                    <a href="#">Github</a>
+                </p>
+            </section>
 
-      <section class="ability">
-        <h2>能力描述</h2>
-        <p><span>技术能力</span><br> 熟悉掌握HTML，CSS，JavaScript<br>
-        <span>综合能力</span><br> 良好的沟通，主动积极，努力勤奋</p>
-      </section>
+            <section class="ability">
+                <h2>能力描述</h2>
+                <p>
+                    <span>技术能力</span>
+                    <br> 熟悉掌握HTML，CSS，JavaScript
+                    <br>
+                    <span>综合能力</span>
+                    <br> 良好的沟通，主动积极，努力勤奋</p>
+            </section>
 
-      <section class="education">
-        <h2>教育经历</h2>
-        <p><span>本科</span><br> 百度前端技术学院小薇学院<br>
-        <span>硕士</span><br> 百度前端技术学院大斌学院</p>
-      </section>
+            <section class="education">
+                <h2>教育经历</h2>
+                <p>
+                    <span>本科</span>
+                    <br> 百度前端技术学院小薇学院
+                    <br>
+                    <span>硕士</span>
+                    <br> 百度前端技术学院大斌学院</p>
+            </section>
 
-      <section class="project">
-        <h2>项目经历</h2>
-        <p><span>小度小度</span><br> 作为前端工程师角色参与了ABC组件的开发<br>
-        <span>SAN Doc</span><br> 作为文档工程师参与了SAN Doc的编写</p>
-      </section>
-      <button id="hobby-btn">点击查看我的爱好</button>
-      <p id="hobby"></p>
-    </main>
-  </div>
-  
-  <nav class="nav" style="position: fixed; bottom: 0;">
-    <span>切换样式 -></span>
-    <button class="style-btn" data-file="css/style_1">style_1</button>
-    <button class="style-btn" data-file="css/style_2">style_2</button>
-    <button class="style-btn" data-file="css/style_3">style_3</button>
-  </nav>
- 
-  <script>
-    var cssLink = document.getElementById("link");
-    var btn = document.querySelectorAll('.style-btn');
-    var length = btn.length;
-    for (var i = 0; i < length; i += 1) {
-      btn[i].onclick = function() {
-        var fileName = this.dataset.file;
-        cssLink.href = './' + fileName + '.css';
-      }
-    }
-    document.getElementById("hobby-btn").onclick = function() {
-      document.getElementById("hobby").innerHTML = "吃饭 碎觉 打豆豆";
-    }
-    document.getElementById("say-hello-btn").onclick = function() {
-      alert("吃过了");
-    }
-  </script>
+            <section class="project">
+                <h2>项目经历</h2>
+                <p>
+                    <span>小度小度</span>
+                    <br> 作为前端工程师角色参与了ABC组件的开发
+                    <br>
+                    <span>SAN Doc</span>
+                    <br> 作为文档工程师参与了SAN Doc的编写</p>
+            </section>
+            <!-- <button id="hobby-btn">我的爱好</button>
+            <button id="greeting-btn">和我打招呼:吃了吗？</button> -->
+
+        </main>
+    </div>
+
+    <nav class="nav" style="position: fixed; bottom: 0; right: 50%;">
+        <span>切换样式 -></span>
+        <button class="style-btn style1">style_1</button>
+        <button class="style-btn style2">style_2</button>
+        <button class="style-btn style3">style_3</button>
+    </nav>
+
+    <script>
+        var indexOfbtn = function (elem) {
+            var navChilds = document.querySelector(".nav").children;
+            for (var i = 0; i < navChilds.length; i++) {
+                if (navChilds[i] === elem) {
+                    return i;
+                }
+            }
+        }
+
+        var switchCss = (e) => {
+            var target = e.target;
+            var cssLink = document.getElementsByTagName("link")[0];
+            var index = indexOfbtn(target);
+
+            if (target.classList.contains(`style${index}`)) {
+                cssLink.href = `css/style_${index}.css`;
+            }
+        }
+
+        var greetings = function () {
+            alert("吃过了！！");
+        }
+
+        var myhobby = function () {
+            alert("吃饭、碎觉、打豆豆");
+        }
+
+        var addEventSwitchCss = function () {
+            var nav = document.querySelector(".nav");
+            nav.addEventListener("click", switchCss)
+        }
+
+        var addEventGreetings = function () {
+            var hobbyBtn = document.getElementById("greeting-btn");
+            hobbyBtn.addEventListener("click", greetings)
+        }
+
+        var addEventHobby = function () {
+            var hobbyBtn = document.getElementById("hobby-btn");
+            hobbyBtn.addEventListener("click", myhobby)
+        }
+
+        var addEvent = function () {
+            addEventSwitchCss();
+            addEventGreetings();
+            addEventHobby();
+        }
+
+        var __main = function () {
+            addEvent();
+        }
+
+        __main();
+    </script>
 </body>
+
 </html>
