@@ -16,55 +16,68 @@
     <p id="result">运算结果</p>
 
     <script>
-        var firstNumber = document.getElementById("first-number");
-        var secondNumber = document.getElementById("second-number");
-        var result = document.getElementById("result");
-        var add = document.getElementById("add-btn");
-        var minus = document.getElementById("minus-btn");
-        var times = document.getElementById("times-btn");
-        var divide = document.getElementById("divide-btn");
 
-        add.onclick = function() {
-            // 文本框获取的是文本，进行类型转换
-            var num1 = Number(firstNumber.value);
-            var num2 = Number(secondNumber.value);
-            // iNaN判断是不是数字，输入框type="number"已经做了限制，可以不判断？
-            if (isNaN(num1) || isNaN(num2)) {
-                console.log("NaN");
-            } else {
-                result.innerHTML = "运算结果" + (num1 + num2);
+        var addEvent = function () {
+            var firstNumber = document.getElementById("first-number");
+            var secondNumber = document.getElementById("second-number");
+            var result = document.getElementById("result");
+            var add = document.getElementById("add-btn");
+            var minus = document.getElementById("minus-btn");
+            var times = document.getElementById("times-btn");
+            var divide = document.getElementById("divide-btn");
+
+            firstNumber.onclick = function () {
+                firstNumber.select();
+            }
+
+            secondNumber.onclick = function () {
+                secondNumber.select();
+            }
+            add.onclick = function () {
+                // 文本框获取的是文本，进行类型转换
+                var num1 = Number(firstNumber.value);
+                var num2 = Number(secondNumber.value);
+                // iNaN判断是不是数字，输入框type="number"已经做了限制，可以不判断？
+                if (isNaN(num1) || isNaN(num2)) {
+                    console.log("NaN");
+                } else {
+                    result.innerHTML = "运算结果" + (num1 + num2);
+                }
+            }
+            minus.onclick = function () {
+                var num1 = Number(firstNumber.value);
+                var num2 = Number(secondNumber.value);
+                if (isNaN(num1) || isNaN(num2)) {
+                    console.log("NaN");
+                } else {
+                    result.innerHTML = "运算结果" + (num1 - num2);
+                }
+            }
+            times.onclick = function () {
+                var num1 = Number(firstNumber.value);
+                var num2 = Number(secondNumber.value);
+                if (isNaN(num1) || isNaN(num2)) {
+                    console.log("NaN");
+                } else {
+                    result.innerHTML = "运算结果" + (num1 * num2);
+                }
+            }
+            divide.onclick = function () {
+                var num1 = Number(firstNumber.value);
+                var num2 = Number(secondNumber.value);
+                if (isNaN(num1) || isNaN(num2)) {
+                    console.log("NaN");
+                } else if (num2 == 0) {
+                    console.log("除数不能为0")
+                } else {
+                    result.innerHTML = "运算结果" + (num1 / num2);
+                }
             }
         }
-        minus.onclick = function() {
-            var num1 = Number(firstNumber.value);
-            var num2 = Number(secondNumber.value);
-            if (isNaN(num1) || isNaN(num2)) {
-                console.log("NaN");
-            } else {
-                result.innerHTML = "运算结果" + (num1 - num2);
-            }
-        }
-        times.onclick = function() {
-            var num1 = Number(firstNumber.value);
-            var num2 = Number(secondNumber.value);
-            if (isNaN(num1) || isNaN(num2)) {
-                console.log("NaN");
-            } else {
-                result.innerHTML = "运算结果" + (num1 * num2);
-            }
-        }
-        divide.onclick = function() {
-            var num1 = Number(firstNumber.value);
-            var num2 = Number(secondNumber.value);
-            if (isNaN(num1) || isNaN(num2)) {
-                console.log("NaN");
-            } else if (num2 == 0) {
-                console.log("除数不能为0")
-            } else {
-                result.innerHTML = "运算结果" + (num1 / num2);
-            }
-        }
-        
+
+        addEvent();
+
     </script>
 </body>
+
 </html>
