@@ -5,7 +5,9 @@
 
 不同在于解决”中间栏div内容不被遮挡“问题的思路不一样：
 圣杯布局：为了中间div内容不被遮挡，将中间div设置了左右padding-left和padding-right后，将左右两个div用相对布局position: relative并分别配合right和left属性，以便左右两栏div移动后不遮挡中间div。<br>
-
+圣杯有问题<br>
+当然，正常情况下是没有问题的，但是特殊情况下就会暴露此方案的弊端，如果将浏览器无限变窄，当 main 部分的宽小于 left 部分时就会发生布局混乱。<br>
+于是，淘宝对针对「圣杯」的缺点做了优化，并提出「双飞翼」布局。<br>
 双飞翼布局：为了中间div内容不被遮挡，直接在中间div内部创建子div用于放置内容，在该子div里用margin-left和margin-right为左右两栏div留出位置。
 多了1个div，少用大致4个css属性（圣杯布局中间divpadding-left和padding-right这2个属性，加上左右两个div用相对布局position: relative及对应的right和left共4个属性，一共6个；而双飞翼布局子div里用margin-left和margin-right共2个属性，6-2=4），比圣杯布局思路更直接和简洁一点。<br>
 
