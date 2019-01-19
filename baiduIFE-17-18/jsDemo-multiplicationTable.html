@@ -6,73 +6,182 @@
     <title>IFE ECMAScript</title>
     <style>
         table td {
-            /* border: 1px solid black; */
-            width: 80px;
-            height: 30px;
-            text-align: center;
-            vertical-align: middle;
-            color: rgb(255, 255, 255);
-            background-color: rgb(0, 0, 0);
-        }
-
-        table caption {
-            color: rgb(0, 0, 0);
-            font-size: 20px;
-        }
-    </style>
+                /* border: 1px solid black; */
+                width: 80px;
+                height: 30px;
+                text-align: center;
+                vertical-align: middle;
+                color: #e9e9e9;
+                background-color: #413e3e;
+            }
+    
+            table caption {
+                color: rgb(0, 0, 0);
+                font-size: 20px;
+            }
+        </style>
 </head>
 
 <body>
-    <button id="btn">点我变绿</button>
-    <table>
-        <caption>九九乘法表</caption>
-        <tbody id="table99">
-        </tbody>
-    </table>
+    <div class="task1">
+        <h3>练习1： 十进制数字转化为二进制</h3>
+        <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+        <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+        <button id="trans-btn">转化为二进制</button>
+        <p id="result">运算结果</p>
+    </div>
+    <hr>
+    <div class="task2">
+        <h3>练习2: 3的小游戏，练习使用循环和条件语句，实现如下需求：</h3>
+        <ul>
+            <li>从1到100，以此在console输出各数字，但是，当数字为3的倍数或者含有3的时候，输出“PA”</li>
+            <li>比如：1,2,PA,4,5,PA,……,11,PA,PA,14,PA……</li>
+        </ul>
+        <p>结果再控制台中查看</p>
+    </div>
+    <hr>
+    <div class="task3">
+        <h3>练习3: 使用循环实现一个九九乘法表</h3>
+        <table>
+            <caption>九九乘法表</caption>
+            <tbody id="table99">
+            </tbody>
+        </table>
+        <br>
+        <button id="btn">点我变绿</button>
 
+    </div>
     <script>
-        var table = document.getElementById("table99");
-        for (var j = 1; j <= 9; j++) {
-            var tr = document.createElement("tr");
-            for (var i = 1; i <= 9; i++) {
-                // 如果前面一个数比后面一个数大，跳过
-                if (i > j) {
-                    continue;
+        var dec2bin = function (decNumber) {
+            var result = document.getElementById("result");
+            var decNumber = document.getElementById("dec-number").value;
+            var binBit = document.getElementById("bin-bit");
+            var numArr = new Array();
+            var binNum = " ";
+            // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+            if (decNumber >= 0 && (Math.floor(decNumber) == decNumber)) {
+                do {
+                    numArr.unshift(decNumber % 2);
+                    // 向下取整
+                    decNumber = Math.floor(decNumber / 2);
+                } while (decNumber > 0);
+                // 判断位数是否太小，通过相减计算不用数值转换
+                if ((binBit.value - numArr.length) >= 0) {
+                    for (var m = 1; m <= binBit.value - numArr.length; i++) {
+                        // 位数不足添加0
+                        numArr.unshift(0);
+                    }
+                } else {
+                    console.log("error:输入的二进制位数太小了")
                 }
-                var td = document.createElement("td");
-                var textNode = document.createTextNode(i + "*" + j + "=" + i * j);
-                td.appendChild(textNode);
-                tr.appendChild(td);
-                table.appendChild(tr);
-                console.log(i + "*" + j + "=" + i * j);
+
+                for (var i = 0; i < numArr.length; i++) {
+                    binNum += numArr[i];
+                }
+                return binNum;
+                // return numArr.toString();
+            } else {
+                return "error:请输入一个正整数";
             }
         }
+        // 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+        var addEvent = function () {
+            var transBtn = document.getElementById("trans-btn");
+            var decNumber = document.getElementById("dec-number").value;
+
+            transBtn.onclick = function () {
+                result.innerHTML = "运算结果 " + dec2bin(decNumber);
+            }
+        }
+
+        var task1 = function () {
+            addEvent();
+        }
+
+        var task2 = function () {
+            console.log("3的小游戏");
+            for (var i = 1; i <= 100; i++) {
+                console.log(i);
+                // 判断是否是3的倍数或者含有3
+                if (Math.floor(i / 3) == i / 3 || i.toString().indexOf(3) > 0) {
+                    console.log("PA");
+                }
+            }
+        }
+        // 画乘法表
+        var drawTable = function () {
+            var table = document.getElementById("table99");
+            var tr = "";
+
+            for (var j = 1; j <= 9; j++) {
+                // var tr = document.createElement("tr");
+                var td = "";
+                for (var i = 1; i <= 9; i++) {
+                    // 如果前面一个数比后面一个数大，跳过
+                    if (i > j) {
+                        continue;
+                    }
+                    // var td = document.createElement("td");
+                    // var textNode = document.createTextNode(i + "*" + j + "=" + i * j);
+                    // td.appendChild(textNode);
+                    // tr.appendChild(td);
+                    // table.appendChild(tr);
+                    // table.appendChild(tr);
+
+                    // 尝试改用模板字符串，减少DOM操作
+                    td += `<td>${i} * ${j} = ${i * j}</td>`;
+                }
+                tr += `<tr>${td}</tr>`
+
+            }
+            table.innerHTML = tr;
+        }
+
         // 打招呼
-        var isDate = new Date();
-        var hoursNow = isDate.getHours();
-        if (hoursNow < 7) {
-            alert("Morning!you get up so early.");
-        } else if (hoursNow < 11) {
-            alert("noontime");
-        } else if (hoursNow < 18) {
-            alert("下午好;)");
-        } else {
-            alert("晚上一起来玩贪玩蓝月")
-        }
-        // 变绿
-        var tds = document.querySelectorAll("td"); //返回一个nodelist
-        var btn = document.getElementById("btn");
-        var caption = document.querySelector("caption");
-        btn.addEventListener("click", function () {
-            // 遍历td
-            for (var i = 0; i < tds.length; i++) {
-                tds[i].style.backgroundColor = "rgb(19, 143, 50)";
+        var sayHi = function () {
+            var isDate = new Date();
+            var hoursNow = isDate.getHours();
+            if (hoursNow < 7) {
+                alert("Morning!you get up so early.");
+            } else if (hoursNow < 11) {
+                alert("noontime");
+            } else if (hoursNow < 18) {
+                alert("下午好;)");
+            } else {
+                alert("晚上一起来玩贪玩蓝月")
             }
-            caption.style.color = "rgb(19, 143, 50)";
-            btn.style.backgroundColor = "rgb(19, 143, 50)";
-            // document.body.style.backgroundColor = "blue";
-            alert("FBI Warning: 乘法表要绿了;)");
-        })
+        }
+
+        // 变绿
+        var changeColor = function () {
+            var tds = document.querySelectorAll("td"); //返回一个nodelist
+            var btn = document.getElementById("btn");
+            var caption = document.querySelector("caption");
+            btn.addEventListener("click", function () {
+                // 遍历td
+                for (var i = 0; i < tds.length; i++) {
+                    tds[i].style.backgroundColor = "rgb(19, 143, 50)";
+                }
+                caption.style.color = "rgb(19, 143, 50)";
+                btn.style.backgroundColor = "rgb(19, 143, 50)";
+                // document.body.style.backgroundColor = "blue";
+                alert("FBI Warning: 乘法表要绿了;)");
+            })
+        }
+        var task3 = function () {
+            drawTable();
+            sayHi();
+            changeColor();
+        }
+
+
+
+        var __main = function () {
+            task1();
+            task2();
+            task3();
+        }
+        __main();
     </script>
 </body>
 
