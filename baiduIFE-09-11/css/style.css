@@ -251,7 +251,7 @@ header input[placeholder="Create you password"] {
     margin-top: 50px;
 }
 .calltoaction a:nth-of-type(1) {
-    color:rgb(2, 2, 2);
+    color:#020202;
     background-color: #ffffff;
     margin-right: 30px;
 }
@@ -528,7 +528,6 @@ header input[placeholder="Create you password"] {
 .contacts {
     width: 470px;
     height: 560px;
-    /* border: 1px solid rgb(231, 231, 231); */
     font-family: "montserratextralight";
     margin-left: 132px;
     vertical-align: top;
@@ -565,18 +564,18 @@ header input[placeholder="Create you password"] {
 }
 .contacts a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #000000;
 }
 
 footer {
     width: 100%;
     height: 400px;
-    background-color: rgb(20, 20, 20);
-    color: rgb(255, 255, 255);
+    background-color: #141414;
+    color: #ffffff;
     font-family: "montserratlight";
     /* padding-left: 215px; */
     padding-top: 74px;
-    font-size: 0;
+    /* font-size: 0; */
 }
 footer .wrap {
     width: 1250px;
@@ -587,15 +586,17 @@ footer ul {
     padding-left: 0;
 }
 footer ul a {
-    color: rgb(83, 83, 83);
+    color: #fff;
     text-decoration: none;
     font-size: 16px;
     line-height: 46px;
+    opacity: 0.5;
 }
 footer .p4 p{
-    color: rgb(83, 83, 83);
+    color: #fff;
     font-size: 18px;
     line-height: 28px;
+    opacity: 0.5;
 }
 footer h4 {
     font-size: 14px;
@@ -610,7 +611,13 @@ footer .wrap div {
     /* overflow: visible; */
     vertical-align: top;
 }
-footer img {
+/* footer img {
+    margin-right: 24px;
+} */
+
+footer .p4 .fa {
+    color: #fff;
+    font-size: 20px;
     margin-right: 24px;
 }
 
