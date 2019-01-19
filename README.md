@@ -7,6 +7,8 @@
 <br>
 [baiduIFE-12-15: 复杂页面实现](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-12-15/)
 <br>
-[   baiduIFE-16: 复杂页面实现](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-16/jsDemo.html)
+[baiduIFE----16: 开始感受JS的乐趣](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-16/jsDemo.html)
+<br>
+[baiduIFE-17-18: “如果”可以“重来”](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-17-18/jsDemo-multiplicationTable.html)
 <br>
 [baiduIFE-31-41: MIS系统](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-37-38/MIS_v2.3.html)
