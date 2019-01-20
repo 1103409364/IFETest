@@ -5,12 +5,38 @@
     <meta charset="UTF-8">
     <title>events</title>
     <style>
+        /* task2 */
         .show {
             display: inline-block;
         }
 
         .hidden {
             display: none;
+        }
+        /* task3 */
+        .palette {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .palette li {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            cursor: pointer;
+            display: inline-block;
+        }
+        /* task4 */
+        #fade-obj {
+            width:300px;
+            height:300px;
+            background:#ff0303;
+        }
+        /* tack5 */
+        .erik {
+            background: url(images/erik.jpg) no-repeat 0 0;
+            width: 480px;
+            height: 480px;
         }
     </style>
 </head>
@@ -54,6 +80,52 @@
             <option>百度</option>
             <option>爱奇艺</option>
         </select>
+    </div>
+    <hr>
+    <div>
+        <h3>练习3：实现如下功能：</h3>
+        <ul>
+            <li>点击某一个 Li 标签时，将 Li 的背景色显示在 P 标签内，并将 P 标签中的文字颜色设置成 Li 的背景色</li>
+        </ul>
+
+        <ul class="palette">
+            <li style="background-color:crimson"></li>
+            <li style="background-color:bisque"></li>
+            <li style="background-color:blueviolet"></li>
+            <li style="background-color:coral"></li>
+            <li style="background-color:chartreuse"></li>
+            <li style="background-color:darkolivegreen"></li>
+            <li style="background-color:cyan"></li>
+            <li style="background-color:#194738"></li>
+        </ul>
+
+        <p class="color-picker"></p>
+    </div>
+    <hr>
+    <div>
+        <h3>练习4：使用 setTimeout 和 setInterval 实现以下功能：</h3>
+        <ul>
+            <li>点击按钮时，开始改变 fade-obj 的透明度，开始一个淡出（逐渐消失）动画，直到透明度为0</li>
+            <li>在动画过程中，按钮的状态变为不可点击</li>
+            <li>在动画结束后，按钮状态恢复，且文字变成“淡入”</li>
+            <li>在 按钮显示 淡入 的状态时，点击按钮，开始一个“淡入”（逐渐出现）的动画，和上面类似按钮不可点，直到透明度完全不透明</li>
+            <li>淡入动画结束后，按钮文字变为“淡出”</li>
+            <li>暂时不要使用 CSS animation</li>
+        </ul>
+
+        <button id="fade-btn">淡出</button>
+        <div id="fade-obj"></div>
+
+    </div>
+    <hr>
+    <div>
+        <h3>练习5： 学习来实现一个帧动画：</h3>
+        <ul>
+            <li>基于一个我们提供的图片，实现 IFE2016中Erik笑容的动画</li>
+            <li>图片地址：http://ife.baidu.com/2016/static/img/erik_ce204002.jpg</li>
+            <li>注意，依然不要使用 CSS animation，因为我们这里要学习的是使用 JavaScript 来操作 CSS，而不是为了完成这个任务。</li>
+        </ul>
+        <div class="erik"></div>
     </div>
 
     <script>
@@ -115,10 +187,101 @@
             // }
         }
 
+        var addEventTask3 = function () {
+            // var list = document.querySelectorAll("li");
+            // for (var i = 0, len = list.length; i < len; i++) {
+            //     list[i].onclick = function(e) {
+            //         var t = e.target; //e对象事件，不能用list[i],循环完成之后才点击此时i为最后一个
+            //         var c = t.style.backgroundColor;
+            //         var p = document.getElementsByClassName("color-picker")[0]
+            //         p.innerHTML = c;
+            //         p.style.color = c;
+
+            //     }
+            // }
+            // 用事件代理重构
+            var ul = document.getElementsByClassName("palette")[0];
+            ul.onclick = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement; //ie下支持e.srcElement，其他现代浏览器支持e.target，||哪个存在返回哪个
+                var c = t.style.backgroundColor;
+                var p = document.getElementsByClassName("color-picker")[0];
+                p.innerHTML = c;
+                p.style.color = c;
+            }
+        }
+
+        // 淡出
+        var fadeOut = function () {
+            var fadeObj = document.getElementById("fade-obj");
+            var fadeBtn = document.getElementById("fade-btn");
+
+            var opacity = fadeObj.style.opacity * 1000;
+            var speed = -1;
+            opacity += speed;
+            fadeObj.style.opacity = opacity / 1000; //改变opacity的值
+            if (opacity == 0) {
+                fadeBtn.innerHTML = "淡入";
+                fadeBtn.disabled = false;
+                clearInterval(fadeOutId);
+            }
+        }
+        // 淡入
+        var fadeIn = function () {
+            var fadeObj = document.getElementById("fade-obj");
+            var fadeBtn = document.getElementById("fade-btn");
+
+            var opacity = fadeObj.style.opacity * 1000;
+            var speed = 1;
+            opacity += speed;
+            fadeObj.style.opacity = opacity / 1000;
+            if (opacity == 1000) {
+                fadeBtn.innerHTML = "淡出";
+                fadeBtn.disabled = false;
+                clearInterval(fadeInId);
+            }
+        }
+
+        var addEventTask4 = function () {
+            var fadeObj = document.getElementById("fade-obj");
+            var fadeBtn = document.getElementById("fade-btn");
+            // 先通过style设置opacity为1，不设置的话无法读取默认opacity
+            fadeObj.style.opacity = 1;
+
+            fadeBtn.addEventListener("click", function () {
+                if (fadeBtn.innerHTML == "淡出") {
+                    fadeBtn.disabled = true; //停用按钮
+                    fadeOutId = setInterval(fadeOut, 1);
+                } else if (fadeBtn.innerHTML == "淡入") {
+                    fadeBtn.disabled = true;
+                    fadeInId = setInterval(fadeIn, 1);
+                }
+            })
+        }
+
+        // 思路是将背景图片快速上移下移，来实现动画效果
+        var erikAnimation = function () {
+            var erik = document.getElementsByClassName("erik")[0];
+            // log(erik);
+            var step = -480, y = 0, flag = 0;
+
+            function move() {
+                y += step;
+                // 判断什么时候改变移动方向
+                if (y == -7680 || y == 0) {
+                    step = -step;
+                }
+                erik.style.backgroundPositionY = y + "px";
+            }
+            Id = setInterval(move, 100);
+        }
 
         var __main = function () {
             addEventTask1();
             addEventTask2();
+            addEventTask3();
+            addEventTask4();
+            erikAnimation();
         }
 
         __main();
