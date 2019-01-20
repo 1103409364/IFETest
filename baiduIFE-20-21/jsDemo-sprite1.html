@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现一个帧动画</title>
+    <style>
+        .erik {
+            background: url(images/erik.jpg) no-repeat 0 0;
+            width: 480px;
+            height: 480px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="erik"></div>
+    <script>
+        var erik = document.getElementsByClassName("erik")[0];
+        console.log(erik);
+        var step = -480, y = 0, flag = 0;
+
+        function move() {
+            y += step;
+            // 判断什么时候改变移动方向
+            if (y == -7680 || y == 0) {
+                step = -step;
+            }
+            erik.style.backgroundPositionY = y + "px";
+        }
+        Id = setInterval(move, 100);
+    </script>
+</body>
+
+</html>
