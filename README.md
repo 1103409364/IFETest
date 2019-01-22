@@ -15,6 +15,6 @@
 <br>
 [baiduIFE-20-21: 和页面对话](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-20-21/jsDemo-sprite.html)
 <br>
-[baiduIFE-22-24: JavaScript里面的居民们](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-20-21/jsDemo-String.html)
+[baiduIFE-22-24: JavaScript里面的居民们](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-22-24/jsDemo-String.html)
 <br>
 [baiduIFE-31-41: MIS系统](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-37-38/MIS_v2.3.html)
