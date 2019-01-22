@@ -1,39 +1,33 @@
 @font-face {
     font-family: 'montserratextralight';
-    src: url('../fonts/montserrat-extralight-webfont.woff2') format('woff2'),
-         url('../fonts/montserrat-extralight-webfont.woff') format('woff'),
-         url('../fonts/montserrat-extralight-webfont.ttf') format('truetype');
+    src: url('../fonts/montserrat-extralight-webfont.woff2') format('woff2'), url('../fonts/montserrat-extralight-webfont.woff') format('woff'), url('../fonts/montserrat-extralight-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
+
 @font-face {
     font-family: 'montserratlight';
-    src: url('../fonts/montserrat-light-webfont.woff2') format('woff2'),
-         url('../fonts/montserrat-light-webfont.woff') format('woff'),
-         url('../fonts/montserrat-light-webfont.ttf') format('truetype');
+    src: url('../fonts/montserrat-light-webfont.woff2') format('woff2'), url('../fonts/montserrat-light-webfont.woff') format('woff'), url('../fonts/montserrat-light-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
+
 @font-face {
     font-family: 'montserratregular';
-    src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
-         url('../fonts/montserrat-regular-webfont.woff') format('woff'),
-         url('../fonts/montserrat-regular-webfont.ttf') format('truetype');
+    src: url('../fonts/montserrat-regular-webfont.woff2') format('woff2'), url('../fonts/montserrat-regular-webfont.woff') format('woff'), url('../fonts/montserrat-regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
-
 
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     background-color: #fff;
 }
+
 .container {
     margin: 0 auto;
     width: 1366px;
@@ -43,11 +37,12 @@ header {
     width: 100%;
     height: 990px;
     /* 文字距离上边209减去文字行高与实际文字大小的差值：209-(62-48)/2 */
-    padding-top: 202px; 
+    padding-top: 202px;
     background: url("../images/header-background.png") no-repeat 0 0;
-    background-size:100% 100%;
+    background-size: 100% 100%;
 }
-header h1{
+
+header h1 {
     margin: 0;
     color: #ffffff;
     font-family: "montserratextralight";
@@ -56,8 +51,8 @@ header h1{
     line-height: 62px;
     text-align: center;
 }
-header p{
 
+header p {
     margin-top: 75px;
     color: #ffffffcc;
     font-family: "montserratextralight";
@@ -72,7 +67,8 @@ header form {
     /* 表单元素居中 */
     text-align: center;
 }
-header fieldset{
+
+header fieldset {
     margin: 100px auto;
     padding-top: 56px;
     width: 970px;
@@ -80,6 +76,7 @@ header fieldset{
     border: 1px solid #ffffff33;
     border-radius: 2px;
 }
+
 header span:nth-of-type(1) {
     /* font-weight: bold; */
     letter-spacing: 2px;
@@ -87,12 +84,14 @@ header span:nth-of-type(1) {
     font-size: 16px;
     line-height: 28px;
 }
+
 header span:nth-of-type(2) {
     font-size: 12px;
     letter-spacing: 2px;
     word-spacing: 1.5px;
     color: #ffffff4d
 }
+
 header input {
     color: #ffffff;
     margin-top: 46px;
@@ -104,17 +103,18 @@ header input {
     border-radius: 2px;
     background-color: transparent;
 }
+
 header button {
     width: 125px;
     height: 50px;
-    background-color:white;
+    background-color: white;
     border: 1px white solid;
     border-radius: 2px;
     font-family: "montserratlight";
     font-weight: bold;
 }
-header input[value="denis@getcraftwork.com"],
-header input[placeholder="Create you password"] {
+
+header input[value="denis@getcraftwork.com"], header input[placeholder="Create you password"] {
     font-family: "montserratlight";
     /* font-weight: bold; */
     font-size: 14px;
@@ -126,8 +126,9 @@ header input[placeholder="Create you password"] {
     height: 710px;
     /* ps文字中线到顶端的长度减去半行高 1084.5-990-28/2 */
     padding-top: 80.5px;
-    background-color:#ffffff;
+    background-color: #ffffff;
 }
+
 .feature h6 {
     font-family: "montserratlight";
     font-size: 14px;
@@ -135,50 +136,57 @@ header input[placeholder="Create you password"] {
     margin: 0;
     text-align: center;
 }
+
 .feature h2 {
     font-family: "montserratextralight";
     font-size: 42px;
     line-height: 52px;
     /* 1175.5-1084.5-28/2-52 */
-    margin-top:25px;
+    margin-top: 25px;
     text-align: center;
 }
+
 .feature .wrap {
     width: 1046px;
     /* 1307-1175.5-52 */
     margin: 79.5px auto;
 }
+
 .feature .wrap div {
     margin-bottom: 50px;
     width: 523px;
     box-sizing: border-box;
     float: left;
 }
-.feature .wrap div:nth-of-type(2),
-.feature .wrap div:nth-of-type(4){
+
+.feature .wrap div:nth-of-type(2), .feature .wrap div:nth-of-type(4) {
     padding-left: 6em;
-    
 }
+
 .feature .mobile {
     padding-left: 76px;
     margin: 0;
     background: url("../images/iphone-icon.png") no-repeat 15px 1.5em;
 }
+
 .feature .check {
     padding-left: 76px;
     margin: 0;
     background: url("../images/check-icon.png") no-repeat 0 1.5em;
 }
+
 .feature .pencil {
     padding-left: 76px;
     margin: 0;
     background: url("../images/pencil-icon.png") no-repeat 0 1.5em;
 }
+
 .feature .settings {
     padding-left: 76px;
     margin: 0;
     background: url("../images/settings-icon.png") no-repeat 0 1.5em;
 }
+
 /*改用背景弃用img
  .feature img {
     float: left;
@@ -186,20 +194,22 @@ header input[placeholder="Create you password"] {
     margin-right: 2em;
     margin-bottom: 1em;
 } */
-.feature h4{
+
+.feature h4 {
     font-family: "montserratlight";
     font-size: 20px;
     line-height: 20px;
     margin-bottom: 18px;
     vertical-align: top;
-        
 }
+
 .feature p {
     font-family: "montserratextralight";
     font-size: 16px;
     line-height: 26px;
     overflow: hidden;
 }
+
 .feature::after {
     content: "";
     display: table;
@@ -216,22 +226,26 @@ header input[placeholder="Create you password"] {
     color: #ffffff;
     position: relative;
 }
+
 .calltoaction .left {
     margin-left: 315px;
 }
+
 .calltoaction h1 {
-    margin-top: 0; 
+    margin-top: 0;
     font-family: "montserratextralight";
     font-size: 42px;
     line-height: 52px;
     font-weight: normal;
 }
+
 .calltoaction p {
     font-family: "montserratextralight";
     font-size: 18px;
     line-height: 28px;
     color: #ffffffbd;
 }
+
 .calltoaction a {
     display: inline-block;
     font-family: "montserratlight";
@@ -250,18 +264,22 @@ header input[placeholder="Create you password"] {
     letter-spacing: 2px;
     margin-top: 50px;
 }
+
 .calltoaction a:nth-of-type(1) {
-    color:#020202;
+    color: #020202;
     background-color: #ffffff;
     margin-right: 30px;
 }
+
 .calltoaction a:nth-of-type(2) {
     color: #ffffff;
 }
+
 .calltoaction .right {
     position: absolute;
     top: 104px;
-    left: 955px;
+    /* left: 955px; */
+    right: 0;
     width: 411px;
     height: 600px;
     border: 1px solid #ffffff33;
@@ -269,6 +287,7 @@ header input[placeholder="Create you password"] {
     border-top-left-radius: 44px;
     border-bottom-left-radius: 44px;
 }
+
 .calltoaction .camera {
     width: 10px;
     height: 10px;
@@ -277,6 +296,7 @@ header input[placeholder="Create you password"] {
     margin-left: 32px;
     margin-top: 295px;
 }
+
 .calltoaction .screen {
     width: 351px;
     height: 542px;
@@ -298,6 +318,7 @@ header input[placeholder="Create you password"] {
     width: 910px;
     margin: auto;
 }
+
 .feature2 h2 {
     display: block;
     margin: 0;
@@ -306,6 +327,7 @@ header input[placeholder="Create you password"] {
     line-height: 52px;
     text-transform: capitalize;
 }
+
 .feature2 p {
     display: inline-block;
     margin: 85px auto;
@@ -313,6 +335,7 @@ header input[placeholder="Create you password"] {
     line-height: 26px;
     vertical-align: top;
 }
+
 .feature2 p:nth-of-type(2) {
     margin: 85px 38px;
 }
@@ -323,32 +346,38 @@ header input[placeholder="Create you password"] {
     background-color: #ffffff;
     border-top: 1px solid #e7e7e7;
 }
+
 .feature3 .wrap {
     width: 1200px;
     margin: 0 auto;
 }
+
 .feature3 [src="images/photo1.png"] {
     height: 349px;
     width: 570px;
     float: left;
 }
+
 .feature3 h2 {
     font-family: "montserratlight";
     font-size: 20px;
     line-height: 32px;
 }
+
 .feature3 p {
     font-family: "montserratextralight";
     font-size: 16px;
     line-height: 28px;
 }
-.feature3 p:nth-of-type(1),
-.feature3 h2:nth-of-type(1) {
+
+.feature3 p:nth-of-type(1), .feature3 h2:nth-of-type(1) {
     margin-left: 685px;
 }
-.feature3 h2:nth-of-type(1){
+
+.feature3 h2:nth-of-type(1) {
     margin-top: 191px;
 }
+
 .feature3 .img {
     height: 349px;
     width: 570px;
@@ -357,19 +386,22 @@ header input[placeholder="Create you password"] {
     margin-top: 80px;
     overflow: hidden;
 }
+
 .feature3 .img img {
     margin-top: -100px;
 }
-.feature3 h2:nth-of-type(2){
+
+.feature3 h2:nth-of-type(2) {
     margin-top: 153px;
     margin-left: 215px;
 }
+
 .feature3 p:nth-of-type(2) {
     margin-left: 215px;
 }
 
 .team {
-    width:100%;
+    width: 100%;
     height: 1084px;
     background-color: #ffffff;
     border-top: 1px solid #e7e7e7;
@@ -377,15 +409,18 @@ header input[placeholder="Create you password"] {
     text-align: center;
     padding-top: 88px;
 }
+
 .team h2 {
     font-size: 42px;
     line-height: 52px;
     margin: 0;
 }
+
 .team p {
     font-size: 18px;
     line-height: 28px;
 }
+
 .team .photo {
     width: 1000px;
     height: 740px;
@@ -393,10 +428,12 @@ header input[placeholder="Create you password"] {
     display: flex;
     flex-direction: column;
 }
+
 .team .col {
     flex: 1;
     display: flex;
 }
+
 .team .tutor-photo {
     width: 470px;
     height: 340px;
@@ -408,7 +445,9 @@ header input[placeholder="Create you password"] {
     position: relative;
     border-radius: 2px;
 }
+
 /* 图片上移 */
+
 .tutor-photo img {
     margin-top: -22px;
 }
@@ -421,34 +460,44 @@ header input[placeholder="Create you password"] {
     position: absolute;
     color: #ffffff;
 }
+
 /* 将div藏在上下左右边之外 */
+
 .left-to-right {
     left: -470px;
 }
+
 .top-to-bottom {
     top: -340px;
 }
+
 .right-to-left {
     left: 470px;
 }
+
 .bottom-to-top {
     top: 340px;
 }
- .hoverc h4 {
-     font-size: 20px;
-     line-height: 32px;
-     margin: 0;
- }
- .hoverc p {
-     font-size: 12px;
-     line-height: 28px;
-     margin-bottom: 39px;
- }
- .hoverc a {
-     margin: 15px;
- }
+
+.hoverc h4 {
+    font-size: 20px;
+    line-height: 32px;
+    margin: 0;
+}
+
+.hoverc p {
+    font-size: 12px;
+    line-height: 28px;
+    margin-bottom: 39px;
+}
+
+.hoverc a {
+    margin: 15px;
+}
+
 /* 给每张照片添加一个div 用来显示Facebook等，通过:hover改变left top值来显示，同时加上半透明效果
 添加延迟时间做出动画效果transition:1s */
+
 .tutor-photo:hover .hoverc {
     top: 0;
     left: 0;
@@ -471,13 +520,15 @@ header input[placeholder="Create you password"] {
     padding-top: 70px;
     /* padding-left: 315px; */
 }
+
 .contact .wrap {
     width: 1080px;
     margin: auto;
     /* 消除空格 */
     font-size: 0;
 }
-.contact form{
+
+.contact form {
     width: 470px;
     height: 560px;
     border: 1px solid #e7e7e7;
@@ -486,6 +537,7 @@ header input[placeholder="Create you password"] {
     padding-top: 41px;
     font-family: "montserratlight";
 }
+
 .contact h2 {
     margin-top: 0;
     font-size: 16px;
@@ -493,8 +545,8 @@ header input[placeholder="Create you password"] {
     word-spacing: 2.4px;
     letter-spacing: 1px;
 }
-.contact input,
-.contact button {
+
+.contact input, .contact button {
     width: 292px;
     height: 50px;
     border: 1px solid #d4d3d3;
@@ -505,6 +557,7 @@ header input[placeholder="Create you password"] {
     font-size: 14px;
     line-height: 26px;
 }
+
 .contact textarea {
     font-family: "montserratlight";
     font-size: 14px;
@@ -516,15 +569,17 @@ header input[placeholder="Create you password"] {
     margin-bottom: 30px;
     padding-left: 22px;
 }
+
 .contact button {
     background-color: #000000;
     color: #ffffff;
     padding-left: 0;
 }
-.contact form,
-.contacts {
+
+.contact form, .contacts {
     display: inline-block;
 }
+
 .contacts {
     width: 470px;
     height: 560px;
@@ -539,29 +594,35 @@ header input[placeholder="Create you password"] {
     line-height: 52px;
     margin: 0;
 }
+
 .contacts p:nth-of-type(1) {
     font-size: 16px;
     line-height: 26px;
     margin-top: 22.5px;
 }
+
 .contacts address {
     font-family: "montserratlight";
     font-size: 16px;
     line-height: 26px;
     font-weight: bold;
 }
+
 .contacts address p:nth-of-type(1) {
     margin-top: 60px;
 }
+
 .contacts address p:nth-of-type(2) {
     margin-top: 25.5px;
     margin-bottom: 25.5px;
 }
+
 .contacts img {
     /* float: left; */
     margin-top: 5px;
     margin-right: 20px;
 }
+
 .contacts a {
     text-decoration: none;
     color: #000000;
@@ -577,14 +638,17 @@ footer {
     padding-top: 74px;
     /* font-size: 0; */
 }
+
 footer .wrap {
     width: 1250px;
     margin: 0 auto;
 }
+
 footer ul {
     list-style-type: none;
     padding-left: 0;
 }
+
 footer ul a {
     color: #fff;
     text-decoration: none;
@@ -592,12 +656,14 @@ footer ul a {
     line-height: 46px;
     opacity: 0.5;
 }
-footer .p4 p{
+
+footer .p4 p {
     color: #fff;
     font-size: 18px;
     line-height: 28px;
     opacity: 0.5;
 }
+
 footer h4 {
     font-size: 14px;
     line-height: 28px;
@@ -605,12 +671,14 @@ footer h4 {
     letter-spacing: 1px;
     margin-top: 0;
 }
+
 footer .wrap div {
     width: 300px;
     display: inline-block;
     /* overflow: visible; */
     vertical-align: top;
 }
+
 /* footer img {
     margin-right: 24px;
 } */
@@ -634,10 +702,13 @@ footer .p4 .fa {
         right: 0;
         top: 30px;
     }
+    .calltoaction .left {
+        margin-left: 430px;
+    }
     .calltoaction .right {
         position: absolute;
         top: 104px;
-        left: 955px;
+        right: 0;
         width: 645px;
         height: 600px;
         border: 1px solid #ffffff33;
