@@ -496,7 +496,7 @@ header input[value="denis@getcraftwork.com"], header input[placeholder="Create y
     margin: 15px;
 }
 
-/* 给每张照片添加一个div 用来显示Facebook等，通过:hover改变left top值来显示，同时加上半透明效果
+/* 给每张照片添加一个div 用来显示联系方式，通过:hover改变left top值来显示，同时加上半透明效果
 添加延迟时间做出动画效果transition:1s */
 
 .tutor-photo:hover .hoverc {
