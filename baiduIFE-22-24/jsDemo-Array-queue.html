@@ -41,13 +41,13 @@
 
         //打印队头内容
         frontBtn.onclick = function () {
-            queueCont.innerHTML = "队头内容：" + queue[queue.length-1];
+            queueCont.innerHTML = "队头内容：" + queue[queue.length - 1];
         }
-        emptyBtn.onclick = function(){
-            if (queue.length == 0){
+        emptyBtn.onclick = function () {
+            if (queue.length == 0) {
                 alert("队列是空的");
             } else {
-                alert("队列长度："+queue.length);
+                alert("队列长度：" + queue.length);
             }
         }
 
