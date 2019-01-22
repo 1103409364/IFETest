@@ -350,18 +350,14 @@ header input[value="denis@getcraftwork.com"], header input[placeholder="Create y
 .feature3 .wrap {
     width: 1200px;
     margin: 0 auto;
-}
-
-.feature3 [src="images/photo1.png"] {
-    height: 349px;
-    width: 570px;
-    float: left;
+    padding: 0 110px;
 }
 
 .feature3 h2 {
     font-family: "montserratlight";
     font-size: 20px;
     line-height: 32px;
+    margin: 0;
 }
 
 .feature3 p {
@@ -370,34 +366,39 @@ header input[value="denis@getcraftwork.com"], header input[placeholder="Create y
     line-height: 28px;
 }
 
-.feature3 p:nth-of-type(1), .feature3 h2:nth-of-type(1) {
-    margin-left: 685px;
+.feature3 .left {
+    margin-bottom: 100px;
+    margin-top: 100px;
 }
 
-.feature3 h2:nth-of-type(1) {
-    margin-top: 191px;
+.feature3 .left .txt {
+    padding-top: 45px;
 }
 
-.feature3 .img {
+.feature3 .right .txt {
+    padding-top: 45px;
+}
+
+.feature3 .left img {
+    height: 349px;
+    width: 570px;
+    float: left;
+    margin-right: 90px;
+}
+
+.feature3 .left::after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.feature3 .right img {
     height: 349px;
     width: 570px;
     float: right;
-    /* margin-right: 310px; */
-    margin-top: 80px;
     overflow: hidden;
-}
-
-.feature3 .img img {
-    margin-top: -100px;
-}
-
-.feature3 h2:nth-of-type(2) {
-    margin-top: 153px;
-    margin-left: 215px;
-}
-
-.feature3 p:nth-of-type(2) {
-    margin-left: 215px;
 }
 
 .team {
