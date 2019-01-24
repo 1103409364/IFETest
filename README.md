@@ -17,4 +17,7 @@
 <br>
 [baiduIFE-22-24: JavaScript里面的居民们](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-22-24/jsDemo-String.html)
 <br>
+[baiduIFE-25-27: 倒数开始 滴答滴 滴答滴](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-25-27/jsDemo-calendar.html)
+<br>
+
 [baiduIFE-31-41: MIS系统](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-37-38/MIS_v2.3.html)
