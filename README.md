@@ -19,5 +19,7 @@
 <br>
 [baiduIFE-25-27: 倒数开始 滴答滴 滴答滴](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-25-27/jsDemo-calendar.html)
 <br>
+[baiduIFE-28-30: 倒数开始 滴答滴 滴答滴](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-28-30/jsDemo-email1.html)
+<br>
 
 [baiduIFE-31-41: MIS系统](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-37-38/MIS_v2.3.html)
