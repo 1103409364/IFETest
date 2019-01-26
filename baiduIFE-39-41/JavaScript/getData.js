@@ -16,6 +16,7 @@ function getCheckedItem(data) { //获取复选框被选中的个数
             checkedArr.push(data[j]);
         }
     }
+    log(typeof checkedArr[0]);
     return checkedArr;
 }
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+
+<body>
+    <div id="button-wrapper">
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+    </div>
+
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+</body>
+<script>
+    //记录两个状态
+    // abc点击了，把按钮文字显示在contABC中
+    // def点击了，把按钮文字显示在contDEF中
+    // 同样在页面刷新时，保留之前的渲染状态
+    // 页面URL copy再打开后，保留渲染状态
+    var contABC = document.getElementById("contABC"),
+        contDEF = document.getElementById("contDEF"),
+        buttonWrapper = document.getElementById("button-wrapper"),
+        buttonA = document.getElementById("a"),
+        buttonB = document.getElementById("b"),
+        buttonC = document.getElementById("c"),
+        buttonD = document.getElementById("d"),
+        buttonE = document.getElementById("e"),
+        buttonF = document.getElementById("f");
+    //按钮点击事件
+    buttonWrapper.onclick = function (e) {
+        var x = e.target.innerHTML,
+            abc = "ABC",
+            def = "DEF";
+        console.log(e.target.id);
+        //判断点击的是按钮，不是空白
+        if (e.target.id != "button-wrapper") {
+            if (getHash().length < 2) {
+                //判断点击的是abc还是def，同时hash也是abc或者def，如果是就替换，否则进行字符串拼接
+                if (abc.indexOf(x) >= 0 && abc.indexOf(getHash()) >= 0) {
+                    location.hash = x;
+                } else if (def.indexOf(x) >= 0 && def.indexOf(getHash()) >= 0) {
+                    location.hash = x;
+                } else {
+                    location.hash = x + getHash();
+                }
+            } else {
+                for (let i = 0; i < getHash().length; i++) {
+                    if (abc.indexOf(x) >= 0) {
+                        // console.log(abc.indexOf(getHash()[i]));
+                        // 如果是abc其中一个，进行替换
+                        if (abc.indexOf(getHash()[i]) >= 0) {
+                            location.hash = getHash().replace(getHash()[i], x);
+                        }
+                    } else {
+                        if (def.indexOf(getHash()[i]) >= 0)
+                            location.hash = getHash().replace(getHash()[i], x);
+                    }
+                }
+            }
+        }
+
+    }
+
+    if ("onhashchange" in window) {
+        console.log("该浏览器支持 hashchange 事件!");
+    }
+
+    function getHash() {
+        return location.hash.slice(1);
+    }
+    // 渲染函数
+    function locationHashChanged() {
+        if ((getHash().indexOf("A")) >= 0) {
+            contABC.innerHTML = buttonA.innerHTML;
+        }
+        if ((getHash().indexOf("B")) >= 0) {
+            contABC.innerHTML = buttonB.innerHTML;
+        }
+        if ((getHash().indexOf("C")) >= 0) {
+            contABC.innerHTML = buttonC.innerHTML;
+        }
+        if ((getHash().indexOf("D")) >= 0) {
+            contDEF.innerHTML = buttonD.innerHTML;
+        }
+        if ((getHash().indexOf("E")) >= 0) {
+            contDEF.innerHTML = buttonE.innerHTML;
+        }
+        if ((getHash().indexOf("F")) >= 0) {
+            contDEF.innerHTML = buttonF.innerHTML;
+        }
+        if (getHash() == "") {
+            contABC.innerHTML = "";
+            contDEF.innerHTML = "";
+        }
+    }
+    // 进来先执行一次渲染函数
+    locationHashChanged();
+    // hash改变事件
+    window.onhashchange = locationHashChanged;
+</script>
+
+</html>

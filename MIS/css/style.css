@@ -1,0 +1,155 @@
+body {
+    font-family: "consolas", "微软雅黑", "monospace";
+}
+
+table, table tr th, table tr td {
+    border: 2px #8a56be solid;
+    color: #8a56be;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tr th, table tr td {
+    font-size: 15px;
+    width: 90px;
+    height: 38px;
+    overflow: hidden;
+    /*越界隐藏，隐藏编辑图标*/
+    position: relative;
+    /* 解决td在relative模式下，火狐浏览器不显示边框的问题。 */
+    background-clip: padding-box;
+}
+
+table td img {
+    /* 添加一个编辑图标 并隐藏*/
+    position: absolute;
+    top: 4px;
+    right: -20px;
+}
+
+/*显示编辑图标*/
+
+table td:hover img {
+    right: 5px;
+}
+
+/* 输入框旁边的确认和取消按钮 */
+
+.confirm, .cancel {
+    position: absolute;
+    right: 1px;
+    background-color: #1e58c4;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    width: 30px;
+    height: 18px;
+    padding: 0;
+    /* display: none; */
+}
+
+/* 按钮按下变色效果 */
+
+.confirm:active, .cancel:active {
+    background-color: #0d388a;
+}
+
+.confirm {
+    top: 1px;
+}
+
+.cancel {
+    bottom: 1px;
+}
+
+/* 输入框 */
+
+table .inputData {
+    width: 56px;
+    height: 36px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    /* display: none; */
+}
+
+/* 隐藏输入框，和按钮 */
+
+table td .hide {
+    display: none;
+}
+
+/* --- */
+
+table tr th {
+    background-color: #8a56be;
+    color: #fff;
+}
+
+table input {
+    border: none;
+    text-align: center;
+}
+
+table {
+    margin-top: 10px;
+}
+
+tr:hover {
+    background-color: #c391f588;
+}
+
+td:hover {
+    background: #5bc49f;
+    color: #fff;
+    cursor: pointer;
+    background-clip: padding-box;
+}
+
+/* 合并单元格的单元格不变色 */
+
+[rowspan] {
+    background-color: #fff;
+}
+
+#bar-wrapper, #line-wrapper {
+    display: inline-block;
+}
+
+#graph-wapper {
+    width: 1310px;
+    margin: 0 auto;
+}
+
+#checkbox-wrapper, #table-wrapper {
+    /* 与折线图柱状图对齐 */
+    padding-left: 15px;
+    width: 1270px;
+    margin: 0 auto;
+}
+
+#checkbox-wrapper label {
+    display: inline-block;
+    /* text-align: left; */
+    /* padding-left: 5px; */
+    color: #8a56be;
+}
+
+#checkbox-wrapper input {
+    margin: 0 0 10px 15px;
+}
+
+#region-wrapper input:nth-of-type(1), #product-wrapper input:nth-of-type(1) {
+    margin: 0;
+}
+
+#region-wrapper, #product-wrapper {
+    margin: 0 10px 10px 0;
+    display: inline;
+    border: #8a56be 2px solid;
+    padding: 5px;
+}
+
+#region-wrapper label:nth-of-type(1), #product-wrapper label:nth-of-type(1) {
+    font-weight: bold;
+}

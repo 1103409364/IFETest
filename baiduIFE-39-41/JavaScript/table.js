@@ -16,6 +16,7 @@ function renderTable(data) {
         th.innerHTML = tableHead[i];
         tr.appendChild(th);
     }
+
     for (let i = 0; i < data.length; i++) {
         var tr = document.createElement("tr");
         table.appendChild(tr);
@@ -25,7 +26,7 @@ function renderTable(data) {
                 td.innerHTML = data[i][x];
                 tr.appendChild(td);
             } else {
-                for (let j = 0; j < data[i][x].length; j++) { //data[i]对象的的第三个属性sale是数组，对齐进行遍历填充
+                for (let j = 0; j < data[i][x].length; j++) { //data[i]对象的的第三个属性sale是数组，进行遍历填充
                     var td = document.createElement("td"),
                         inputData = document.createElement("input"),
                         inputConfirm = document.createElement("input"),
@@ -70,7 +71,7 @@ function renderTable(data) {
                         target.parentElement.children[3].setAttribute("style", "display:none");
                     }
                     // 点击确定
-                    inputConfirm.onclick = function (e) {
+                    inputConfirm.onmousedown = function (e) {
                         var target = e.target;
                         // 暂存表格数据
                         var temp = target.parentElement.textContent;
@@ -113,7 +114,7 @@ function renderTable(data) {
                         tableDisplayOpt();
                     }
                     // 点击取消
-                    inputCancel.onclick = function (e) {
+                    inputCancel.onmousedown = function (e) {
                         var target = e.target;
                         var temp = target.parentElement.textContent;
                         target.parentElement.children[0].setAttribute("style", "display:none");
@@ -175,48 +176,22 @@ function renderTable(data) {
                     inputData.onblur = function (e) {
                         var target = e.target;
                         var temp = target.parentElement.textContent;
-                        setTimeout(function () { //设置延迟，防止按钮按不到就消失了
-                            if (e.target.parentElement.children[0].style.display == "block") {
-                                target.parentElement.children[0].setAttribute("style", "display:none");
-                            }
-                            if (e.target.parentElement.children[1].style.display == "block") {
-                                target.parentElement.children[1].setAttribute("style", "display:none");
-                            }
-                            if (e.target.parentElement.children[2].style.display == "block") {
-                                target.parentElement.children[2].setAttribute("style", "display:none");
-                            }
-                            if (e.target.parentElement.children[3].style.display == "none") {
-                                target.parentElement.children[3].setAttribute("style", "display:block");
-                            }
-                            target.parentElement.children[2].value = temp;
-                        }, 266);
-                    }
-                    //---------------------------
-                    // button.onclick = function (e) {
-                    //     var newData = {};
-                    //     var sale = [];
-                    //     var table = e.target.parentElement.parentElement.parentElement;
-                    //     var tr = e.target.parentElement.parentElement;
-                    //     var inputData = tr.getElementsByTagName("input");
 
-                    //     if (table.rows[0].cells[0].innerHTML == "商品") {
-                    //         newData["product"] = tr.cells[0].innerHTML;
-                    //         newData["region"] = tr.cells[1].innerHTML;
-                    //         for (let i = 0; i < inputData.length; i++) {
-                    //             sale.push(Number(inputData[i].value)); //输入值是字符串，转数字
-                    //         }
-                    //         newData["sale"] = sale;
-                    //     } else {
-                    //         newData["product"] = tr.cells[1].innerHTML;
-                    //         newData["region"] = tr.cells[0].innerHTML;
-                    //         for (let i = 0; i < inputData.length; i++) {
-                    //             sale.push(Number(inputData[i].value));
-                    //         }
-                    //         newData["sale"] = sale;
-                    //     }
-                    //     // console.log(newData);
-                    //     storageNewData(newData);
-                    // }
+                        if (e.target.parentElement.children[0].style.display == "block") {
+                            target.parentElement.children[0].setAttribute("style", "display:none");
+                        }
+                        if (e.target.parentElement.children[1].style.display == "block") {
+                            target.parentElement.children[1].setAttribute("style", "display:none");
+                        }
+                        if (e.target.parentElement.children[2].style.display == "block") {
+                            target.parentElement.children[2].setAttribute("style", "display:none");
+                        }
+                        if (e.target.parentElement.children[3].style.display == "none") {
+                            target.parentElement.children[3].setAttribute("style", "display:block");
+                        }
+                        target.parentElement.children[2].value = temp;
+
+                    }
                 }
             }
         }

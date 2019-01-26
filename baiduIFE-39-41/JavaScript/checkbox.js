@@ -1,6 +1,7 @@
 var checkboxWrapper = document.getElementById("checkbox-wrapper");
 var regionWrapper = document.getElementById("region-wrapper");
 var productWrapper = document.getElementById("product-wrapper");
+
 var regionCheckboxObj = [{
     value: "华东",
     text: "华东"
