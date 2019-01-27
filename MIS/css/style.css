@@ -20,57 +20,55 @@ table tr th, table tr td {
     background-clip: padding-box;
 }
 
-table td img {
-    /* 添加一个编辑图标 并隐藏*/
+#mytable #edit {
+    /* 添加一个编辑按钮 并隐藏*/
+    font-size: 13px;
+    color: #fff;
+    background-color: #8a56be;
     position: absolute;
-    top: 4px;
-    right: -20px;
+    top: 0;
+    right: -50px;
+    padding: 0 2px;
 }
 
 /*显示编辑图标*/
 
-table td:hover img {
-    right: 5px;
+#mytable td:hover #edit {
+    right: 0;
 }
 
 /* 输入框旁边的确认和取消按钮 */
 
 .confirm, .cancel {
     position: absolute;
-    right: 1px;
-    background-color: #1e58c4;
+    right: 0;
+    background-color: #8a56be;
     color: #fff;
     font-size: 12px;
     text-align: center;
     width: 30px;
-    height: 18px;
+    height: 19px;
     padding: 0;
-    /* display: none; */
-}
-
-/* 按钮按下变色效果 */
-
-.confirm:active, .cancel:active {
-    background-color: #0d388a;
+    /* border: 1px #fff solid; */
 }
 
 .confirm {
-    top: 1px;
+    top: 0;
 }
 
 .cancel {
-    bottom: 1px;
+    bottom: 0;
 }
 
 /* 输入框 */
 
 table .inputData {
-    width: 56px;
-    height: 36px;
+    width: 59px;
+    height: 40px;
     position: absolute;
-    left: 2px;
-    top: 2px;
-    /* display: none; */
+    left: -1px;
+    top: -1px;
+    outline: none;
 }
 
 /* 隐藏输入框，和按钮 */
@@ -100,8 +98,8 @@ tr:hover {
 }
 
 td:hover {
-    background: #5bc49f;
-    color: #fff;
+    background: #fff;
+    color: #8a56be;
     cursor: pointer;
     background-clip: padding-box;
 }

@@ -34,7 +34,7 @@ var renderTable = function (tableWrapper, data, tableHead) {
                             <input type="button" value="确定" class="confirm hide">
                             <input type="button" value="取消" class="cancel hide">
                             <input type="text" value=${ data[i][x][j]} class="inputData hide">
-                            <img  src="images/edit.png" alt="编辑" width="15px" height="15px" id = "edit" class = "edit">
+                            <input type="button" id = "edit" class = "edit" value ="Edit">
                             ${ data[i][x][j]}
                         </td>
                     `
@@ -47,6 +47,7 @@ var renderTable = function (tableWrapper, data, tableHead) {
 
     tableWrapper.innerHTML = table;
 }
+{/* <img  src="images/edit.png" alt="编辑" width="15px" height="15px" id = "edit" class = "edit"> */ }
 
 // 绑定事件
 var tableAddEvent = function () {
