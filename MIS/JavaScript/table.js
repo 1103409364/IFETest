@@ -5,7 +5,7 @@ var initialTable = function (data) {
 
     renderTable(tableWrapper, data, tableHead);
     tableAddEvent();
-    // tableDisplayOpt();
+    tableDisplayOpt();
 }
 
 
@@ -204,10 +204,16 @@ var updateTable = function (target, table) {
 // 表格显示调整，合并单元格
 var tableDisplayOpt = function () {
     var table = document.getElementById("mytable");
-    var regoinCheckedNum = getCheckedItem(regionArr).length; //此函数在getData.js
-    var productCheckedNum = getCheckedItem(productArr).length;
+    var regionChecked = [];
+    var producChecked = [];
 
-    // 当商品选择了一个，地区选择了多个的时候，商品作为第一列，地区作为第二列，把商品列合并，留一个商品名称
+    //下面两个函数在getData.js
+    regionChecked = regionCheckedItem()
+    producChecked = productCheckedItem();
+    var regoinCheckedNum = regionChecked.length;
+    var productCheckedNum = producChecked.length;
+
+    // 当商品选择了一个，地区选择了多个的时候，商品作为第一列，地区作为第二列，把相同商品列合并，留一个商品名称
     if (regoinCheckedNum > 1 && productCheckedNum == 1) {
         for (let i = 1; i <= regoinCheckedNum; i++) {
             if (i == 1) {
@@ -217,7 +223,7 @@ var tableDisplayOpt = function () {
             }
         }
     }
-    //当地区选择了一个，商品选择了多个的时候，地区作为第一列，商品作为第二列，把地区列合并，留一个地区名称
+    //当地区选择了一个，商品选择了多个的时候，地区作为第一列，商品作为第二列，把相同地区合并
     if (regoinCheckedNum == 1 && productCheckedNum > 1) {
         //交换第一列和第二列的数据
         for (let i = 0; i < table.rows.length; i++) {

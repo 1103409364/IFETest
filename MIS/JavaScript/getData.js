@@ -1,14 +1,19 @@
-// var phone = document.getElementById(productCheckboxObj[0].value);
-// var notebook = document.getElementById(productCheckboxObj[1].value);
-// var googleHome = document.getElementById(productCheckboxObj[2].value);
-
-// var regionArr = [eCN, sCN, nCN];
-// var productArr = [phone, notebook, googleHome];
-
 //获取表单中被选中的项
-var getCheckedItem = function () {
-    var form = document.getElementById("checkbox-wrapper");
-    var checkbox = form.getElementsByTagName("input");
+var regionCheckedItem = function () {
+    var region = document.getElementById("region-wrapper");
+    var regionChecked = [];
+    regionChecked = getCheckedItem(region);
+    return regionChecked;
+}
+var productCheckedItem = function () {
+    var product = document.getElementById("product-wrapper");
+    var producChecked = [];
+    producChecked = getCheckedItem(product);
+    return producChecked;
+}
+
+var getCheckedItem = function (element) {
+    var checkbox = element.getElementsByTagName("input");
     var checkedItems = [];
 
     for (let i = 0; i < checkbox.length; i++) {
@@ -18,19 +23,23 @@ var getCheckedItem = function () {
         }
     }
     return checkedItems;
-}
 
+}
 //根据复选框选中的项获取数据，数据优先从本地存储获取
 var getData = function (sourceData) {
     var storage = window.localStorage;
     var newSourceData;
     var newData = [];
-    var checkedItems = getCheckedItem();
+    var regionChecked = [];
+    var producChecked = [];
+
+    regionChecked = regionCheckedItem()
+    producChecked = productCheckedItem();
     // 遍历查找与ife31data.js的数据相匹配的数据
     for (let i = 0; i < sourceData.length; i++) {
-        for (let j = 0; j < checkedItems.length; j++) {
-            for (let k = 0; k < checkedItems.length; k++) {
-                if (sourceData[i].region == checkedItems[j] && sourceData[i].product == checkedItems[k]) {
+        for (let j = 0; j < regionChecked.length; j++) {
+            for (let k = 0; k < producChecked.length; k++) {
+                if (sourceData[i].region === regionChecked[j] && sourceData[i].product === producChecked[k]) {
                     newData.push(sourceData[i]);
                 }
             }

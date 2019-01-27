@@ -3,13 +3,20 @@ var __main = function () {
 
     var data = getData(sourceData);
     initialTable(data);
+    drawMultiLineGraph(data);
+    drawMultiBarGraph(data);
 
-    var mis = document.getElementById("checkbox-wrapper");
+    var checkWrap = document.getElementById("checkbox-wrapper");
     // 全局监听会干扰表格
-    mis.addEventListener("click", function () {
+    checkWrap.addEventListener("click", function () {
         var data = getData(sourceData);
         initialTable(data);
+        drawMultiLineGraph(data);
+        drawMultiBarGraph(data);
     })
+
+    // drawAxis(lineGraphWrapper, 1000);
+    // drawAxis(barGraphWrapper, 1000);
 }
 
 __main();

@@ -1,33 +1,35 @@
-//绘制折线图，参数是对象数组
-function drawMultiLineGraph(data) {
+//绘制多组折线图，参数是对象数组
+var drawMultiLineGraph = function (data) {
     // 颜色数组
     var colorArr = ["#60acfc", "#32d3eb", "#5bc49f", "#feb64d", "#ff7c7c", "#9287e7"];
     var lineWrapper = document.getElementById("line-wrapper");
-    // barWrapper.innerHTML = ""; //重新画图
-    lineWrapper.innerHTML = "";
     var newData = [],
         maxValueArr = [];
+
+    lineWrapper.innerHTML = ""; //清除画布
+
     for (let i = 0; i < data.length; i++) {
         //从每一组数据中获得最大值，放入maxValueArr
         maxValueArr.push(HtmlUtil.maxValue(data[i].sale));
         newData.push(data[i].sale); //获取数据对象中的sale
     }
 
-
-    var maxY = HtmlUtil.maxValue(maxValueArr); //最大值中的最大值，就是几组数据中的最大值
-    // console.log(maxY);
+    //最大值中的最大值，就是几组数据中的最大值，用于确定y轴分度值
+    var maxY = HtmlUtil.maxValue(maxValueArr);
     var maxValue = Math.floor(maxY * 1.2); //y轴最大范围
-
-    ctx = drawAxis(maxValue);
-
+    //画坐标轴，返回ctx对象
+    ctx = drawAxis(lineWrapper, maxValue);
+    // 开始画折线图，加0.5防止线条发虚
     for (let j = 0; j < newData.length; j++) {
         for (let i = 0; i < 12; i++) {
+            var step = 50;
             //当前点
             let heightData1 = newData[j][i] / maxValue * 210;
             //下一个点
             let heightData2 = newData[j][i + 1] / maxValue * 210;
-            let x1 = 30.5 + 50 * i;
-            let x2 = 30.5 + 50 * (i + 1);
+            // 画当前点到下一个点的线，原位置30.5右移25
+            let x1 = 55.5 + step * i;
+            let x2 = 55.5 + step * (i + 1);
             let y1 = 270.5 - heightData1;
             let y2 = 270.5 - heightData2;
             ctx.beginPath();
@@ -44,7 +46,7 @@ function drawMultiLineGraph(data) {
             }
             ctx.stroke();
             ctx.beginPath();
-            ctx.arc(x1, y1, 5, 0, Math.PI * 2);
+            ctx.arc(x1, y1, 4, 0, Math.PI * 2);
             ctx.fill();
         }
     }
