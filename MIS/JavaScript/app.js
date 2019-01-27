@@ -1,22 +1,18 @@
 var __main = function () {
+    // 初始化
     initialForm();
-
+    // 根据表单状态获取数据
     var data = getData(sourceData);
     initialTable(data);
-    drawMultiLineGraph(data);
-    drawMultiBarGraph(data);
+    initialGraph(data);
 
     var checkWrap = document.getElementById("checkbox-wrapper");
     // 全局监听会干扰表格
     checkWrap.addEventListener("click", function () {
         var data = getData(sourceData);
         initialTable(data);
-        drawMultiLineGraph(data);
-        drawMultiBarGraph(data);
+        initialGraph(data);
     })
-
-    // drawAxis(lineGraphWrapper, 1000);
-    // drawAxis(barGraphWrapper, 1000);
 }
 
 __main();
