@@ -14,8 +14,8 @@ var getStatus = function () {
     }
     return str;
 }
-
-var setStatus = function () {
+// 根据url保存的状态，设置表单复选框的状态
+var setFormByStatus = function () {
     // 默认选中地区和商品的第一项
     if (location.search === "") {
         location.search = "01000100";
@@ -34,19 +34,18 @@ var setStatus = function () {
     }
 }
 
-//监听checkbox点击事件
-checkboxWrapper.addEventListener("click", function () {
-    let str = getStatus();
-    history.pushState("state", null, "?" + str);
-});
+var stateAddEvent = function () {
 
+}
+// 监听点击事件移到form.js
+// var checkboxWrapper = document.getElementById("checkbox-wrapper");
+// //监听checkbox点击事件
+// checkboxWrapper.addEventListener("click", function () {
+//     let str = getStatus();
+//     history.pushState("state", null, "?" + str);
+// });
 //监听前进后退事件，获取状态，重设状态，重新渲染图表
 window.onpopstate = function () {
-    setStatus();
-
-    renderTable(getData(sourceData));
-    tableDisplayOpt();
-    // 绘制统计图
-    graph.drawGraph(getData(sourceData));
+    setFormByStatus();
 }
 

@@ -27,8 +27,10 @@ var initialForm = function () {
 
     creatCheckBox(regionWrapper, region);
     creatCheckBox(productWrapper, product);
-    formAddEvent(regionWrapper);
-    formAddEvent(productWrapper);
+    addEventCheckLogic(regionWrapper);
+    addEventCheckLogic(productWrapper);
+    // 为状态和重新渲染添加点击事件
+    addEventStateAndInitial();
 }
 // 生成复选框
 var creatCheckBox = function (checkBoxWrapper, options) {
@@ -56,8 +58,12 @@ var creatCheckBox = function (checkBoxWrapper, options) {
     }
     checkBoxWrapper.innerHTML = checkBoxElements;
 }
-// 表单添加事件监听
-var formAddEvent = function (wrapperElements) {
+// 分别给全选的CheckBox和各个单选的CheckBox绑定上点击事件
+// 对于全选的CheckBox的点击事件，要做的事情很简单，让所有的CheckBox全部勾选上
+// 对于单个的CheckBox，每次点击要做如下判断：
+// 在点击之前它是不是唯一一个被勾选的？如果是的话，阻止这次点击默认事件，或者立马又将其checked状态置为真
+// 点击之后，是不是满足了全选状态，并对应修改全选CheckBox的状态
+var addEventCheckLogic = function (wrapperElements) {
     wrapperElements.addEventListener("click", function (e) {
         var target = e.target;
         var checks = wrapperElements.getElementsByTagName("input");
@@ -104,6 +110,16 @@ var formAddEvent = function (wrapperElements) {
             }
         }
     })
+}
+
+var addEventStateAndInitial = function () {
+    var checkboxWrapper = document.getElementById("checkbox-wrapper");
+    checkboxWrapper.addEventListener("click", function () {
+        let str = getStatus();
+        history.pushState("state", null, "?" + str);
+    });
+    // 复选框被点击时，重新渲染图表
+    checkboxWrapper.addEventListener("click", reInitial);
 }
 
 //获取表单被选中的地区

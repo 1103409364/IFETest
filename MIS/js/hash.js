@@ -16,7 +16,7 @@ var getStatus = function () {
     return str;
 }
 
-var setStatus = function () {
+var setFormByStatus = function () {
     // 默认选中地区和商品的第一项
     if (location.hash === "") {
         location.hash = "01000100";
@@ -44,10 +44,9 @@ checkboxWrapper.addEventListener("click", function () {
 var locationHashChanged = function () {
     let str = getStatus();
     // 取得状态，设置复选框的状态
-    setStatus();
+    setFormByStatus();
 }
-
-window.onhashchange = locationHashChanged;
+window.addEventListener("hashchange", locationHashChanged);
 
 
 

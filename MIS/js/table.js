@@ -162,13 +162,7 @@ var tableAddEvent = function () {
 
     // 鼠标穿过事件
     table.addEventListener("mouseover", function (e) {
-        var barWrapper = document.getElementById("bar-wrapper");
-        var lineWrapper = document.getElementById("line-wrapper");
-        // var storage = window.localStorage;
-        var newSourceData;
-        // var data = [];
         target = e.target;
-        log("over", target)
 
         var tr = target.parentElement;
         //还有一种情况，父元素的父元素也可能是tr
@@ -210,9 +204,12 @@ var tableAddEvent = function () {
             }
         }
     })
-    // 鼠标离开事件
+    // 鼠标离开表格重新绘制统计图
     table.addEventListener("mouseout", function () {
-        reInitial();
+        var region = regionCheckedItem();
+        var product = productCheckedItem();
+        var data = getData(region, product, sourceData);
+        initialGraph(data);
     })
 }
 // 隐藏元素

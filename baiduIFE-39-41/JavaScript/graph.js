@@ -15,6 +15,7 @@ var graph = {
             var newSourceData;
             var data = [];
             target = e.target;
+            console.log(target)
             var tr = target.parentElement; //当前hover元素的父元素
             var tr2 = target.parentElement.parentElement; //加一种情况，父元素的父元素也可能是tr
             // console.log(tr2);
