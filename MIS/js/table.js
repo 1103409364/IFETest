@@ -86,11 +86,11 @@ var tableAddEvent = function () {
                 input.value = temp;
                 // 输入不同数字才需储存
             } else if (input.value != temp) {
-                // log(input.value, temp)
                 hideElement(confirm);
                 hideElement(cancel);
                 hideElement(input);
                 showElement(editImg);
+                // 储存数据更新表格
                 updateTable(target, table);
             } else {
                 // 没输入新的数据，恢复非编辑状态
@@ -248,9 +248,12 @@ var updateTable = function (target, table) {
     }
     // 储存新数据到本地
     storageNewData(newData);
+
     // 输入新数据之后重新初始化渲染表格
-    initialTable(getData(sourceData));
-    //重新渲染统计图？
+    var region = regionCheckedItem();
+    var product = productCheckedItem();
+    var data = getData(region, product, sourceData);
+    initialTable(data);
 }
 
 // 表格显示调整，合并单元格
