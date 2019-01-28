@@ -197,7 +197,6 @@ var tableAddEvent = function () {
                 }
                 // 鼠标在合并的单元格之上时，绘制选中的多个数据的统计图
                 if (target === cell0) {
-                    // tr.setAttribute("style", "background-color: #fff");
                     if (target.classList.contains("product")) {
                         region = regionCheckedItem();
                     } else {
