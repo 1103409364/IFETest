@@ -94,20 +94,13 @@ table {
 }
 
 tr:hover {
-    background-color: #c391f588;
+    /* background-color: #c391f588; */
 }
 
 td:hover {
-    background: #fff;
-    color: #8a56be;
     cursor: pointer;
     background-clip: padding-box;
-}
-
-/* 合并单元格的单元格不变色 */
-
-[rowspan] {
-    background-color: #fff;
+    background-color: #c391f588;
 }
 
 #bar-wrapper, #line-wrapper {

@@ -104,7 +104,33 @@ var formAddEvent = function (wrapperElements) {
             }
         }
     })
+}
 
+//获取表单被选中的地区
+var regionCheckedItem = function () {
+    var region = document.getElementById("region-wrapper");
+    var regionChecked = [];
+    regionChecked = getCheckedItem(region);
+    return regionChecked;
+}
+//获取表单被选中的产品
+var productCheckedItem = function () {
+    var product = document.getElementById("product-wrapper");
+    var producChecked = [];
+    producChecked = getCheckedItem(product);
+    return producChecked;
+}
 
+var getCheckedItem = function (element) {
+    var checkbox = element.getElementsByTagName("input");
+    var checkedItems = [];
+
+    for (let i = 0; i < checkbox.length; i++) {
+        var checkboxType = checkbox[i].getAttribute("checkbox-type");
+        if (checkbox[i].checked === true && checkboxType === "child") {
+            checkedItems.push(checkbox[i].value);
+        }
+    }
+    return checkedItems;
 
 }

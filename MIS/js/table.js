@@ -9,7 +9,7 @@ var initialTable = function (data) {
 }
 
 
-//渲染数据
+//渲染表格
 var renderTable = function (tableWrapper, data, tableHead) {
     tableWrapper.innerHTML = ""; //清除旧表格
     var table = "";
@@ -25,8 +25,8 @@ var renderTable = function (tableWrapper, data, tableHead) {
         var td = "";
 
         for (x in data[i]) {
-            if (x == "product" || x == "region") {
-                td += `<td>${data[i][x]}</td>`
+            if (x === "region" || x === "product") {
+                td += `<td class=${x}>${data[i][x]}</td>`
             } else if (x == "sale") {
                 for (let j = 0; j < data[i][x].length; j++) {
                     td += `
@@ -159,6 +159,61 @@ var tableAddEvent = function () {
         showElement(editImg);
         input.value = temp;
     }, true)
+
+
+    table.addEventListener("mouseover", function (e) {
+        var barWrapper = document.getElementById("bar-wrapper");
+        var lineWrapper = document.getElementById("line-wrapper");
+        // var storage = window.localStorage;
+        var newSourceData;
+        // var data = [];
+        target = e.target;
+        var tr = target.parentElement;
+        //还有一种情况，父元素的父元素也可能是tr
+        var tr2 = target.parentElement.parentElement;
+        var region = [], product = [];
+
+        //判tr2是不是表格的行tr
+        if (tr.cells || tr2.cells) {
+            if (tr2.cells) {
+                tr = tr2;
+            }
+            var cell0 = tr.cells[0]
+            var cell1 = tr.cells[1]
+            if (cell0.classList.contains("product")) {
+                product.push(cell0.textContent);
+                region.push(cell1.textContent);
+            } else if (cell0.classList.contains("region")) {
+                product.push(cell1.textContent);
+                region.push(cell0.textContent);
+            }
+
+            var data = getData(region, product, sourceData);
+
+            //当前鼠标划过的表格内容不是数字就不画图
+            if (HtmlUtil.isNumber(tr.cells[2].textContent)) {
+                if (target !== cell0) {
+                    initialGraph(data);
+                }
+                // 鼠标在合并的单元格之上时，绘制选中的多个数据的统计图
+                if (target === cell0) {
+                    // tr.setAttribute("style", "background-color: #fff");
+                    if (target.classList.contains("product")) {
+                        region = regionCheckedItem();
+                    } else {
+                        product = productCheckedItem();
+                    }
+                    data = getData(region, product, sourceData);
+                    initialGraph(data);
+                }
+            }
+        }
+    })
+    table.addEventListener("mouseout", function () {
+        // reInitial();
+        // var data = getData(sourceData);
+        // initialGraph(data);
+    })
 }
 // 隐藏元素
 var hideElement = function (ele) {
@@ -225,12 +280,13 @@ var tableDisplayOpt = function () {
     }
     //当地区选择了一个，商品选择了多个的时候，地区作为第一列，商品作为第二列，把相同地区合并
     if (regoinCheckedNum == 1 && productCheckedNum > 1) {
-        //交换第一列和第二列的数据
+        //交换第一列和第二列的单元格
         for (let i = 0; i < table.rows.length; i++) {
-            let temp;
-            temp = table.rows[i].cells[0].innerHTML;
-            table.rows[i].cells[0].innerHTML = table.rows[i].cells[1].innerHTML;
-            table.rows[i].cells[1].innerHTML = temp;
+            let tr = table.rows[i];
+            let cell0 = table.rows[i].cells[0];
+            let cell1 = table.rows[i].cells[1];
+            // 取得行第1个单元格，插入到第0个单元格前面
+            tr.insertBefore(cell1, cell0)
         }
         for (let i = 1; i <= productCheckedNum; i++) {
             if (i == 1) {
@@ -251,52 +307,3 @@ var tableDisplayOpt = function () {
         }
     }
 }
-
-// 表格添加事件加到上面tableAddEvent中
-// var addEvent = function () {
-//     var barWrapper = document.getElementById("bar-wrapper");
-//     var lineWrapper = document.getElementById("line-wrapper");
-//     var table = document.getElementById("table-wrapper")
-//     table.onmouseover = function (e) {
-//         var storage = window.localStorage;
-//         var newSourceData;
-//         var data = [];
-//         target = e.target;
-//         var tr = target.parentElement; //当前hover元素的父元素
-//         var tr2 = target.parentElement.parentElement; //加一种情况，父元素的父元素也可能是tr
-//         // console.log(tr2);
-//         if (tr.cells || tr2.cells) {
-//             if (tr2.cells) { //判tr2是不是表格的行tr
-//                 tr = tr2;
-//             }
-//             for (let i = 0; i < sourceData.length; i++) {
-//                 if (sourceData[i].region == tr.cells[1].innerHTML && sourceData[i].product == tr.cells[0].innerHTML) {
-//                     data.push(sourceData[i]);
-//                 }
-//                 //根据表格一二列从数据文件中筛选数据，两种情况，上面是种商品在前地区在后。下面的是地区在前商品在后
-//                 if (sourceData[i].region == tr.cells[0].innerHTML && sourceData[i].product == tr.cells[1].innerHTML) {
-//                     data.push(sourceData[i]);
-//                 }
-//             }
-//             // 判断LocalStorage中是否有数据，从LocalStorage中读取数据，判断是否有相同数据，有就替换js文件ife31data中得到的数据。
-//             if (storage.getItem("newSourceData")) {
-//                 let json = storage.getItem("newSourceData")
-//                 newSourceData = JSON.parse(json);
-//                 for (let i = 0; i < data.length; i++) {
-//                     for (let j = 0; j < newSourceData.length; j++) {
-//                         if (data[i].region == newSourceData[j].region && data[i].product == newSourceData[j].product) {
-//                             data[i] = newSourceData[j]; //有相同的数据，用本地存储的数据替换
-//                         }
-//                     }
-//                 }
-//             }
-//             //当前鼠标划过的表格行不是数字就不画图
-//             if (HtmlUtil.isNumber(tr.cells[2].textContent)) {
-//                 barWrapper.innerHTML = ""; //重新画图
-//                 lineWrapper.innerHTML = "";
-//                 drawMultiBarGraph(data);
-//                 drawMultiLineGraph(data);
-//             }
-//         }
-//     }
-// }
