@@ -22,4 +22,4 @@
 [baiduIFE-28-30: 给爱的人发个邮件吧](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-28-30/jsDemo-email1.html)
 <br>
 
-[baiduIFE-31-41: MIS系统](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-39-41/MIS_v2.4.html)
+[baiduIFE-31-41: 精明的小卖家](https://1103409364.github.io/Homework_IFE_2018/baiduIFE-39-41/MIS_v2.4.html)
