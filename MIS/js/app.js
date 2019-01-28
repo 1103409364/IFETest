@@ -1,6 +1,8 @@
 // 初始化
 var initial = function () {
     initialForm();
+    // 读取并设置状态
+    setStatus();
     // 根据表单状态获取数据
     var region = regionCheckedItem();
     var product = productCheckedItem();

@@ -1,7 +1,7 @@
-// state版本的状态保存模块，参考了Zjinxing的代码。
+// state版本的状态保存模块
 // state版本是通过history.pushState()方法改变location.search的值来表示不同的状态
 // hash版本是直接操作location.hash
-function getStatus() {
+var getStatus = function () {
     // 此函数用于获取checkbox的选中状态
     let box = document.querySelectorAll("input[type=checkbox]");
     let str = "";
@@ -15,7 +15,7 @@ function getStatus() {
     return str;
 }
 
-function setStatus() {
+var setStatus = function () {
     // 默认选中地区和商品的第一项
     if (location.search === "") {
         location.search = "01000100";

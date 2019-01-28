@@ -1,3 +1,4 @@
+// 表格初始化
 var initialTable = function (data) {
     var tableHead = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
 
@@ -7,7 +8,6 @@ var initialTable = function (data) {
     tableAddEvent();
     tableDisplayOpt();
 }
-
 
 //渲染表格
 var renderTable = function (tableWrapper, data, tableHead) {
@@ -162,13 +162,14 @@ var tableAddEvent = function () {
 
     // 鼠标穿过事件
     table.addEventListener("mouseover", function (e) {
-        // log("over")
         var barWrapper = document.getElementById("bar-wrapper");
         var lineWrapper = document.getElementById("line-wrapper");
         // var storage = window.localStorage;
         var newSourceData;
         // var data = [];
         target = e.target;
+        log("over", target)
+
         var tr = target.parentElement;
         //还有一种情况，父元素的父元素也可能是tr
         var tr2 = target.parentElement.parentElement;

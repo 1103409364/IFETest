@@ -1,4 +1,4 @@
-//根据复选框选中的项获取数据，数据优先从本地存储获取
+//根据选中的项获取数据，数据优先从本地存储获取
 var getData = function (regionChecked, productChecked, sourceData) {
     var storage = window.localStorage;
     var newSourceData;
