@@ -54,5 +54,13 @@ var HtmlUtil = {
     },
     isNumber: function (n) {
         return !isNaN(Number(n));
+    },
+    // 开关
+    toggle: function (element, cls) {
+        if (element.classList.contains(cls)) {
+            element.classList.remove(cls)
+        } else {
+            element.classList.add(cls)
+        }
     }
 };

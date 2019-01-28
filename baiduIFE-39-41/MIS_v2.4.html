@@ -3,42 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MIS</title>
+    <title>精明的小卖家</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div id="graph-wapper">
-        <div id="bar-wrapper"></div>
-        <div id="line-wrapper"></div>
+    <div id="mis">
+        <div id="graph-wapper">
+            <div id="bar-wrapper"></div>
+            <div id="line-wrapper"></div>
+        </div>
+
+        <form id="checkbox-wrapper">
+            <div id="region-wrapper"></div>
+            <div id="product-wrapper"></div>
+        </form>
+
+        <div id="table-wrapper"></div>
     </div>
-    <form id="checkbox-wrapper">
-        <div id="region-wrapper"></div>
-        <div id="product-wrapper"></div>
-    </form>
-    <div id="table-wrapper"></div>
-    <script>
-        var log = console.log.bind(console);
-    </script>
 
-    <script type="text/javascript" src="JavaScript/ife31data.js"></script>
-    <script type="text/javascript" src="JavaScript/localStorage.js"></script>
-    <script type="text/javascript" src="JavaScript/HtmlUtil.js"></script>
-    <script type="text/javascript" src="JavaScript/checkbox.js"></script>
-    <script type="text/javascript" src="JavaScript/getData.js"></script>
-    <script type="text/javascript" src="JavaScript/table.js"></script>
-    <script type="text/javascript" src="JavaScript/drawAxis.js"></script>
-    <script type="text/javascript" src="JavaScript/drawAxisBar.js"></script>
-    <script type="text/javascript" src="JavaScript/multiLine.js"></script>
-    <script type="text/javascript" src="JavaScript/multiBar.js"></script>
-    <script type="text/javascript" src="JavaScript/graph.js"></script>
-    <!-- <script type="text/javascript" src="JavaScript/hash.js"></script> -->
-    <script type="text/javascript" src="JavaScript/state.js"></script>
+    <script>var log = console.log.bind(console);</script>
 
-    <!-- app.js文件放在最后，其他文件先加载 -->
-    <script type="text/javascript" src="JavaScript/app.js"></script>
-    <script>// 不兼容ie</script>
+    <script type="text/javascript" src="js/util/data.js"></script>
+    <script type="text/javascript" src="js/util/HtmlUtil.js"></script>
+    <script type="text/javascript" src="js/util/localStorage.js"></script>
+    <script type="text/javascript" src="js/util/getData.js"></script>
+    <script type="text/javascript" src="js/util/state.js"></script>
+    <!-- 通过hash保存状态
+    <script type="text/javascript" src="js/hash.js"></script> -->
+    <!-- 通过state保存状态 -->
+    <script type="text/javascript" src="js/form.js"></script>
+    <script type="text/javascript" src="js/table.js"></script>
+    <script type="text/javascript" src="js/statisticalGraph.js"></script>
 
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>

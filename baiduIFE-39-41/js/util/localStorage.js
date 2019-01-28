@@ -1,4 +1,5 @@
-function storageNewData(newData) {
+// 本地储存数据
+var storageNewData = function (newData) {
     if (!window.localStorage) {
         alert("浏览器不支持localstorage");
     } else {

@@ -1,5 +1,5 @@
-// 画柱状图的坐标轴
-function drawAxisBar(maxValue) {
+// 画柱状图的坐标轴 svg版
+var drawAxisBar = function (maxValue) {
     var xmlns = "http://www.w3.org/2000/svg";
     var barWrapper = document.getElementById("bar-wrapper");
     barWrapper.innerHTML = ""; //重新画图
