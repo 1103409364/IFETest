@@ -7,6 +7,7 @@ table, table tr th, table tr td {
     color: #8a56be;
     border-collapse: collapse;
     text-align: center;
+    transition: 0.5s;
 }
 
 table tr th, table tr td {
@@ -29,6 +30,7 @@ table tr th, table tr td {
     top: 0;
     right: -50px;
     padding: 0 2px;
+    transition: 0.5s;
 }
 
 /*显示编辑图标*/
@@ -91,10 +93,6 @@ table input {
 
 table {
     margin-top: 10px;
-}
-
-tr:hover {
-    /* background-color: #c391f588; */
 }
 
 td:hover {
