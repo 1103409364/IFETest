@@ -162,6 +162,7 @@ var tableAddEvent = function () {
 
 
     table.addEventListener("mouseover", function (e) {
+        // log("over")
         var barWrapper = document.getElementById("bar-wrapper");
         var lineWrapper = document.getElementById("line-wrapper");
         // var storage = window.localStorage;
