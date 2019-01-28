@@ -189,6 +189,7 @@ var tableAddEvent = function () {
             //当前鼠标划过的表格内容不是数字就不画图
             if (HtmlUtil.isNumber(tr.cells[2].textContent)) {
                 if (target !== cell0) {
+                    // 输入数据点击确定后会促发mouseover，使统计图得到更新
                     initialGraph(data);
                 }
                 // 鼠标在合并的单元格之上时，绘制选中的多个数据的统计图
