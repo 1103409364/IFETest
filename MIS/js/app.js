@@ -1,5 +1,5 @@
+// 初始化
 var initial = function () {
-    // 初始化
     initialForm();
     // 根据表单状态获取数据
     var region = regionCheckedItem();
@@ -8,7 +8,7 @@ var initial = function () {
     initialTable(data);
     initialGraph(data);
 }
-
+// 重绘统计图
 var reInitial = function () {
     var region = regionCheckedItem();
     var product = productCheckedItem();

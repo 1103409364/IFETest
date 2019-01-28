@@ -53,7 +53,7 @@ var renderTable = function (tableWrapper, data, tableHead) {
 var tableAddEvent = function () {
     var table = document.getElementById("mytable");
     var isNumber = HtmlUtil.isNumber;
-
+    // 鼠标左键按下事件
     table.addEventListener("mousedown", function (e) {
         var target = e.target;
         var confirm = target.parentElement.children[0];
@@ -111,7 +111,7 @@ var tableAddEvent = function () {
             input.value = temp;
         }
     });
-    // 监听键盘事件
+    // 键盘按下事件
     table.addEventListener("keydown", function (e) {
         // log(e.target)
         var target = e.target;
@@ -145,7 +145,7 @@ var tableAddEvent = function () {
             }
         }
     })
-
+    // 表格失去焦点事件
     table.addEventListener("blur", function (e) {
         var target = e.target;
         var confirm = target.parentElement.children[0];
@@ -160,7 +160,7 @@ var tableAddEvent = function () {
         input.value = temp;
     }, true)
 
-
+    // 鼠标穿过事件
     table.addEventListener("mouseover", function (e) {
         // log("over")
         var barWrapper = document.getElementById("bar-wrapper");
@@ -209,10 +209,9 @@ var tableAddEvent = function () {
             }
         }
     })
+    // 鼠标离开事件
     table.addEventListener("mouseout", function () {
-        // reInitial();
-        // var data = getData(sourceData);
-        // initialGraph(data);
+        reInitial();
     })
 }
 // 隐藏元素
