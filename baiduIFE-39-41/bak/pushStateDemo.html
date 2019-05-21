@@ -51,12 +51,12 @@
                     //判断点击的是abc还是def，同时hash也是abc或者def，如果是就替换，否则进行字符串拼接
                     if (abc.indexOf(x) >= 0 && abc.indexOf(getStatus()) >= 0) {
                         // location.search = x;
-                        history.pushState(state, "", "?" + x);
+                        history.pushState(state, "", "?=" + x);
                     } else if (def.indexOf(x) >= 0 && def.indexOf(getStatus()) >= 0) {
-                        history.pushState(state, "", "?" + x);
+                        history.pushState(state, "", "?=" + x);
                     } else {
                         // location.search = x + getStatus();
-                        history.pushState(state, "", "?" + x + getStatus());
+                        history.pushState(state, "", "?=" + x + getStatus());
                     }
                 } else {
                     for (let i = 0; i < getStatus().length; i++) {
@@ -64,11 +64,11 @@
                             // 如果是abc其中一个，进行替换
                             if (abc.indexOf(getStatus()[i]) >= 0) {
                                 // location.search = getStatus().replace(getStatus()[i], x);
-                                history.pushState(state, "", "?" + getStatus().replace(getStatus()[i], x));
+                                history.pushState(state, "", "?=" + getStatus().replace(getStatus()[i], x));
                             }
                         } else {
                             if (def.indexOf(getStatus()[i]) >= 0)
-                                history.pushState(state, "", "?" + getStatus().replace(getStatus()[i], x));
+                                history.pushState(state, "", "?=" + getStatus().replace(getStatus()[i], x));
                         }
                     }
                 }
@@ -81,7 +81,7 @@
         }
 
         function getStatus() {
-            return location.search.slice(1);
+            return location.search.slice(2);
         }
         // 状态渲染函数
         function statusChanged() {
