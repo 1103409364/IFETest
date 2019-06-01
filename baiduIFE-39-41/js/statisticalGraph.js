@@ -26,8 +26,9 @@ var initialGraph = function (data) {
 
 // 绘制多组柱状图,参数是对象数组
 var drawMultiBarGraph = function (colorArr, barWrapper, newData, maxValue) {
-    barWrapper.innerHTML = ""; //清除画布
+    barWrapper.innerHTML = ""; 
     ctx = drawAxis(barWrapper, maxValue);
+    // ctx.clearRect(0, 0, 650, 330);//清除画布应该用 ctx.clearRect()
 
     for (let j = 0; j < newData.length; j++) {
         for (let i = 0; i < 12; i++) {
@@ -55,7 +56,7 @@ var drawMultiBarGraph = function (colorArr, barWrapper, newData, maxValue) {
 
 //绘制多组折线图，参数是对象数组
 var drawMultiLineGraph = function (colorArr, lineWrapper, newData, maxValue) {
-    lineWrapper.innerHTML = ""; //清除画布
+    lineWrapper.innerHTML = "";
 
     //画坐标轴，返回ctx对象
     ctx = drawAxis(lineWrapper, maxValue);
