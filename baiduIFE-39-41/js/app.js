@@ -19,8 +19,13 @@ var reInitial = function () {
     initialGraph(data);
 }
 
+var sourceData;
+
 var __main = function () {
-    initial();
+    majax.get("./mock/data.json", {}, (err, data) => {
+        sourceData = (JSON.parse(data)).results;
+        initial();
+    })  
 }
 
 __main();
