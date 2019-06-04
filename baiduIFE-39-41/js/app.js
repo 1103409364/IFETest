@@ -824,6 +824,9 @@ var drawAxis = function (wrapper, maxValue) {
     return ctx;
 }
 
+
+
+
 // 总的初始化
 var initial = function () {
     initialForm();
@@ -845,12 +848,43 @@ var reInitial = function () {
     initialGraph(data);
 }
 
+var downloadImg = function () {
+    // 下载图片
+    var canvas = document.querySelectorAll('canvas')[0],
+        ctx = canvas.getContext('2d')
+    function imgType(ty) {
+        let type = ty.toLowerCase().replace(/jpg/i, 'jpeg');
+        var r = type.match(/png|jpeg|bmp|gif/)[0];
+        return 'image/' + r;
+    }
+
+    function download() {
+        let type = 'png';   //设置下载图片的格式
+        let img_png_src = canvas.toDataURL("image/png");  //将canvas保存为图片
+        let imgData = img_png_src.replace(imgType(type), 'image/octet-stream');
+        let filename = '图片' + '.' + type; //下载图片的文件名
+        saveFile(imgData, filename);
+    }
+
+    let saveFile = function (data, fileName) {
+        let save_link = document.createElement('a');
+        save_link.href = data;
+        save_link.download = fileName;
+        let event = document.createEvent('MouseEvents');
+        event.initEvent("click", true, false);
+        save_link.dispatchEvent(event);
+    };
+
+    document.getElementById('download').onclick = download;
+}
+
 var sourceData;
 
 var __main = function () {
     majax.get("./mock/data.json", {}, (err, data) => {
         sourceData = (JSON.parse(data)).results;
         initial();
+        downloadImg();
     })
 }
 
