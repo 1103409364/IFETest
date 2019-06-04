@@ -850,8 +850,8 @@ var reInitial = function () {
 
 var downloadImg = function () {
     // 下载图片
-    var canvas = document.querySelectorAll('canvas')[0],
-        ctx = canvas.getContext('2d')
+    var canvas = document.querySelectorAll('canvas')[0];
+    
     function imgType(ty) {
         let type = ty.toLowerCase().replace(/jpg/i, 'jpeg');
         var r = type.match(/png|jpeg|bmp|gif/)[0];
